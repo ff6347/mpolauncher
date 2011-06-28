@@ -1,0 +1,84 @@
+//========================================================================================
+//  
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmp_enUS.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2008/08/19 04:03:07 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 643572 $
+//  
+//  Copyright 1997-2008 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+// English string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_enUS)
+{
+	k_enUS,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kWLBCmpCompanyKey,					kWLBCmpCompanyValue,					
+		kWLBCmpAboutMenuKey,					kWLBCmpPluginName "[US]...",
+		kWLBCmpPluginsMenuKey,				kWLBCmpPluginName "[US]",
+		kWLBCmpAddItemMenuItemKey,	"Add item[US]",
+		kWLBCmpRemoveItemMenuItemKey,	"Remove item[US]",
+		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_enUS,	
+
+		// ----- Command strings
+
+		
+		// ----- Window strings
+
+		
+		// ----- Panel/dialog strings
+		kWLBCmpPanelTitleKey,				"WLB-Composite" "[US]",// irp was kWLBCmpPluginName "[US]",
+		// ----- Error strings
+
+			
+		// ----- Misc strings
+		kWLBCmpAboutBoxStringKey,			kWLBCmpPluginName "[US], version " kWLBCmpVersion " by " kWLBCmpAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
+		//
+		kWLBCmpItemBaseKey "1",						"  Glasgow Celtic",
+		kWLBCmpItemBaseKey "2",						"  Hibernian",
+		kWLBCmpItemBaseKey "3",						"  Glasgow Rangers",
+		kWLBCmpItemBaseKey "4",						"  Kilmarnock",
+		
+		kWLBCmpItemBaseKey "5",						"  Heart of Midlothian",
+		kWLBCmpItemBaseKey "6",						"  Dunfermline Athletic",
+		kWLBCmpItemBaseKey "7",						"  Motherwell",
+		kWLBCmpItemBaseKey "8",						"  St. Johnstone",
+		
+		kWLBCmpItemBaseKey "9",						"  Dundee",
+		kWLBCmpItemBaseKey "10",					"  Aberdeen",
+		kWLBCmpItemBaseKey "11",					"  Dundee United",
+		kWLBCmpItemBaseKey "12",					"  St. Mirren",
+		kWLBCmpAddedElementKey,						"  + Added Element",
+	}
+
+};
+
+#endif // __ODFRC__
+
+// End , WLBCmp_enUS.fr
+
+
