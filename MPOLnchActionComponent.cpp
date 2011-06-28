@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpActionComponent.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchActionComponent.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -37,28 +37,28 @@
 // General includes:
 #include "CActionComponent.h"
 #include "CAlert.h"
-#include "WLBCmpNodeID.h"
+#include "MPOLnchNodeID.h"
 
 #include "K2Vector.tpp" // For NodeIDList to compile
 
 // Project includes:
-#include "WLBCmpID.h"
+#include "MPOLnchID.h"
 
 
-/** WLBCmpActionComponent
+/** MPOLnchActionComponent
 	All about the user actions
 
 	@ingroup wlistboxcomposite
 	
 */
-class WLBCmpActionComponent : public CActionComponent
+class MPOLnchActionComponent : public CActionComponent
 {
 	public:
 		/**
 			Constructor.
 			@param boss interface ptr from boss object on which this interface is aggregated.
 		*/
-		WLBCmpActionComponent(IPMUnknown* boss);
+		MPOLnchActionComponent(IPMUnknown* boss);
 
 		/**
 			The action component should do the requested action.
@@ -99,35 +99,35 @@ class WLBCmpActionComponent : public CActionComponent
  ImplementationID making the C++ code callable by the
  application.
 */
-CREATE_PMINTERFACE(WLBCmpActionComponent, kWLBCmpActionComponentImpl)
+CREATE_PMINTERFACE(MPOLnchActionComponent, kMPOLnchActionComponentImpl)
 
-/* WLBCmpActionComponent Constructor
+/* MPOLnchActionComponent Constructor
 */
-WLBCmpActionComponent::WLBCmpActionComponent(IPMUnknown* boss)
+MPOLnchActionComponent::MPOLnchActionComponent(IPMUnknown* boss)
 : CActionComponent(boss)
 {
 }
 
 /* DoAction
 */
-void WLBCmpActionComponent::DoAction(IActiveContext *myContext, ActionID actionID, GSysPoint mousePoint, IPMUnknown *widget)
+void MPOLnchActionComponent::DoAction(IActiveContext *myContext, ActionID actionID, GSysPoint mousePoint, IPMUnknown *widget)
 {
 	switch (actionID.Get())
 	{
-		case kWLBCmpPopupAboutThisActionID:
-		case kWLBCmpAboutActionID:
+		case kMPOLnchPopupAboutThisActionID:
+		case kMPOLnchAboutActionID:
 		{
 			this->DoAbout();
 			break;
 		}
 
-		case kWLBCmpAddItemActionID:
+		case kMPOLnchAddItemActionID:
 		{
 			this->DoAddItem(widget);
 			break;
 		}
 
-		case kWLBCmpRemoveItemActionID:
+		case kMPOLnchRemoveItemActionID:
 		{
 			this->DoRemoveItem(widget);
 			break;
@@ -145,12 +145,12 @@ void WLBCmpActionComponent::DoAction(IActiveContext *myContext, ActionID actionI
 
 */
 
-void WLBCmpActionComponent::UpdateActionStates(IActiveContext *myContext, IActionStateList *listToUpdate, GSysPoint mousePoint, IPMUnknown *widget)
+void MPOLnchActionComponent::UpdateActionStates(IActiveContext *myContext, IActionStateList *listToUpdate, GSysPoint mousePoint, IPMUnknown *widget)
 {
 	do {
 
 		int listElementCount = 0;
-		InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(widget, kWLBCmpListBoxWidgetID, IID_ICONTROLVIEW)));
+		InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(widget, kMPOLnchListBoxWidgetID, IID_ICONTROLVIEW)));
 		ASSERT(treeWidget);
 		if(!treeWidget) {
 			break;
@@ -173,7 +173,7 @@ void WLBCmpActionComponent::UpdateActionStates(IActiveContext *myContext, IActio
 			switch (action.Get())
 			{
 
-				case kWLBCmpRemoveItemActionID:
+				case kMPOLnchRemoveItemActionID:
 					if(listElementCount>0) {
 						listToUpdate->SetNthActionState(i,kEnabledAction);
 					}
@@ -193,11 +193,11 @@ void WLBCmpActionComponent::UpdateActionStates(IActiveContext *myContext, IActio
 
 /* DoAbout
 */
-void WLBCmpActionComponent::DoAbout()
+void MPOLnchActionComponent::DoAbout()
 {
 	CAlert::ModalAlert
 	(
-	   kWLBCmpAboutBoxStringKey,			// Alert string
+	   kMPOLnchAboutBoxStringKey,			// Alert string
 	   kOKString, 							// OK button
 	   kNullString, 						// No second button
 	   kNullString, 						// No third button
@@ -208,13 +208,13 @@ void WLBCmpActionComponent::DoAbout()
 
 /* DoAddItem
 */
-void WLBCmpActionComponent::DoAddItem(IPMUnknown *invokedWidget)
+void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 {
-	InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(invokedWidget, kWLBCmpListBoxWidgetID, IID_ICONTROLVIEW)));
+	InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(invokedWidget, kMPOLnchListBoxWidgetID, IID_ICONTROLVIEW)));
 	InterfacePtr<ITreeViewMgr> treeMgr(treeWidget, UseDefaultIID());
 	InterfacePtr<IStringListData> iListData(treeWidget, IID_ISTRINGLISTDATA);
 	K2Vector<PMString> lists = iListData->GetStringList();
-	PMString item(kWLBCmpAddedElementKey);
+	PMString item(kMPOLnchAddedElementKey);
 	item.Translate();
     K2Vector<PMString>::const_iterator iter = std::find(lists.begin(), lists.end(), item);
 	int32 addIndex = 2;
@@ -229,16 +229,16 @@ void WLBCmpActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 		lists.insert(lists.begin(), item);
 		iListData->SetStringList(lists);
 		//make sure that the node added has been processed
-        NodeID node = WLBCmpNodeID::Create(item);
+        NodeID node = MPOLnchNodeID::Create(item);
 		treeMgr->NodeAdded(node);
 	}
 }
 
 /* DoRemoveItem
 */
-void WLBCmpActionComponent::DoRemoveItem(IPMUnknown *invokedWidget)
+void MPOLnchActionComponent::DoRemoveItem(IPMUnknown *invokedWidget)
 {
-	InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(invokedWidget, kWLBCmpListBoxWidgetID, IID_ICONTROLVIEW)));
+	InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(invokedWidget, kMPOLnchListBoxWidgetID, IID_ICONTROLVIEW)));
 	InterfacePtr<ITreeViewMgr> treeMgr(treeWidget, UseDefaultIID());
 
 	InterfacePtr<ITreeViewController> 	controller(treeWidget, UseDefaultIID());
@@ -260,7 +260,7 @@ void WLBCmpActionComponent::DoRemoveItem(IPMUnknown *invokedWidget)
 		K2Vector<PMString> lists = iListData->GetStringList();
         for(iter = startIter; iter != endIter; ++iter)
         {
-			const WLBCmpNodeID* oneNode = static_cast<const WLBCmpNodeID*>(iter->Get());
+			const MPOLnchNodeID* oneNode = static_cast<const MPOLnchNodeID*>(iter->Get());
 			PMString item = oneNode->GetName();
 
 			K2Vector<PMString>::iterator s_iter = std::find(lists.begin(), lists.end(), item);
@@ -273,6 +273,6 @@ void WLBCmpActionComponent::DoRemoveItem(IPMUnknown *invokedWidget)
 }
 
 
-// End, WLBCmpActionComponent.cpp.
+// End, MPOLnchActionComponent.cpp.
 
 

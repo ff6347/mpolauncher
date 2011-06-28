@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmp.fr $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnch.fr $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -52,8 +52,8 @@
 #include "TreeViewDefs.h"
 
 // Project includes:
-#include "WLBCmpID.h"
-#include "WLBCmpRezDefs.h"
+#include "MPOLnchID.h"
+#include "MPOLnchRezDefs.h"
 
 #ifdef __ODFRC__
 
@@ -63,13 +63,13 @@
 resource PluginVersion (kSDKDefPluginVersionResourceID)
 {
 	kTargetVersion,
-	kWLBCmpPluginID,
+	kMPOLnchPluginID,
 	kSDKDefPlugInMajorVersionNumber, kSDKDefPlugInMinorVersionNumber, 	
 	kSDKDefHostMajorVersionNumber, kSDKDefHostMinorVersionNumber,
-	kWLBCmpCurrentMajorFormatNumber, kWLBCmpCurrentMinorFormatNumber,
+	kMPOLnchCurrentMajorFormatNumber, kMPOLnchCurrentMinorFormatNumber,
 	{ kInDesignProduct, kInCopyProduct },
 	{ kWildFS },
-	kWLBCmpVersion
+	kMPOLnchVersion
 };
 
 //================================================================================
@@ -86,12 +86,12 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 */
 	Class
 	{
-		kWLBCmpActionComponentBoss,
+		kMPOLnchActionComponentBoss,
 		kBaseActionComponentBoss,
 		{
 			/** Handle the actions from the menu. 
 			*/
-			IID_IACTIONCOMPONENT, kWLBCmpActionComponentImpl,
+			IID_IACTIONCOMPONENT, kMPOLnchActionComponentImpl,
 		}
 	},
 
@@ -102,7 +102,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 */
 	Class
 	{
-		kWLBCmpPanelWidgetBoss,
+		kMPOLnchPanelWidgetBoss,
 		kPalettePanelWidgetBoss,
 		{
 				/** An implementation of ITextControlData, but with interface
@@ -120,17 +120,17 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	*/
 	Class 
 	{
-		kWLBCmpListBoxWidgetBoss,
+		kMPOLnchListBoxWidgetBoss,
 		kTreeViewWidgetBoss,
 		{
 			/** Furnishes application framework with widgets as needed */
-			IID_ITREEVIEWWIDGETMGR,  kWLBCmpTVWidgetMgrImpl,
+			IID_ITREEVIEWWIDGETMGR,  kMPOLnchTVWidgetMgrImpl,
 			/** Adapts our data model to the needs of the application framework */
-			IID_ITREEVIEWHIERARCHYADAPTER,  kWLBCmpTVHierarchyAdapterImpl,
+			IID_ITREEVIEWHIERARCHYADAPTER,  kMPOLnchTVHierarchyAdapterImpl,
 			/** Hold names of the list item */
             IID_ISTRINGLISTDATA,        kStringListDataImpl, 
             /** Display selection message */   
-  			IID_IOBSERVER,	kWLBCmpListBoxObserverImpl,
+  			IID_IOBSERVER,	kMPOLnchListBoxObserverImpl,
 		}
 	},
 
@@ -139,7 +139,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	*/
 	Class
 	{
-		kWLBCmpTextWidgetBoss,
+		kMPOLnchTextWidgetBoss,
 		kInfoStaticTextWidgetBoss,
 		{
 			// Add the following interfaces for a white background (they'd override the default.)
@@ -154,13 +154,13 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	*/
 	Class 
 	{
-		kWLBCmpEyeballWidgetBoss,
+		kMPOLnchEyeballWidgetBoss,
 		kRollOverIconButtonBoss,
 		{
 			/**
 			Receive Update messages from the application core when end-user clicks on the eyeball iconic button.
 			*/
-			IID_IOBSERVER,	kWLBCmpEyeballObserverImpl,
+			IID_IOBSERVER,	kMPOLnchEyeballObserverImpl,
 		}
 	},
 	
@@ -170,13 +170,13 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	*/
 	Class 
 	{
-		kWLBCmpPenWidgetBoss,
+		kMPOLnchPenWidgetBoss,
 		kRollOverIconButtonBoss,
 		{
 			/**
 			Receive Update messages from the application core when end-user clicks on the pen iconic button.
 			*/
-			IID_IOBSERVER,	kWLBCmpPenObserverImpl,
+			IID_IOBSERVER,	kMPOLnchPenObserverImpl,
 		}
 	},
 
@@ -189,7 +189,7 @@ resource FactoryList (kSDKDefFactoryListResourceID)
 {
 	kImplementationIDSpace,
 	{
-#include "WLBCmpFactoryList.h"
+#include "MPOLnchFactoryList.h"
 	}
 };
 
@@ -200,31 +200,31 @@ resource MenuDef (kSDKDefMenuResourceID)
 {
 	{
 		// The About Plug-ins sub-menu item for this plug-in.
-		kWLBCmpAboutActionID,			// ActionID (kInvalidActionID for positional entries)
-		kWLBCmpAboutMenuPath,			// Menu Path.
+		kMPOLnchAboutActionID,			// ActionID (kInvalidActionID for positional entries)
+		kMPOLnchAboutMenuPath,			// Menu Path.
 		kSDKDefAlphabeticPosition,			// Menu Position.
 		kSDKDefIsNotDynamicMenuFlag,		// kSDKDefIsNotDynamicMenuFlag or kSDKDefIsDynamicMenuFlag.
 
-		kWLBCmpAddItemActionID,
-		kWLBCmpTargetMenuPath,
-		kWLBCmpAddItemMenuItemPosition,
+		kMPOLnchAddItemActionID,
+		kMPOLnchTargetMenuPath,
+		kMPOLnchAddItemMenuItemPosition,
 		kSDKDefIsNotDynamicMenuFlag,
 
-		kWLBCmpRemoveItemActionID,
-		kWLBCmpTargetMenuPath,
-		kWLBCmpRemoveItemMenuItemPosition,
+		kMPOLnchRemoveItemActionID,
+		kMPOLnchTargetMenuPath,
+		kMPOLnchRemoveItemMenuItemPosition,
 		kSDKDefIsNotDynamicMenuFlag,
 
 		// Separator for the popup menu on the panel
-		kWLBCmpSeparator1ActionID,
-		kWLBCmpInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
-		kWLBCmpSeparator1MenuItemPosition,
+		kMPOLnchSeparator1ActionID,
+		kMPOLnchInternalPopupMenuNameKey kSDKDefDelimiterAndSeparatorPath,	// :- to mark an item as a separator.
+		kMPOLnchSeparator1MenuItemPosition,
 		kSDKDefIsNotDynamicMenuFlag,
 
 		// About this plugin submenu for the popup menu on the panel
-		kWLBCmpPopupAboutThisActionID,
-		kWLBCmpTargetMenuPath
-		kWLBCmpAboutThisMenuItemPosition,
+		kMPOLnchPopupAboutThisActionID,
+		kMPOLnchTargetMenuPath
+		kMPOLnchAboutThisMenuItemPosition,
 		kSDKDefIsNotDynamicMenuFlag, 
 
 	}
@@ -236,35 +236,35 @@ resource MenuDef (kSDKDefMenuResourceID)
 resource ActionDef (kSDKDefActionResourceID)
 {
 	{ 
-		kWLBCmpActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
-		kWLBCmpAboutActionID,	// ActionID.
-		kWLBCmpAboutMenuKey,	// Sub-menu string.
+		kMPOLnchActionComponentBoss, 		// ClassID of boss class that implements the ActionID.
+		kMPOLnchAboutActionID,	// ActionID.
+		kMPOLnchAboutMenuKey,	// Sub-menu string.
 		kHelpMenuActionArea,				// Area name (see ActionDefs.h).
 		kNormalAction,					// Type of action (see ActionDefs.h).
 		kDisableIfLowMem,				// Enabling type (see ActionDefs.h).
 		kInvalidInterfaceID,			// Selection InterfaceID this action cares about or kInvalidInterfaceID.
 		kSDKDefInvisibleInKBSCEditorFlag, // kSDKDefVisibleInKBSCEditorFlag or kSDKDefInvisibleInKBSCEditorFlag.
 
-		kWLBCmpActionComponentBoss,
-		kWLBCmpAddItemActionID,		
-		kWLBCmpAddItemMenuItemKey,		
+		kMPOLnchActionComponentBoss,
+		kMPOLnchAddItemActionID,		
+		kMPOLnchAddItemMenuItemKey,		
 		kOtherActionArea,			
 		kNormalAction,				
 		kDisableIfLowMem,	
 		kInvalidInterfaceID,		
 		kSDKDefInvisibleInKBSCEditorFlag,
 				
-		kWLBCmpActionComponentBoss, 
-		kWLBCmpRemoveItemActionID, 
-		kWLBCmpRemoveItemMenuItemKey,
+		kMPOLnchActionComponentBoss, 
+		kMPOLnchRemoveItemActionID, 
+		kMPOLnchRemoveItemMenuItemKey,
 		kOtherActionArea,
 		kNormalAction,
 		kCustomEnabling,	// so that UpdateActionStates will get called	
 		kInvalidInterfaceID,
 		kSDKDefInvisibleInKBSCEditorFlag,
 
-		kWLBCmpActionComponentBoss, 
-		kWLBCmpPopupAboutThisActionID, 
+		kMPOLnchActionComponentBoss, 
+		kMPOLnchPopupAboutThisActionID, 
 		kSDKDefAboutThisPlugInMenuKey,	// Key to the name of this action
 		kOtherActionArea,
 		kNormalAction,
@@ -305,11 +305,11 @@ resource LocaleIndex (kSDKDefStringsNoTransResourceID)
 };
 
 // added to support the list elements in the list box
-resource LocaleIndex (kWLBCmpListElementRsrcID)
+resource LocaleIndex (kMPOLnchListElementRsrcID)
 {
 	kViewRsrcType,
 	{
-		kWildFS, k_Wild, kWLBCmpListElementRsrcID + index_enUS
+		kWildFS, k_Wild, kMPOLnchListElementRsrcID + index_enUS
 	}
 };
 
@@ -321,7 +321,7 @@ resource StringTable (kSDKDefStringsNoTransResourceID + index_enUS)
 		// No-Translate strings go here:		
 
 
-		kWLBCmpInternalPopupMenuNameKey,	kWLBCmpInternalPopupMenuNameKey,		// No need to translate, internal menu name.
+		kMPOLnchInternalPopupMenuNameKey,	kMPOLnchInternalPopupMenuNameKey,		// No need to translate, internal menu name.
 	}
 };
 
@@ -342,17 +342,17 @@ resource LocaleIndex (kSDKDefPanelResourceID)
 //========================================================================================
 // Type definition.
 //========================================================================================
-type WLBCmpPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kWLBCmpPanelWidgetBoss) 
+type MPOLnchPanelWidget(kViewRsrcType) : PalettePanelWidget(ClassID = kMPOLnchPanelWidgetBoss) 
 {
 	CPanelMenuData;
 };
-type WLBCmpListBox			(kViewRsrcType) : TreeViewWidget	(ClassID = kWLBCmpListBoxWidgetBoss) { };
-type WLBCmpNodeWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kTreeNodeWidgetBoss) 
+type MPOLnchListBox			(kViewRsrcType) : TreeViewWidget	(ClassID = kMPOLnchListBoxWidgetBoss) { };
+type MPOLnchNodeWidget(kViewRsrcType) : PrimaryResourcePanelWidget(ClassID = kTreeNodeWidgetBoss) 
 {
 };
-type WLBCmpTextWidget		(kViewRsrcType) : InfoStaticTextWidget	(ClassID = kWLBCmpTextWidgetBoss) { };
-type WLBCmpEyeballWidget 	(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kWLBCmpEyeballWidgetBoss) {};
-type WLBCmpPenWidget 	(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kWLBCmpPenWidgetBoss) {};
+type MPOLnchTextWidget		(kViewRsrcType) : InfoStaticTextWidget	(ClassID = kMPOLnchTextWidgetBoss) { };
+type MPOLnchEyeballWidget 	(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kMPOLnchEyeballWidgetBoss) {};
+type MPOLnchPenWidget 	(kViewRsrcType) : RollOverIconButtonWidget (ClassID = kMPOLnchPenWidgetBoss) {};
 
 //================================================================================
 // PanelList definition.
@@ -362,10 +362,10 @@ resource PanelList (kSDKDefPanelResourceID)
 	{
 		// 1st panel in the list
 		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
-		kWLBCmpPluginID,			// ID of plug-in that owns this panel
+		kMPOLnchPluginID,			// ID of plug-in that owns this panel
 		kNotResizable,
-		kWLBCmpPanelWidgetActionID,	// Action ID to show/hide the panel
-		kWLBCmpPanelTitleKey,		// Shows up in the Window list.
+		kMPOLnchPanelWidgetActionID,	// Action ID to show/hide the panel
+		kMPOLnchPanelTitleKey,		// Shows up in the Window list.
 		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
 		0.0,						// Alternate Menu position Alternate Menu position for determining menu order
 		0,0,						// Rsrc ID, Plugin ID for a PNG icon resource to use for this palette
@@ -377,12 +377,12 @@ resource PanelList (kSDKDefPanelResourceID)
 // PanelView definition.
 // The view is not currently localised: therefore, it can reside here.
 // However, if you wish to localise it, it is recommended to locate it in one of
-// the localised framework resource files (i.e. WLBCmp_enUS.fr etc.).
+// the localised framework resource files (i.e. MPOLnch_enUS.fr etc.).
 //================================================================================
-resource WLBCmpPanelWidget(kSDKDefPanelResourceID + index_enUS)
+resource MPOLnchPanelWidget(kSDKDefPanelResourceID + index_enUS)
 {
 	__FILE__, __LINE__,					// Localization macro		
-	kWLBCmpPanelWidgetID,			// WidgetID 
+	kMPOLnchPanelWidgetID,			// WidgetID 
 	kPMRsrcID_None,						// RsrcID
 	kBindNone,							// Binding (0=none)
 	0, 0, 207, 95,						// Frame: left, top, right, bottom.
@@ -390,11 +390,11 @@ resource WLBCmpPanelWidget(kSDKDefPanelResourceID + index_enUS)
 	kFalse,								// Erase background
 	kInterfacePaletteFill,				// Erase to color
 	kFalse,								// Draw dropshadow
-	kWLBCmpPanelTitleKey,			// Panel name	
+	kMPOLnchPanelTitleKey,			// Panel name	
 	{
-		WLBCmpListBox   //Tree view
+		MPOLnchListBox   //Tree view
 		(
-			kWLBCmpListBoxWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
+			kMPOLnchListBoxWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
 			kBindAll,											// Frame binding
 			Frame(-1,0,208,96)		// Frame
 			kTrue, kTrue,									// Visible, Enabled
@@ -419,29 +419,29 @@ resource WLBCmpPanelWidget(kSDKDefPanelResourceID + index_enUS)
 		
 	}
 
-	kWLBCmpInternalPopupMenuNameKey		// Popup menu name (internal)
+	kMPOLnchInternalPopupMenuNameKey		// Popup menu name (internal)
 };
 
-resource WLBCmpNodeWidget (kWLBCmpListElementRsrcID + index_enUS)
+resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 {
 	__FILE__, __LINE__,
-	kWLBCmpListParentWidgetId, kPMRsrcID_None,	// WidgetId, RsrcId
+	kMPOLnchListParentWidgetId, kPMRsrcID_None,	// WidgetId, RsrcId
 	kBindLeft | kBindRight,			// Frame binding
 	Frame(0, 0, 194, 20),			// Frame
 	kTrue, kTrue,					// Visible, Enabled
 	"",								// Panel name
 	{
-		WLBCmpEyeballWidget
+		MPOLnchEyeballWidget
 		(
-			kWLBCmpListElementEyeballWidgetID, kWLBCmpEyeBallIcon, kWLBCmpPluginID, // WidgetId, RsrcId
+			kMPOLnchListElementEyeballWidgetID, kMPOLnchEyeBallIcon, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
 			Frame(3,1,22,18)									// Frame
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
-		WLBCmpPenWidget
+		MPOLnchPenWidget
 		(
-			kWLBCmpListElementPenWidgetID, kWLBCmpPenIcon, kWLBCmpPluginID, // WidgetId, RsrcId
+			kMPOLnchListElementPenWidgetID, kMPOLnchPenIcon, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
 			Frame(25,1,44,18)									// Frame
 			kTrue, kTrue,										// Visible, Enabled
@@ -449,9 +449,9 @@ resource WLBCmpNodeWidget (kWLBCmpListElementRsrcID + index_enUS)
 		),
 
 		// Just a info-static text widget with about-box text view to get white bg.
-		WLBCmpTextWidget
+		MPOLnchTextWidget
 		(
-			kWLBCmpTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
+			kMPOLnchTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
 			kBindLeft | kBindRight,								// Frame binding
 			Frame(45,1,194,18)									// Frame
 			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
@@ -470,10 +470,10 @@ resource WLBCmpNodeWidget (kWLBCmpListElementRsrcID + index_enUS)
 
 #endif // __ODFRC__
 
-#include "WLBCmp_enUS.fr"
-#include "WLBCmp_jaJP.fr"
+#include "MPOLnch_enUS.fr"
+#include "MPOLnch_jaJP.fr"
 
-// End, WLBCmp.fr.
+// End, MPOLnch.fr.
 
 
 

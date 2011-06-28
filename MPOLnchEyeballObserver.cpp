@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpEyeballObserver.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchEyeballObserver.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -32,7 +32,7 @@
 // Implem includes
 #include "CAlert.h"
 #include "CObserver.h"
-#include "WLBCmpID.h"
+#include "MPOLnchID.h"
 
 
 /**
@@ -41,7 +41,7 @@
 	@ingroup wlistboxcomposite
 	
 */
-class WLBCmpEyeballObserver : public CObserver
+class MPOLnchEyeballObserver : public CObserver
 {
 public:
 	
@@ -49,13 +49,13 @@ public:
 		Constructor for WLBListBoxObserver class.
 		@param interface ptr from boss object on which this interface is aggregated.
 	*/
-	WLBCmpEyeballObserver(IPMUnknown *boss);
+	MPOLnchEyeballObserver(IPMUnknown *boss);
 
 	/**
-		Destructor for WLBCmpEyeballObserver class - 
+		Destructor for MPOLnchEyeballObserver class - 
 		performs cleanup 
 	*/	
-	~WLBCmpEyeballObserver();
+	~MPOLnchEyeballObserver();
 
 	/**
 		AutoAttach is only called for registered observers
@@ -87,23 +87,23 @@ public:
 	
 };
 
-CREATE_PMINTERFACE(WLBCmpEyeballObserver, kWLBCmpEyeballObserverImpl)
+CREATE_PMINTERFACE(MPOLnchEyeballObserver, kMPOLnchEyeballObserverImpl)
 
 
-WLBCmpEyeballObserver::WLBCmpEyeballObserver(IPMUnknown* boss)
+MPOLnchEyeballObserver::MPOLnchEyeballObserver(IPMUnknown* boss)
 : CObserver(boss)
 {
 	
 }
 
 
-WLBCmpEyeballObserver::~WLBCmpEyeballObserver()
+MPOLnchEyeballObserver::~MPOLnchEyeballObserver()
 {
 	
 }
 
 
-void WLBCmpEyeballObserver::AutoAttach()
+void MPOLnchEyeballObserver::AutoAttach()
 {
 	InterfacePtr<ISubject> subject(this, UseDefaultIID());
 	if (subject != nil)
@@ -114,7 +114,7 @@ void WLBCmpEyeballObserver::AutoAttach()
 }
 
 
-void WLBCmpEyeballObserver::AutoDetach()
+void MPOLnchEyeballObserver::AutoDetach()
 {
 	InterfacePtr<ISubject> subject(this, UseDefaultIID());
 	if (subject != nil)
@@ -124,7 +124,7 @@ void WLBCmpEyeballObserver::AutoDetach()
 }
 
 
-void WLBCmpEyeballObserver::Update
+void MPOLnchEyeballObserver::Update
 (
 	const ClassID& theChange, 
 	ISubject* theSubject, 
@@ -135,7 +135,7 @@ void WLBCmpEyeballObserver::Update
 	if(theChange == kTrueStateMessage) {
 		// Then the button has been activated.
 		do {
-				PMString dbgInfoString("WLBCmpEyeballObserver::Update() ");
+				PMString dbgInfoString("MPOLnchEyeballObserver::Update() ");
 				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
 				CAlert::InformationAlert(dbgInfoString);
 		

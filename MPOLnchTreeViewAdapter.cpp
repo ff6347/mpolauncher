@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpTreeViewAdapter.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchTreeViewAdapter.cpp $
 //  
 //  Owner: Danielle Darling
 //  
@@ -25,19 +25,19 @@
 
 #include "IStringListData.h"
 #include "ListTreeViewAdapter.h"
-#include "WLBCmpNodeID.h"
-#include "WLBCmpID.h"
+#include "MPOLnchNodeID.h"
+#include "MPOLnchID.h"
 
 /**
  *  TreeViewAdapter.
 	@ingroup wlistboxcomposite
  */
-class WLBCmpTreeViewAdapter : public ListTreeViewAdapter
+class MPOLnchTreeViewAdapter : public ListTreeViewAdapter
 {
 public:
-	WLBCmpTreeViewAdapter(IPMUnknown* boss);
+	MPOLnchTreeViewAdapter(IPMUnknown* boss);
 	
-	virtual ~WLBCmpTreeViewAdapter()
+	virtual ~MPOLnchTreeViewAdapter()
 	{}
 	
 	virtual int32	GetNumListItems() const;
@@ -46,15 +46,15 @@ public:
 
 };
 
-CREATE_PMINTERFACE(WLBCmpTreeViewAdapter, kWLBCmpTVHierarchyAdapterImpl)
+CREATE_PMINTERFACE(MPOLnchTreeViewAdapter, kMPOLnchTVHierarchyAdapterImpl)
 
-WLBCmpTreeViewAdapter::WLBCmpTreeViewAdapter(IPMUnknown* boss):ListTreeViewAdapter(boss)
+MPOLnchTreeViewAdapter::MPOLnchTreeViewAdapter(IPMUnknown* boss):ListTreeViewAdapter(boss)
 {
 	//initialize the list with the default list string name
 	K2Vector<PMString> lists;
 	for (int32 i = 0; i< 12; i++)
 	{
-		PMString name(kWLBCmpItemBaseKey);
+		PMString name(kMPOLnchItemBaseKey);
 		name.AppendNumber(i+1);
 		name.Translate();
 		lists.push_back(name);
@@ -63,23 +63,23 @@ WLBCmpTreeViewAdapter::WLBCmpTreeViewAdapter(IPMUnknown* boss):ListTreeViewAdapt
 	iListData->SetStringList(lists);
 
 }
-int32 WLBCmpTreeViewAdapter::GetNumListItems()const
+int32 MPOLnchTreeViewAdapter::GetNumListItems()const
 {	
 	InterfacePtr<IStringListData> iListData(this, IID_ISTRINGLISTDATA);
 
 	return iListData->GetStringList().size();
 }
 
-NodeID_rv WLBCmpTreeViewAdapter::GetRootNode() const
+NodeID_rv MPOLnchTreeViewAdapter::GetRootNode() const
 {
 	PMString rootString("Root");
 	rootString.Translate();
-	return WLBCmpNodeID::Create(rootString);
+	return MPOLnchNodeID::Create(rootString);
 }
 
-NodeID_rv WLBCmpTreeViewAdapter::GetNthListItem(const int32& nth) const
+NodeID_rv MPOLnchTreeViewAdapter::GetNthListItem(const int32& nth) const
 {
 	InterfacePtr<IStringListData> iListData(this, IID_ISTRINGLISTDATA);
 
-	return WLBCmpNodeID::Create(iListData->GetStringList()[nth]);	
+	return MPOLnchNodeID::Create(iListData->GetStringList()[nth]);	
 }

@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpFactoryList.h $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchFactoryList.h $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -25,13 +25,13 @@
 //  
 //========================================================================================
 
-REGISTER_PMINTERFACE(WLBCmpActionComponent, kWLBCmpActionComponentImpl)
-REGISTER_PMINTERFACE(WLBCmpListBoxObserver, kWLBCmpListBoxObserverImpl)
-REGISTER_PMINTERFACE(WLBCmpEyeballObserverImpl, kWLBCmpEyeballObserverImpl)
-REGISTER_PMINTERFACE(WLBCmpPenObserverImpl, kWLBCmpPenObserverImpl)
-REGISTER_PMINTERFACE(WLBCmpTreeViewAdapter, kWLBCmpTVHierarchyAdapterImpl)
-REGISTER_PMINTERFACE(WLBCmpTVWidgetMgr, kWLBCmpTVWidgetMgrImpl)
+REGISTER_PMINTERFACE(MPOLnchActionComponent, kMPOLnchActionComponentImpl)
+REGISTER_PMINTERFACE(MPOLnchListBoxObserver, kMPOLnchListBoxObserverImpl)
+REGISTER_PMINTERFACE(MPOLnchEyeballObserverImpl, kMPOLnchEyeballObserverImpl)
+REGISTER_PMINTERFACE(MPOLnchPenObserverImpl, kMPOLnchPenObserverImpl)
+REGISTER_PMINTERFACE(MPOLnchTreeViewAdapter, kMPOLnchTVHierarchyAdapterImpl)
+REGISTER_PMINTERFACE(MPOLnchTVWidgetMgr, kMPOLnchTVWidgetMgrImpl)
 
-// End, WLBCmpFactoryList.h.
+// End, MPOLnchFactoryList.h.
 
 

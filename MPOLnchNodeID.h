@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpNodeID.h $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchNodeID.h $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -25,39 +25,39 @@
 //  
 //========================================================================================
 
-#ifndef __WLBCmpNodeID__
-#define __WLBCmpNodeID__
+#ifndef __MPOLnchNodeID__
+#define __MPOLnchNodeID__
 
 #include "NodeID.h"
 #include "IPMStream.h"
-#include "WLBCmpID.h"
+#include "MPOLnchID.h"
 
 /** Represents a node in the tree view. It is the list item.
 	
 	@ingroup wlistboxcomposite
 */
-class WLBCmpNodeID : public NodeIDClass
+class MPOLnchNodeID : public NodeIDClass
 {
 	public:
-		enum { kNodeType = kWLBCmpListBoxWidgetBoss }; 
+		enum { kNodeType = kMPOLnchListBoxWidgetBoss }; 
 
 
 		/**	Factory method to create 
 		new object of this class
 			@return   new instance of this class 
 		 */
-		static	NodeID_rv Create() { return new WLBCmpNodeID(); }
+		static	NodeID_rv Create() { return new MPOLnchNodeID(); }
 
 		/**	Factory method to create new object of this class
 			@param path [IN] specifies initial path
 			@return  new instance of this class
 		 */
 		static	NodeID_rv Create(PMString name)  
-			{ return new WLBCmpNodeID(name); }
+			{ return new MPOLnchNodeID(name); }
 
 		/**	Destructor
 		 */
-		virtual ~WLBCmpNodeID() {}
+		virtual ~MPOLnchNodeID() {}
 		
 
 		/**	@return type of this node
@@ -95,13 +95,13 @@ class WLBCmpNodeID : public NodeIDClass
 
 	private:
 		// Note we're keeping the destructor private to force use of the factory methods
-		WLBCmpNodeID() {}
+		MPOLnchNodeID() {}
 
-		WLBCmpNodeID(PMString name):fName(name) {}
+		MPOLnchNodeID(PMString name):fName(name) {}
 
 		PMString	fName;
 };
 
-#endif // __WLBCmpNodeID__
+#endif // __MPOLnchNodeID__
 
 

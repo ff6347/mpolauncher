@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpPenObserver.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchPenObserver.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -32,7 +32,7 @@
 // Implem includes
 #include "CAlert.h"
 #include "CObserver.h"
-#include "WLBCmpID.h"
+#include "MPOLnchID.h"
 
 
 /**
@@ -42,7 +42,7 @@
 	@ingroup wlistboxcomposite
 	
 */
-class WLBCmpPenObserver : public CObserver
+class MPOLnchPenObserver : public CObserver
 {
 public:
 	
@@ -50,12 +50,12 @@ public:
 		Constructor for WLBListBoxObserver class.
 		@param interface ptr from boss object on which this interface is aggregated.
 	*/
-	WLBCmpPenObserver(IPMUnknown *boss);
+	MPOLnchPenObserver(IPMUnknown *boss);
 
 	/**
 		Destructor.
 	*/	
-	~WLBCmpPenObserver();
+	~MPOLnchPenObserver();
 
 	/**
 		AutoAttach is only called for registered observers
@@ -88,23 +88,23 @@ public:
 	
 };
 
-CREATE_PMINTERFACE(WLBCmpPenObserver, kWLBCmpPenObserverImpl)
+CREATE_PMINTERFACE(MPOLnchPenObserver, kMPOLnchPenObserverImpl)
 
 
-WLBCmpPenObserver::WLBCmpPenObserver(IPMUnknown* boss)
+MPOLnchPenObserver::MPOLnchPenObserver(IPMUnknown* boss)
 : CObserver(boss)
 {
 	
 }
 
 
-WLBCmpPenObserver::~WLBCmpPenObserver()
+MPOLnchPenObserver::~MPOLnchPenObserver()
 {
 	
 }
 
 
-void WLBCmpPenObserver::AutoAttach()
+void MPOLnchPenObserver::AutoAttach()
 {
 	InterfacePtr<ISubject> subject(this, UseDefaultIID());
 	if (subject != nil)
@@ -115,7 +115,7 @@ void WLBCmpPenObserver::AutoAttach()
 }
 
 
-void WLBCmpPenObserver::AutoDetach()
+void MPOLnchPenObserver::AutoDetach()
 {
 		InterfacePtr<ISubject> subject(this, UseDefaultIID());
 	if (subject != nil)
@@ -125,7 +125,7 @@ void WLBCmpPenObserver::AutoDetach()
 }
 
 
-void WLBCmpPenObserver::Update
+void MPOLnchPenObserver::Update
 (
 	const ClassID& theChange, 
 	ISubject* theSubject, 
@@ -136,7 +136,7 @@ void WLBCmpPenObserver::Update
 	if(theChange == kTrueStateMessage) {
 		// Then the button has been activated.
 		do {
-				PMString dbgInfoString("WLBCmpPenObserver::Update() ");
+				PMString dbgInfoString("MPOLnchPenObserver::Update() ");
 				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
 				CAlert::InformationAlert(dbgInfoString);
 		

@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmp_jaJP.fr $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnch_jaJP.fr $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -37,11 +37,11 @@ resource StringTable (kSDKDefStringsResourceID + index_jaJP)
 	{
 
 		// ----- Menu strings
-		kWLBCmpCompanyKey,					kWLBCmpCompanyValue,					
-		kWLBCmpAboutMenuKey,				kWLBCmpPluginName "[JP]...",
-		kWLBCmpPluginsMenuKey,				kWLBCmpPluginName "[JP]",
-		kWLBCmpAddItemMenuItemKey,			"çÄñ⁄Çí«â¡[JP]",
-		kWLBCmpRemoveItemMenuItemKey,		"çÄñ⁄ÇçÌèú[JP]",
+		kMPOLnchCompanyKey,					kMPOLnchCompanyValue,					
+		kMPOLnchAboutMenuKey,				kMPOLnchPluginName "[JP]...",
+		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[JP]",
+		kMPOLnchAddItemMenuItemKey,			"çÄñ⁄Çí«â¡[JP]",
+		kMPOLnchRemoveItemMenuItemKey,		"çÄñ⁄ÇçÌèú[JP]",
 		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_jaJP,	
 
 		// ----- Command strings
@@ -51,34 +51,34 @@ resource StringTable (kSDKDefStringsResourceID + index_jaJP)
 
 		
 		// ----- Panel/dialog strings
-		kWLBCmpPanelTitleKey,				kWLBCmpPluginName "[JP]",
+		kMPOLnchPanelTitleKey,				kMPOLnchPluginName "[JP]",
 		// ----- Error strings
 
 			
 		// ----- Misc strings
-		kWLBCmpAboutBoxStringKey,			kWLBCmpPluginName "[JP], version " kWLBCmpVersion " by " kWLBCmpAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
+		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[JP], version " kMPOLnchVersion " by " kMPOLnchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
 		//
-		kWLBCmpItemBaseKey "1",				"  Glasgow Celtic",
-		kWLBCmpItemBaseKey "2",				"  Hibernian",
-		kWLBCmpItemBaseKey "3",				"  Glasgow Rangers",
-		kWLBCmpItemBaseKey "4",				"  Kilmarnock",
+		kMPOLnchItemBaseKey "1",				"  Glasgow Celtic",
+		kMPOLnchItemBaseKey "2",				"  Hibernian",
+		kMPOLnchItemBaseKey "3",				"  Glasgow Rangers",
+		kMPOLnchItemBaseKey "4",				"  Kilmarnock",
 		
-		kWLBCmpItemBaseKey "5",				"  Heart of Midlothian",
-		kWLBCmpItemBaseKey "6",				"  Dunfermline Athletic",
-		kWLBCmpItemBaseKey "7",				"  Motherwell",
-		kWLBCmpItemBaseKey "8",				"  St. Johnstone",
+		kMPOLnchItemBaseKey "5",				"  Heart of Midlothian",
+		kMPOLnchItemBaseKey "6",				"  Dunfermline Athletic",
+		kMPOLnchItemBaseKey "7",				"  Motherwell",
+		kMPOLnchItemBaseKey "8",				"  St. Johnstone",
 		
-		kWLBCmpItemBaseKey "9",				"  Dundee",
-		kWLBCmpItemBaseKey "10",			"  Aberdeen",
-		kWLBCmpItemBaseKey "11",			"  Dundee United",
-		kWLBCmpItemBaseKey "12",			"  St. Mirren",
-		kWLBCmpAddedElementKey,				"  + í«â¡óvëf",	
+		kMPOLnchItemBaseKey "9",				"  Dundee",
+		kMPOLnchItemBaseKey "10",			"  Aberdeen",
+		kMPOLnchItemBaseKey "11",			"  Dundee United",
+		kMPOLnchItemBaseKey "12",			"  St. Mirren",
+		kMPOLnchAddedElementKey,				"  + í«â¡óvëf",	
 	}
 
 };
 
 #endif // __ODFRC__
 
-// End , WLBCmp_jaJP.fr
+// End , MPOLnch_jaJP.fr
 
 

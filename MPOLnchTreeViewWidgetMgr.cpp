@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpTreeViewWidgetMgr.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchTreeViewWidgetMgr.cpp $
 //  
 //  Owner: Danielle Darling
 //  
@@ -29,50 +29,50 @@
 #include "ITextControlData.h"
 
 #include "CTreeViewWidgetMgr.h"
-#include "WLBCmpNodeID.h"
-#include "WLBCmpID.h"
-#include "WLBCmpRezDefs.h"
+#include "MPOLnchNodeID.h"
+#include "MPOLnchID.h"
+#include "MPOLnchRezDefs.h"
 
 
 /**
  *  Tree view manager
 	@ingroup wlistboxcomposite
  */
-class WLBCmpTVWidgetMgr : public CTreeViewWidgetMgr
+class MPOLnchTVWidgetMgr : public CTreeViewWidgetMgr
 {
 public:
-	WLBCmpTVWidgetMgr(IPMUnknown *boss);
-	virtual ~WLBCmpTVWidgetMgr()
+	MPOLnchTVWidgetMgr(IPMUnknown *boss);
+	virtual ~MPOLnchTVWidgetMgr()
 	{}
     
     virtual bool16	ApplyDataToWidget( const NodeID& node, IPanelControlData* widgetList, int32 message ) const;
 
     void RegisterStyles()
     {
-        RegisterStyleWidget(kLargePaletteRowsTreeStyle, kWLBCmpListElementRsrcID, kWLBCmpPluginID);
+        RegisterStyleWidget(kLargePaletteRowsTreeStyle, kMPOLnchListElementRsrcID, kMPOLnchPluginID);
     }
 };
 
 
-CREATE_PMINTERFACE(WLBCmpTVWidgetMgr, kWLBCmpTVWidgetMgrImpl)
+CREATE_PMINTERFACE(MPOLnchTVWidgetMgr, kMPOLnchTVWidgetMgrImpl)
 
-WLBCmpTVWidgetMgr::WLBCmpTVWidgetMgr(IPMUnknown *boss) :
+MPOLnchTVWidgetMgr::MPOLnchTVWidgetMgr(IPMUnknown *boss) :
 CTreeViewWidgetMgr(boss, kList)
 {
 }
 
 
 
-bool16 WLBCmpTVWidgetMgr::ApplyDataToWidget(const NodeID& node, 
+bool16 MPOLnchTVWidgetMgr::ApplyDataToWidget(const NodeID& node, 
                                             IPanelControlData* widgetList, 
                                             int32 message) const
 {
 	do
 	{
-		TreeNodePtr<WLBCmpNodeID> nodeID(node);
+		TreeNodePtr<MPOLnchNodeID> nodeID(node);
 		PMString listName = nodeID->GetName();
 	      
-		IControlView* nameView = widgetList->FindWidget(kWLBCmpTextWidgetID);
+		IControlView* nameView = widgetList->FindWidget(kMPOLnchTextWidgetID);
 	        
 		InterfacePtr<ITextControlData>	textControlData( nameView, UseDefaultIID() );
 		ASSERT(textControlData);

@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmp.rc $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnch.rc $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -23,7 +23,7 @@
 
 #include "WinRezFlags.h"
 #include "BuildNumber.h"
-#include "WLBCmpID.h"
+#include "MPOLnchID.h"
 1510                    ICON    DISCARDABLE     "Eyeball.ico"
 1512                    ICON    DISCARDABLE     "LockPencil.ico"
 1514                    ICON    DISCARDABLE     "Pen.ico"
@@ -48,10 +48,10 @@ BEGIN
             VALUE "CompanyName", "Adobe Systems Incorporated\0"
             VALUE "FileDescription", "Adobe InDesign SDK Plug-in\0"
             VALUE "FileVersion", "1.0", "\0"
-            VALUE "InternalName", kWLBCmpPluginName, "\0"
+            VALUE "InternalName", kMPOLnchPluginName, "\0"
             VALUE "LegalCopyright", kShortCopyRightStr, "\0"
 
-            VALUE "OriginalFilename", kWLBCmpPluginName ".pln\0"
+            VALUE "OriginalFilename", kMPOLnchPluginName ".pln\0"
             VALUE "ProductName", "Adobe InDesign\0"
             VALUE "ProductVersion", kVersionNumberForResourceStr, "\0"
             VALUE "Copyright", kVersionCopyRightStr, "\0"
@@ -64,6 +64,6 @@ BEGIN
 END
 
 
-// End, WLBCmp.rc
+// End, MPOLnch.rc
 
 

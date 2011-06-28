@@ -26,7 +26,7 @@
 
 #include "VCPlugInHeaders.h"
 
-#include "WLBCmp.fr"
+#include "MPOLnch.fr"
 
 // End, TriggerResourceDeps.cpp.
 

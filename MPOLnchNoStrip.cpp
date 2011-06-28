@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpNoStrip.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchNoStrip.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -37,10 +37,10 @@ void DontDeadStrip()
 {
 	if (gFalse)
 	{
-#include "WLBCmpFactoryList.h"		
+#include "MPOLnchFactoryList.h"		
 	}
 }
 
-// End, WLBCmpNoStrip.cpp.
+// End, MPOLnchNoStrip.cpp.
 
 

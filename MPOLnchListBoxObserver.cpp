@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpListBoxObserver.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchListBoxObserver.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -35,8 +35,8 @@
 #include "CAlert.h"
 #include "CObserver.h"
 #include "K2Vector.tpp" // For NodeIDList to compile
-#include "WLBCmpNodeID.h"
-#include "WLBCmpID.h"
+#include "MPOLnchNodeID.h"
+#include "MPOLnchID.h"
 
 
 /**
@@ -46,7 +46,7 @@
 	@ingroup wlistboxcomposite
 	
 */
-class WLBCmpListBoxObserver : public CObserver
+class MPOLnchListBoxObserver : public CObserver
 {
 public:
 	
@@ -54,13 +54,13 @@ public:
 		Constructor for WLBListBoxObserver class.
 		@param interface ptr from boss object on which this interface is aggregated.
 	*/
-	WLBCmpListBoxObserver(IPMUnknown *boss);
+	MPOLnchListBoxObserver(IPMUnknown *boss);
 
 	/**
-		Destructor for WLBCmpListBoxObserver class
+		Destructor for MPOLnchListBoxObserver class
 		
 	*/	
-	~WLBCmpListBoxObserver();
+	~MPOLnchListBoxObserver();
 
 	/**
 		AutoAttach is only called for registered observers
@@ -94,23 +94,23 @@ public:
 	
 };
 
-CREATE_PMINTERFACE(WLBCmpListBoxObserver, kWLBCmpListBoxObserverImpl)
+CREATE_PMINTERFACE(MPOLnchListBoxObserver, kMPOLnchListBoxObserverImpl)
 
 
-WLBCmpListBoxObserver::WLBCmpListBoxObserver(IPMUnknown* boss)
+MPOLnchListBoxObserver::MPOLnchListBoxObserver(IPMUnknown* boss)
 : CObserver(boss)
 {
 	
 }
 
 
-WLBCmpListBoxObserver::~WLBCmpListBoxObserver()
+MPOLnchListBoxObserver::~MPOLnchListBoxObserver()
 {
 	
 }
 
 
-void WLBCmpListBoxObserver::AutoAttach()
+void MPOLnchListBoxObserver::AutoAttach()
 {
 	InterfacePtr<ISubject> subject(this, UseDefaultIID());
 	if (subject != nil)
@@ -120,7 +120,7 @@ void WLBCmpListBoxObserver::AutoAttach()
 }
 
 
-void WLBCmpListBoxObserver::AutoDetach()
+void MPOLnchListBoxObserver::AutoDetach()
 {
 	InterfacePtr<ISubject> subject(this, UseDefaultIID());
 	if (subject != nil)
@@ -130,7 +130,7 @@ void WLBCmpListBoxObserver::AutoDetach()
 }
 
 
-void WLBCmpListBoxObserver::Update
+void MPOLnchListBoxObserver::Update
 (
 	const ClassID& theChange, 
 	ISubject* theSubject, 
@@ -158,7 +158,7 @@ void WLBCmpListBoxObserver::Update
 				endIter = selectedItems.end();
 				for(iter = startIter; iter != endIter; ++iter)
 				{
-					const WLBCmpNodeID* oneNode = static_cast<const WLBCmpNodeID*>(iter->Get());
+					const MPOLnchNodeID* oneNode = static_cast<const MPOLnchNodeID*>(iter->Get());
 					PMString item = oneNode->GetName();
 					item.Translate();
 					dbgInfoString.Append(item);

@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpRezDefs.h $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchRezDefs.h $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -20,21 +20,21 @@
 //  distribution of it requires the prior written permission of Adobe.
 //  
 //  
-//  Defines Resource IDs used by the WLBCmp plug-in.
+//  Defines Resource IDs used by the MPOLnch plug-in.
 //  
 //========================================================================================
 
-#ifndef __WLBCmpRezDefs_h__
-#define __WLBCmpRezDefs_h__
+#ifndef __MPOLnchRezDefs_h__
+#define __MPOLnchRezDefs_h__
 
-#define kWLBCmpListElementRsrcID 	1200
+#define kMPOLnchListElementRsrcID 	1200
 
 // See. the platform resource file where these are used!
-#define kWLBCmpEyeBallIcon			1510
-#define kWLBCmpLockPenIcon		1512
-#define kWLBCmpPenIcon				1514
-#endif // __WLBCmpRezDefs_h__
+#define kMPOLnchEyeBallIcon			1510
+#define kMPOLnchLockPenIcon		1512
+#define kMPOLnchPenIcon				1514
+#endif // __MPOLnchRezDefs_h__
 
-// End, WLBCmpRezDefs.h.
+// End, MPOLnchRezDefs.h.
 
 

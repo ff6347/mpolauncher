@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpID.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchID.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -31,9 +31,9 @@
 #include "IDFactory_cpp.h"
 
 #pragma export on
-	#include "WLBCmpID.h"
+	#include "MPOLnchID.h"
 #pragma export off
 
-// End, WLBCmpID.cpp.
+// End, MPOLnchID.cpp.
 
 

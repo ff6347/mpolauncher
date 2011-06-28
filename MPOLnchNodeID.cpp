@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/WLBCmpNodeID.cpp $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchNodeID.cpp $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -27,16 +27,16 @@
 #include "IPMStream.h"
 
 // Project includes:
-#include "WLBCmpNodeID.h"
+#include "MPOLnchNodeID.h"
 /**
 	@ingroup wlistboxcomposite
 */
 
 /* Compare
 */
-int32 WLBCmpNodeID::Compare(const NodeIDClass* nodeID) const
+int32 MPOLnchNodeID::Compare(const NodeIDClass* nodeID) const
 {
-	const WLBCmpNodeID* oneNode = static_cast<const WLBCmpNodeID*>(nodeID);
+	const MPOLnchNodeID* oneNode = static_cast<const MPOLnchNodeID*>(nodeID);
 	ASSERT(nodeID);
     return fName.Compare(kTrue, oneNode->GetName());
 
@@ -45,15 +45,15 @@ int32 WLBCmpNodeID::Compare(const NodeIDClass* nodeID) const
 
 /* Clone
 */
-NodeIDClass* WLBCmpNodeID::Clone() const
+NodeIDClass* MPOLnchNodeID::Clone() const
 {
-	return new WLBCmpNodeID(this->GetName());
+	return new MPOLnchNodeID(this->GetName());
 }
 
 
 /* Read
 */
-void WLBCmpNodeID::Read(IPMStream* stream)
+void MPOLnchNodeID::Read(IPMStream* stream)
 {
 	fName.ReadWrite(stream);
 }
@@ -61,9 +61,9 @@ void WLBCmpNodeID::Read(IPMStream* stream)
 
 /* Write
 */
-void WLBCmpNodeID::Write(IPMStream* stream) const
+void MPOLnchNodeID::Write(IPMStream* stream) const
 {
-	(const_cast<WLBCmpNodeID*>(this)->fName).ReadWrite(stream);
+	(const_cast<MPOLnchNodeID*>(this)->fName).ReadWrite(stream);
 }
 
 //	end, File:	PnlTrvDataNode.cpp
