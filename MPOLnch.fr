@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnch.fr $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/mpolauncher/MPOLnch.fr $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -51,6 +51,8 @@
 #include "AboutBoxID.h"		// for kAboutBoxStaticTextViewImpl
 #include "TreeViewDefs.h"
 
+
+
 // Project includes:
 #include "MPOLnchID.h"
 #include "MPOLnchRezDefs.h"
@@ -82,7 +84,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 /**
  This boss class provides the actions invoked by this plug-in's
  sub-menu items.
- @ingroup wlistboxcomposite
+ @ingroup mpolauncher
 */
 	Class
 	{
@@ -98,7 +100,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 
 /**
  Controls addition of a pop-up menu to the panel.
- @ingroup wlistboxcomposite
+ @ingroup mpolauncher
 */
 	Class
 	{
@@ -116,7 +118,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	/**
 		Gives a list-box (tree view) that has additional observer added... 
 		to get selection change notifications
-		@ingroup wlistboxcomposite
+		@ingroup mpolauncher
 	*/
 	Class 
 	{
@@ -150,7 +152,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	
 	/**
 		Adds observer to the 'eyeball' button.
-		@ingroup wlistboxcomposite
+		@ingroup mpolauncher
 	*/
 	Class 
 	{
@@ -166,7 +168,7 @@ resource ClassDescriptionTable(kSDKDefClassDescriptionTableResourceID)
 	
 	/**
 		Adds observer to the 'Pen' button
-		@ingroup wlistboxcomposite
+		@ingroup mpolauncher
 	*/
 	Class 
 	{
@@ -363,7 +365,7 @@ resource PanelList (kSDKDefPanelResourceID)
 		// 1st panel in the list
 		kSDKDefPanelResourceID,		// Resource ID for this panel (use SDK default rsrc ID)
 		kMPOLnchPluginID,			// ID of plug-in that owns this panel
-		kNotResizable,
+		kIsResizable,
 		kMPOLnchPanelWidgetActionID,	// Action ID to show/hide the panel
 		kMPOLnchPanelTitleKey,		// Shows up in the Window list.
 		"",							// Alternate menu path of the form "Main:Foo" if you want your palette menu item in a second place
@@ -385,7 +387,7 @@ resource MPOLnchPanelWidget(kSDKDefPanelResourceID + index_enUS)
 	kMPOLnchPanelWidgetID,			// WidgetID 
 	kPMRsrcID_None,						// RsrcID
 	kBindNone,							// Binding (0=none)
-	0, 0, 207, 95,						// Frame: left, top, right, bottom.
+	0, 0, 207, 200,						// Frame: left, top, right, bottom.
 	kTrue, kTrue,						// Visible, Enabled
 	kFalse,								// Erase background
 	kInterfacePaletteFill,				// Erase to color
@@ -408,7 +410,7 @@ resource MPOLnchPanelWidget(kSDKDefPanelResourceID + index_enUS)
 			20,			// fVThumbScrollIncrement
 			0,			// fHScrollButtonIncrement
 			0,			// fHThumbScrollIncrement
-			2,			// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
+			1,			// Items selectable, 0 = No Selection, 1 = Single Selection, 2 = Multiple Selection
 			kFalse,		// Allow children from multiple parents to be selected
 			kTrue,		// Allow discontiguous selection
 			{
@@ -427,18 +429,20 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 	__FILE__, __LINE__,
 	kMPOLnchListParentWidgetId, kPMRsrcID_None,	// WidgetId, RsrcId
 	kBindLeft | kBindRight,			// Frame binding
-	Frame(0, 0, 194, 20),			// Frame
+	Frame(0, 0, 194, 44),			// Frame
 	kTrue, kTrue,					// Visible, Enabled
 	"",								// Panel name
 	{
+	/*
 		MPOLnchEyeballWidget
 		(
 			kMPOLnchListElementEyeballWidgetID, kMPOLnchEyeBallIcon, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
-			Frame(3,1,22,18)									// Frame
+			Frame(3,1,44,42)									// Frame
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
+		
 		MPOLnchPenWidget
 		(
 			kMPOLnchListElementPenWidgetID, kMPOLnchPenIcon, kMPOLnchPluginID, // WidgetId, RsrcId
@@ -447,13 +451,13 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
-
+		*/
 		// Just a info-static text widget with about-box text view to get white bg.
 		MPOLnchTextWidget
 		(
 			kMPOLnchTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
 			kBindLeft | kBindRight,								// Frame binding
-			Frame(45,1,194,18)									// Frame
+			Frame(45,1,194,42)									// Frame
 			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
 			"",													// Initial text
 			0,													// Associated widget for focus

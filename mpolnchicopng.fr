@@ -1,6 +1,6 @@
 //========================================================================================
 //  
-//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnchFactoryList.h $
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/pictureicon/picicopng.fr $
 //  
 //  Owner: Adobe Developer Technologies
 //  
@@ -20,18 +20,15 @@
 //  distribution of it requires the prior written permission of Adobe.
 //  
 //  
-//  Each C++ implementation class in the plug-in and its corresponding ImplementationID
-//  should be registered in this file.
+//  Identifies PNG resources used by the PicIco plug-in.
 //  
 //========================================================================================
 
-REGISTER_PMINTERFACE(MPOLnchActionComponent, kMPOLnchActionComponentImpl)
-REGISTER_PMINTERFACE(MPOLnchListBoxObserver, kMPOLnchListBoxObserverImpl)
-//REGISTER_PMINTERFACE(MPOLnchEyeballObserverImpl, kMPOLnchEyeballObserverImpl)
-//sREGISTER_PMINTERFACE(MPOLnchPenObserverImpl, kMPOLnchPenObserverImpl)
-REGISTER_PMINTERFACE(MPOLnchTreeViewAdapter, kMPOLnchTVHierarchyAdapterImpl)
-REGISTER_PMINTERFACE(MPOLnchTVWidgetMgr, kMPOLnchTVWidgetMgrImpl)
+#ifdef __ODFRC__
 
-// End, MPOLnchFactoryList.h.
+#include "MPOLnchID.h"
 
+resource PNGA(kPicIcoPNGIconRsrcID) "Iconic.png"
+resource PNGR(kPicIcoPNGIconRollRsrcID) "IconicR.png"
 
+#endif

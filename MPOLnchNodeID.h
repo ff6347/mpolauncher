@@ -93,13 +93,19 @@ class MPOLnchNodeID : public NodeIDClass
 		const PMString& GetName() const { return fName; }
 
 
+	/**	Set the Name Of the Node An Associated Javascript
+	 @param PMString
+	 */
+	//virtual void SetName(const PMString& newName) = 0;
+
+
 	private:
 		// Note we're keeping the destructor private to force use of the factory methods
 		MPOLnchNodeID() {}
 
 		MPOLnchNodeID(PMString name):fName(name) {}
+	PMString	fName;
 
-		PMString	fName;
 };
 
 #endif // __MPOLnchNodeID__

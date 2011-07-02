@@ -40,7 +40,7 @@ resource StringTable (kSDKDefStringsResourceID + index_enUS)
 		kMPOLnchCompanyKey,					kMPOLnchCompanyValue,					
 		kMPOLnchAboutMenuKey,					kMPOLnchPluginName "[US]...",
 		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[US]",
-		kMPOLnchAddItemMenuItemKey,	"Add item[US]",
+		kMPOLnchAddItemMenuItemKey,	"Build Scripts [US]",
 		kMPOLnchRemoveItemMenuItemKey,	"Remove item[US]",
 		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_enUS,	
 
@@ -51,27 +51,27 @@ resource StringTable (kSDKDefStringsResourceID + index_enUS)
 
 		
 		// ----- Panel/dialog strings
-		kMPOLnchPanelTitleKey,				"WLB-Composite" "[US]",// irp was kMPOLnchPluginName "[US]",
+		kMPOLnchPanelTitleKey,				"MPO Launcher" " [US]",// irp was kMPOLnchPluginName "[US]",
 		// ----- Error strings
 
 			
 		// ----- Misc strings
 		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[US], version " kMPOLnchVersion " by " kMPOLnchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
 		//
-		kMPOLnchItemBaseKey "1",						"  Glasgow Celtic",
-		kMPOLnchItemBaseKey "2",						"  Hibernian",
-		kMPOLnchItemBaseKey "3",						"  Glasgow Rangers",
-		kMPOLnchItemBaseKey "4",						"  Kilmarnock",
+		kMPOLnchItemBaseKey "1",						"scriptfile01",
+		kMPOLnchItemBaseKey "2",						"scriptfile02",
+		kMPOLnchItemBaseKey "3",						"scriptfile03",
+		kMPOLnchItemBaseKey "4",						"scriptfile04",
 		
-		kMPOLnchItemBaseKey "5",						"  Heart of Midlothian",
-		kMPOLnchItemBaseKey "6",						"  Dunfermline Athletic",
-		kMPOLnchItemBaseKey "7",						"  Motherwell",
-		kMPOLnchItemBaseKey "8",						"  St. Johnstone",
+		kMPOLnchItemBaseKey "5",						"scriptfile05",
+		kMPOLnchItemBaseKey "6",						"scriptfile06",
+		kMPOLnchItemBaseKey "7",						"scriptfile07",
+		kMPOLnchItemBaseKey "8",						"scriptfile08",
 		
-		kMPOLnchItemBaseKey "9",						"  Dundee",
-		kMPOLnchItemBaseKey "10",					"  Aberdeen",
-		kMPOLnchItemBaseKey "11",					"  Dundee United",
-		kMPOLnchItemBaseKey "12",					"  St. Mirren",
+		kMPOLnchItemBaseKey "9",						"scriptfile09",
+		kMPOLnchItemBaseKey "10",					"scriptfile10",
+		kMPOLnchItemBaseKey "11",					"scriptfile11",
+		kMPOLnchItemBaseKey "12",					"scriptfile12",
 		kMPOLnchAddedElementKey,						"  + Added Element",
 	}
 

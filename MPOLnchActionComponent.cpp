@@ -43,6 +43,9 @@
 
 // Project includes:
 #include "MPOLnchID.h"
+// file creation
+#include "FileUtils.h"
+#include "MPOLnchSciptsbuilder.cpp"
 
 
 /** MPOLnchActionComponent
@@ -123,13 +126,13 @@ void MPOLnchActionComponent::DoAction(IActiveContext *myContext, ActionID action
 
 		case kMPOLnchAddItemActionID:
 		{
-			this->DoAddItem(widget);
+			//this->DoAddItem(widget);
 			break;
 		}
 
 		case kMPOLnchRemoveItemActionID:
 		{
-			this->DoRemoveItem(widget);
+			//this->DoRemoveItem(widget);
 			break;
 		}
 
@@ -210,6 +213,7 @@ void MPOLnchActionComponent::DoAbout()
 */
 void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 {
+	/*
 	InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(invokedWidget, kMPOLnchListBoxWidgetID, IID_ICONTROLVIEW)));
 	InterfacePtr<ITreeViewMgr> treeMgr(treeWidget, UseDefaultIID());
 	InterfacePtr<IStringListData> iListData(treeWidget, IID_ISTRINGLISTDATA);
@@ -230,8 +234,25 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 		iListData->SetStringList(lists);
 		//make sure that the node added has been processed
         NodeID node = MPOLnchNodeID::Create(item);
+		
+		//create a file in script the directory
+		IDFile file; 
+		FileUtils::GetAppInstallationFolder(&file); 
+		FileUtils::AppendPath(&file, PMString("Scripts"));                
+		FileUtils::AppendPath(&file, PMString("Scripts Panel"));
+		PMString fn("newscriptfile");
+		PMString ext(".jsx");
+		
+		FileUtils::AppendPath(&file, fn  + ext); 
+		FileUtils::OpenFile(file, "wt"); 
+		
 		treeMgr->NodeAdded(node);
 	}
+	 */
+	
+	// building the scripts
+	
+	
 }
 
 /* DoRemoveItem

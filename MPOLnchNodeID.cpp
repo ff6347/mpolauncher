@@ -29,7 +29,7 @@
 // Project includes:
 #include "MPOLnchNodeID.h"
 /**
-	@ingroup wlistboxcomposite
+	@ingroup mpolauncher
 */
 
 /* Compare
@@ -65,5 +65,15 @@ void MPOLnchNodeID::Write(IPMStream* stream) const
 {
 	(const_cast<MPOLnchNodeID*>(this)->fName).ReadWrite(stream);
 }
+
+
+
+/*	SetName
+ */
+//void MPOLnchNodeID::SetName(const PMString& newName)
+//{
+//	if (fName != newName)
+//		fName = newName;
+//}
 
 //	end, File:	PnlTrvDataNode.cpp

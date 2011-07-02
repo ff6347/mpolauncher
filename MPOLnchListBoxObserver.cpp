@@ -38,6 +38,10 @@
 #include "MPOLnchNodeID.h"
 #include "MPOLnchID.h"
 
+// Scripting includes
+#include "FileUtils.h"
+#include "IScriptRunner.h"
+#include "IScriptUtils.h"
 
 /**
 
@@ -152,7 +156,7 @@ void MPOLnchListBoxObserver::Update
 			const int kSelectionLength =  selectedItems.size() ;
 			if (kSelectionLength> 0 )
 			{
-				PMString dbgInfoString("Selected item(s): ");
+				PMString dbgInfoString("");
 				K2Vector<NodeID>::const_iterator iter, startIter, endIter;
 				startIter = selectedItems.begin();
 				endIter = selectedItems.end();
@@ -162,11 +166,51 @@ void MPOLnchListBoxObserver::Update
 					PMString item = oneNode->GetName();
 					item.Translate();
 					dbgInfoString.Append(item);
-					dbgInfoString += ", ";
+					//dbgInfoString += ", ";
 				}
-				dbgInfoString.Truncate(2); //remove the last ', '
+				
+				
+				//dbgInfoString.Truncate(2); //remove the last ', '
 				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
 				CAlert::InformationAlert(dbgInfoString);
+				
+				IDFile scriptFile;
+
+				FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
+				FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
+				FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
+				PMString fn(dbgInfoString);
+				PMString ext(".jsx");
+				
+				//inside the scripts panel, append path of the folder in which ur script is present.
+				//Suppose, ScriptsPanel->NewFolder->Link.jsx
+				//FileUtils::AppendPath(&scriptFile, PMString("NewFolder", -1, PMString::kNoTranslate));  
+				FileUtils::AppendPath(&scriptFile, fn + ext);
+				
+				//WideString scriptPath("myscript.jsx");
+				//IDFile scriptFile(scriptPath);
+				try {
+
+				
+				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
+				bool filestatus=scriptRunner->CanHandleFile(scriptFile);
+				
+				RunScriptParams scriptParams(scriptRunner);
+				scriptParams.SetShowErrorAlert(kTrue);
+				scriptParams.SetInvokeDebugger(kFalse);
+				
+				
+			
+				if(filestatus==1)
+				{
+					scriptRunner->RunFile(scriptFile,scriptParams);
+				}
+					
+				}
+				catch (int e) {
+					CAlert::InformationAlert("Could not find the accioated scriptfile");
+				}
+
 			}
 
 		} while(0);
