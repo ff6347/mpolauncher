@@ -105,6 +105,7 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 
 
 
+
 // Menu item positions:
 #define kMPOLnchAddItemMenuItemPosition			1.0
 #define kMPOLnchRemoveItemMenuItemPosition		2.0	

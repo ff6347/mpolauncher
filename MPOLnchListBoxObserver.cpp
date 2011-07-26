@@ -156,7 +156,7 @@ void MPOLnchListBoxObserver::Update
 			const int kSelectionLength =  selectedItems.size() ;
 			if (kSelectionLength> 0 )
 			{
-				PMString dbgInfoString("");
+				PMString nodeName("");
 				K2Vector<NodeID>::const_iterator iter, startIter, endIter;
 				startIter = selectedItems.begin();
 				endIter = selectedItems.end();
@@ -165,32 +165,28 @@ void MPOLnchListBoxObserver::Update
 					const MPOLnchNodeID* oneNode = static_cast<const MPOLnchNodeID*>(iter->Get());
 					PMString item = oneNode->GetName();
 					item.Translate();
-					dbgInfoString.Append(item);
+					nodeName.Append(item);
 					//dbgInfoString += ", ";
 				}
 				
 				
 				//dbgInfoString.Truncate(2); //remove the last ', '
-				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
-				CAlert::InformationAlert(dbgInfoString);
+				nodeName.SetTranslatable(kFalse);	// only for debug- not real code
+				CAlert::InformationAlert(nodeName);
 				
 				IDFile scriptFile;
 
 				FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
 				FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
 				FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
-				PMString fn(dbgInfoString);
+				FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
+				if (FileUtils::DoesFileExist(scriptFile)) {
+				
+				PMString fn(nodeName);
 				PMString ext(".jsx");
 				
-				//inside the scripts panel, append path of the folder in which ur script is present.
-				//Suppose, ScriptsPanel->NewFolder->Link.jsx
-				//FileUtils::AppendPath(&scriptFile, PMString("NewFolder", -1, PMString::kNoTranslate));  
-				FileUtils::AppendPath(&scriptFile, fn + ext);
-				
-				//WideString scriptPath("myscript.jsx");
-				//IDFile scriptFile(scriptPath);
-				try {
 
+				FileUtils::AppendPath(&scriptFile, fn + ext);
 				
 				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
 				bool filestatus=scriptRunner->CanHandleFile(scriptFile);
@@ -202,16 +198,15 @@ void MPOLnchListBoxObserver::Update
 				
 			
 				if(filestatus==1)
-				{
+					{
 					scriptRunner->RunFile(scriptFile,scriptParams);
-				}
-					
-				}
-				catch (int e) {
-					CAlert::InformationAlert("Could not find the accioated scriptfile");
+					}// close filestatus
+				}else {
+					CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
 				}
 
-			}
+
+				}
 
 		} while(0);
 	}

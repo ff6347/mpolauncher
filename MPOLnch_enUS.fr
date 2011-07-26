@@ -58,20 +58,20 @@ resource StringTable (kSDKDefStringsResourceID + index_enUS)
 		// ----- Misc strings
 		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[US], version " kMPOLnchVersion " by " kMPOLnchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
 		//
-		kMPOLnchItemBaseKey "1",						"scriptfile01",
-		kMPOLnchItemBaseKey "2",						"scriptfile02",
-		kMPOLnchItemBaseKey "3",						"scriptfile03",
-		kMPOLnchItemBaseKey "4",						"scriptfile04",
+		kMPOLnchItemBaseKey "1",						"newscriptfile01",
+		kMPOLnchItemBaseKey "2",						"newscriptfile02",
+		kMPOLnchItemBaseKey "3",						"newscriptfile03",
+		kMPOLnchItemBaseKey "4",						"newscriptfile04",
 		
-		kMPOLnchItemBaseKey "5",						"scriptfile05",
-		kMPOLnchItemBaseKey "6",						"scriptfile06",
-		kMPOLnchItemBaseKey "7",						"scriptfile07",
-		kMPOLnchItemBaseKey "8",						"scriptfile08",
+		kMPOLnchItemBaseKey "5",						"newscriptfile05",
+		kMPOLnchItemBaseKey "6",						"newscriptfile06",
+		kMPOLnchItemBaseKey "7",						"newscriptfile07",
+		kMPOLnchItemBaseKey "8",						"newscriptfile08",
 		
-		kMPOLnchItemBaseKey "9",						"scriptfile09",
-		kMPOLnchItemBaseKey "10",					"scriptfile10",
-		kMPOLnchItemBaseKey "11",					"scriptfile11",
-		kMPOLnchItemBaseKey "12",					"scriptfile12",
+		kMPOLnchItemBaseKey "9",						"newscriptfile09",
+		kMPOLnchItemBaseKey "10",					"newscriptfile10",
+		kMPOLnchItemBaseKey "11",					"newscriptfile11",
+		kMPOLnchItemBaseKey "12",					"newscriptfile12",
 		kMPOLnchAddedElementKey,						"  + Added Element",
 	}
 

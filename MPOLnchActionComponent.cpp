@@ -45,7 +45,11 @@
 #include "MPOLnchID.h"
 // file creation
 #include "FileUtils.h"
-#include "MPOLnchSciptsbuilder.cpp"
+#include "CoreFileUtils.h"
+#include "StreamUtil.h"
+#include <fstream>
+#include <cstdlib>
+#include <string>
 
 
 /** MPOLnchActionComponent
@@ -88,6 +92,13 @@ class MPOLnchActionComponent : public CActionComponent
 			@param invokedWidget Widget that initiated the event (the panel menu), useful for getting the panel & other widgets.
 		*/
 		void DoAddItem(IPMUnknown *invokedWidget);
+	
+	
+		/* My personal copyFile
+		 * until i get FileUtils::CopyFile() to work
+		 */
+	//	bool copyFile (const char SRC[], const char DEST[]);
+
 
 		/** Encapsulates functionality for the RemoveItem menu item. 
 		
@@ -126,13 +137,15 @@ void MPOLnchActionComponent::DoAction(IActiveContext *myContext, ActionID action
 
 		case kMPOLnchAddItemActionID:
 		{
-			//this->DoAddItem(widget);
+			this->DoAddItem(widget);
 			break;
 		}
 
 		case kMPOLnchRemoveItemActionID:
 		{
 			//this->DoRemoveItem(widget);
+			CAlert::InformationAlert("This optin doesn't work right now. Sry");
+
 			break;
 		}
 
@@ -252,8 +265,145 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 	
 	// building the scripts
 	
+
+	
+	using namespace std;
+	
+		const int MAXITEMS = 12;
+		
+		PMString scriptfiles[MAXITEMS] = {
+			"scriptfile01.jsx",
+			"scriptfile02.jsx",
+			"scriptfile03.jsx",
+			"scriptfile04.jsx",
+			"scriptfile05.jsx",
+			"scriptfile06.jsx",
+			"scriptfile07.jsx",
+			"scriptfile08.jsx",
+			"scriptfile09.jsx",
+			"scriptfile10.jsx",
+			"scriptfile11.jsx",
+			"scriptfile12.jsx"};
+		
+		PMString newscriptfiles[MAXITEMS] = {
+			"newscriptfile01.jsx",
+			"newscriptfile02.jsx",
+			"newscriptfile03.jsx",
+			"newscriptfile04.jsx",
+			"newscriptfile05.jsx",
+			"newscriptfile06.jsx",
+			"newscriptfile07.jsx",
+			"newscriptfile08.jsx",
+			"newscriptfile09.jsx",
+			"newscriptfile10.jsx",
+			"newscriptfile11.jsx",
+			"newscriptfile12.jsx"};
+		
+		//string source = "incoming.txt";
+		//string clone = "outgoing.txt";
+		
+		//	cout << "Enter the source file: ";
+		//	cin >> source;
+		//	cout << "Enter the name of the new file: ";
+		//	cin >> clone;
+		
+		for (int i = 0; i < MAXITEMS ; i++) {
+			
+
+			IDFile theSource;//scriptfiles[i];
+			
+			FileUtils::GetAppInstallationFolder(&theSource); 
+			FileUtils::AppendPath(&theSource, PMString("Plug-Ins"));                
+			FileUtils::AppendPath(&theSource, PMString("tmn"));                
+			FileUtils::AppendPath(&theSource, PMString("MPOLauncher.InDesignPlugin"));                
+//			
+			FileUtils::AppendPath(&theSource, PMString("Versions"));                
+			FileUtils::AppendPath(&theSource, PMString("A"));                
+			FileUtils::AppendPath(&theSource, PMString("Resources"));                
+			FileUtils::AppendPath(&theSource, PMString(scriptfiles[i]));
+			
+			PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
+
+			if(!FileUtils::DoesFileExist(theSource)){
+				CAlert::InformationAlert(" could not find the Source File. I am Here-> " + sourceFileStringUrl 
+										 +"\n"+
+										 " Please report this bug to: fabiantheblind@the-moron.net");
+				break;
+			}
+			
+
+				
+			
+			IDFile theTarget; 
+			FileUtils::GetAppInstallationFolder(&theTarget); 
+			FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
+			FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
+			FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
+
+			FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
+
+			PMString fn(newscriptfiles[i]);
+			
+			FileUtils::AppendPath(&theTarget, fn);
+
+			//FileUtils::OpenFile(theTarget, "w");
+			if(!FileUtils::DoesFileExist(theTarget)){
+				
+				CAlert::InformationAlert("I will try to copy "+fn+ " to the folder: Scripts Panel/MPO Launcher");
+					
+				if(!FileUtils::CopyFile(theSource, theTarget)){
+			
+					CAlert::InformationAlert("Could not copy "+fn+". Sorry");
+
+			
+				}
+			}
+			
+		//	PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
+//			string sfurl = sourceFileStringUrl.GrabCString();
+//
+//			PMString targetFileStringUrl = FileUtils::SysFileToFileURL(theTarget);
+//			string tfurl = targetFileStringUrl.GrabCString();
+//			
+//			    std::ifstream src; // the source file
+//			    std::ofstream dest; // the destination file
+//			
+//				src.open (sfurl.c_str(), std::ios::binary); // open in binary to prevent jargon at the end of the buffer
+//			    dest.open (tfurl.c_str(), std::ios::binary); // same again, binary
+//			    if (src.is_open() && dest.is_open())
+//				{
+//			    dest << src.rdbuf (); // copy the content
+//			    dest.close (); // close destination file
+//			    src.close (); // close source file
+				}
+			
+	//		if(!copyFile(sfurl.c_str(),tfurl.c_str())){
+//				
+//				CAlert::InformationAlert("Could not copy the scriptfiles. Sorry");
+//
+//			}
+			
+			//FileUtils::CopyFile(theSource, theTarget);
+			//FileUtils::OpenFile(file, "wt");
+
+			//PMString sourcefile = FileUtils::SysFileToFileURL(theSource);
+//			PMString targetfile = FileUtils::SysFileToFileURL(theTarget);
+//			ifstream in(sourcefile.GetPlatformString().c_str()); // Open for reading
+//			ofstream out( targetfile.GetPlatformString().c_str()); // Open for writing
+//			
+//			//printf("wrote file newscriptfile with number %do to disc\n",i);
+//			string s;
+//			while(getline(in, s))
+//			out << s << "\n";
+			//in->Close();
+			//out->Close();
+			
+			//}
+		
+		
 	
 }
+
 
 /* DoRemoveItem
 */

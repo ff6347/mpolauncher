@@ -36,7 +36,7 @@
 
 /**
  *  Tree view manager
-	@ingroup wlistboxcomposite
+	@ingroup mpolauncher
  */
 class MPOLnchTVWidgetMgr : public CTreeViewWidgetMgr
 {
