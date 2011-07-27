@@ -1,7 +1,7 @@
-# some documentation is comming soon also the xcode project
-# please use your own prefixID
+h1.some documentation is comming soon also the xcode project
+h1.please use your own prefixID  
 
-// Copyright (C) 2011 Fabian "fabiantheblind" Morón Zirfas
+// Copyright (C) 2011 Fabian "fabiantheblind" Morón Zirfas  
 // http://www.the-moron.net
 // info [at] the - moron . net
 
