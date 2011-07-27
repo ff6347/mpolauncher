@@ -5,7 +5,7 @@ license
 ---      
   
 // Copyright (C) 2011 Fabian "fabiantheblind" Morón Zirfas    
-// http://www.the-moron.net  
+// [the-moron.net](http://www.the-moron.net)  
 // info [at] the - moron . net  
   
 // This program is free software: you can redistribute it and/or modify  
@@ -19,4 +19,4 @@ license
 // GNU General Public License for more details.  
   
 // You should have received a copy of the GNU General Public License  
-// along with this program.  If not, see <http://www.gnu.org/licenses/.  
+// along with this program.  If not, see --> [gnu.org](http://www.gnu.org/licenses/).  
