@@ -57,6 +57,8 @@
 #include "MPOLnchID.h"
 #include "MPOLnchRezDefs.h"
 
+#include "MPOLnchpng.fr"
+
 #ifdef __ODFRC__
 
 //================================================================================
@@ -293,7 +295,8 @@ resource LocaleIndex (kSDKDefStringsResourceID)
 	{
 		kWildFS, k_enUS, kSDKDefStringsResourceID + index_enUS
 		kWildFS, k_jaJP, kSDKDefStringsResourceID + index_jaJP
-		
+		kWildFS, k_deDE, kSDKDefStringsResourceID + index_deDE
+
 		kWildFS, k_Wild, kSDKDefStringsResourceID + index_enUS
 	}
 };
@@ -398,7 +401,7 @@ resource MPOLnchPanelWidget(kSDKDefPanelResourceID + index_enUS)
 		(
 			kMPOLnchListBoxWidgetID, kPMRsrcID_None,	// WidgetId, RsrcId
 			kBindAll,											// Frame binding
-			Frame(-1,0,208,96)		// Frame
+			Frame(-1,0,208,199)		// Frame
 			kTrue, kTrue,									// Visible, Enabled
 			kTrue, 						// EraseBeforeDraw
 			kInterfacePaletteFill,	 	// InterfaceColor
@@ -435,13 +438,14 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 	{
 		MPOLnchEyeballWidget
 		(
-			kMPOLnchListElementEyeballWidgetID, kMPOLnchEyeBallIcon, kMPOLnchPluginID, // WidgetId, RsrcId
+			kMPOLnchListElementEyeballWidgetID, kMPOLnchPNGIconRsrcID, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
 			Frame(3,1,44,42)									// Frame
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
-			/*
+				/*
+		
 
 		MPOLnchPenWidget
 		(
@@ -461,9 +465,10 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
 			"",													// Initial text
 			0,													// Associated widget for focus
-			kPaletteWindowSystemScriptFontId,					// default font 
-			kPaletteWindowSystemScriptHiliteFontId,				// for highlight state.
+			kDialogWindowFontId,					// default font 
+			kDialogWindowFontId,				// for highlight state.
 		),
+		
 		
 	}
 };
@@ -475,6 +480,8 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 #endif // __ODFRC__
 
 #include "MPOLnch_enUS.fr"
+#include "MPOLnch_deDE.fr"
+
 #include "MPOLnch_jaJP.fr"
 
 // End, MPOLnch.fr.

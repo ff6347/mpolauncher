@@ -120,6 +120,12 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 #define kMPOLnchCurrentMajorFormatNumber kMPOLnchFirstMajorFormatNumber // most recent major format change
 #define kMPOLnchCurrentMinorFormatNumber kMPOLnchFirstMinorFormatNumber // most recent minor format change
 
+
+// PNG specific IDs
+#define kMPOLnchPNGIconRsrcID 10250
+#define kMPOLnchPNGIconRollRsrcID 10250
+
+
 #endif // __MPOLnchID_h__
 
 // End, MPOLnchID.h.

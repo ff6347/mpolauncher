@@ -1,0 +1,84 @@
+//========================================================================================
+//  
+//  $File: //depot/indesign_6.0/highprofile/source/sdksamples/wlistboxcomposite/MPOLnch_enUS.fr $
+//  
+//  Owner: Adobe Developer Technologies
+//  
+//  $Author: pmbuilder $
+//  
+//  $DateTime: 2008/08/19 04:03:07 $
+//  
+//  $Revision: #1 $
+//  
+//  $Change: 643572 $
+//  
+//  Copyright 1997-2008 Adobe Systems Incorporated. All rights reserved.
+//  
+//  NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance 
+//  with the terms of the Adobe license agreement accompanying it.  If you have received
+//  this file from a source other than Adobe, then your use, modification, or 
+//  distribution of it requires the prior written permission of Adobe.
+//  
+//========================================================================================
+
+#ifdef __ODFRC__
+
+//========================================================================================
+// English strings
+//========================================================================================
+
+// English string table is defined here
+
+resource StringTable (kSDKDefStringsResourceID + index_deDE)
+{
+	k_deDE,									// Locale Id
+	kEuropeanMacToWinEncodingConverter,		// Character encoding converter
+	
+	{
+
+		// ----- Menu strings
+		kMPOLnchCompanyKey,					kMPOLnchCompanyValue,					
+		kMPOLnchAboutMenuKey,					kMPOLnchPluginName "[DE]...",
+		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[DE]",
+		kMPOLnchAddItemMenuItemKey,	"Skriptdateien wiederherstellen [DE]",
+		kMPOLnchRemoveItemMenuItemKey,	"Remove item [DE]",
+		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_deDE,	
+
+		// ----- Command strings
+
+		
+		// ----- Window strings
+
+		
+		// ----- Panel/dialog strings
+		kMPOLnchPanelTitleKey,				"MPO Launcher" " [DE]",// irp was kMPOLnchPluginName "[DE]",
+		// ----- Error strings
+
+			
+		// ----- Misc strings
+		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[DE], version " kMPOLnchVersion " by " kMPOLnchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_deDE,
+		//
+		kMPOLnchItemBaseKey "1",						"newscriptfile01",
+		kMPOLnchItemBaseKey "2",						"newscriptfile02",
+		kMPOLnchItemBaseKey "3",						"newscriptfile03",
+		kMPOLnchItemBaseKey "4",						"newscriptfile04",
+		
+		kMPOLnchItemBaseKey "5",						"newscriptfile05",
+		kMPOLnchItemBaseKey "6",						"newscriptfile06",
+		kMPOLnchItemBaseKey "7",						"newscriptfile07",
+		kMPOLnchItemBaseKey "8",						"newscriptfile08",
+		
+		kMPOLnchItemBaseKey "9",						"newscriptfile09",
+		kMPOLnchItemBaseKey "10",					"newscriptfile10",
+		kMPOLnchItemBaseKey "11",					"newscriptfile11",
+		kMPOLnchItemBaseKey "12",					"newscriptfile12",
+		kMPOLnchAddedElementKey,						"  + Added Element",
+	}
+
+};
+
+#endif // __ODFRC__
+
+// End , MPOLnch_deDE.fr
+
+
