@@ -47,7 +47,7 @@
 
 	Observes the listbox via IID_ITREEVIEWCONTROLLER.
 
-	@ingroup wlistboxcomposite
+	@ingroup mpolauncher
 	
 */
 class MPOLnchListBoxObserver : public CObserver
@@ -55,7 +55,7 @@ class MPOLnchListBoxObserver : public CObserver
 public:
 	
 	/**
-		Constructor for WLBListBoxObserver class.
+		Constructor for MPOLnchListBoxObserver class.
 		@param interface ptr from boss object on which this interface is aggregated.
 	*/
 	MPOLnchListBoxObserver(IPMUnknown *boss);
@@ -144,6 +144,9 @@ void MPOLnchListBoxObserver::Update
 {
 	if ((protocol == IID_ITREEVIEWCONTROLLER) && (theChange == kListSelectionChangedMessage) ) {
 		do {
+			
+		//	CAlert::InformationAlert("You pressed the something");
+
 			InterfacePtr<ITreeViewController> 	controller(this, UseDefaultIID());
 			ASSERT(controller);
 			if(!controller)

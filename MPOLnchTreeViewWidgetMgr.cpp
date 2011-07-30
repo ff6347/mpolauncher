@@ -73,13 +73,28 @@ bool16 MPOLnchTVWidgetMgr::ApplyDataToWidget(const NodeID& node,
 		PMString listName = nodeID->GetName();
 	      
 		IControlView* nameView = widgetList->FindWidget(kMPOLnchTextWidgetID);
+		
+		IControlView* myNameView = widgetList->FindWidget(kMPOLnchListElementEyeballWidgetID);
 	        
 		InterfacePtr<ITextControlData>	textControlData( nameView, UseDefaultIID() );
+		InterfacePtr<ITextControlData>	myTextControlData( myNameView, UseDefaultIID() );
+		
+
 		ASSERT(textControlData);
-		if( textControlData== nil) {
+		ASSERT(myTextControlData);
+		
+		if( (textControlData== nil)) {
 			break;
 		}
+		
 		textControlData->SetString(listName);
+		
+		if( (myTextControlData== nil)) {
+			break;
+		}		
+		
+		myTextControlData->SetString(listName);
+
 	} while (false);
 
 	return kTrue;

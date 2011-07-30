@@ -30,7 +30,7 @@
 
 /**
  *  TreeViewAdapter.
-	@ingroup wlistboxcomposite
+	@ingroup mpolauncher
  */
 class MPOLnchTreeViewAdapter : public ListTreeViewAdapter
 {

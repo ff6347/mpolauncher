@@ -68,12 +68,4 @@ void MPOLnchNodeID::Write(IPMStream* stream) const
 
 
 
-/*	SetName
- */
-//void MPOLnchNodeID::SetName(const PMString& newName)
-//{
-//	if (fName != newName)
-//		fName = newName;
-//}
-
 //	end, File:	PnlTrvDataNode.cpp
