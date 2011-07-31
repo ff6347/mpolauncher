@@ -174,42 +174,42 @@ void MPOLnchListBoxObserver::Update
 				
 				
 				//dbgInfoString.Truncate(2); //remove the last ', '
-				nodeName.SetTranslatable(kFalse);	// only for debug- not real code
-				CAlert::InformationAlert(nodeName);
-				
-				IDFile scriptFile;
+				//nodeName.SetTranslatable(kFalse);	// only for debug- not real code
+//				CAlert::InformationAlert(nodeName);
+//				
+//				IDFile scriptFile;
+//
+//				FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
+//				FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
+//				FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
+//				FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
+				//if (FileUtils::DoesFileExist(scriptFile)) {
+//				
+//				PMString fn(nodeName);
+//				PMString ext(".jsx");
+//				
+//
+//				FileUtils::AppendPath(&scriptFile, fn + ext);
+//				
+//				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
+//				bool filestatus=scriptRunner->CanHandleFile(scriptFile);
+//				
+//				RunScriptParams scriptParams(scriptRunner);
+//				scriptParams.SetShowErrorAlert(kTrue);
+//				scriptParams.SetInvokeDebugger(kFalse);
+//				
+//				
+//			
+//				if(filestatus==1)
+//					{
+//					scriptRunner->RunFile(scriptFile,scriptParams);
+//					}// close filestatus
+//				}else {
+//					CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
+//				}
 
-				FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
-				FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
-				FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
-				FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
-				if (FileUtils::DoesFileExist(scriptFile)) {
-				
-				PMString fn(nodeName);
-				PMString ext(".jsx");
-				
 
-				FileUtils::AppendPath(&scriptFile, fn + ext);
-				
-				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
-				bool filestatus=scriptRunner->CanHandleFile(scriptFile);
-				
-				RunScriptParams scriptParams(scriptRunner);
-				scriptParams.SetShowErrorAlert(kTrue);
-				scriptParams.SetInvokeDebugger(kFalse);
-				
-				
-			
-				if(filestatus==1)
-					{
-					scriptRunner->RunFile(scriptFile,scriptParams);
-					}// close filestatus
-				}else {
-					CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
-				}
-
-
-				}
+				} // end of --> if (kSelectionLength> 0 )
 
 		} while(0);
 	}

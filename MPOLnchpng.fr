@@ -31,4 +31,6 @@
 resource PNGA(kMPOLnchPNGIconRsrcID) "Iconic.png"
 resource PNGR(kMPOLnchPNGIconRollRsrcID) "IconicR.png"
 
+resource PNGA(kMPOLnchPNGHelpIconRsrcID) "help.png"
+resource PNGR(kMPOLnchPNGHelpIconRollRsrcID) "helpR.png"
 #endif

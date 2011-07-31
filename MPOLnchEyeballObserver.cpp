@@ -47,9 +47,19 @@
 #include "MPOLnchNodeID.h"
 
 // Scripting includes
-#include "FileUtils.h"
+
 #include "IScriptRunner.h"
 #include "IScriptUtils.h"
+
+// file handling
+#include "FileUtils.h"
+#include "StreamUtil.h"
+#include "IPMStream.h"
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
 /**
 	Observes the "eyeball" widget.
 	
@@ -150,8 +160,10 @@ void MPOLnchEyeballObserver::Update
 	if(theChange == kTrueStateMessage) {
 		// Then the button has been activated.
 		do {
+			
 			InterfacePtr<ITriStateControlData> data(this, IID_ITRISTATECONTROLDATA);
 
+			// now look for the parent of the widget
 			InterfacePtr<IWidgetParent>	widgetParent(this, IID_IWIDGETPARENT);
 			if(widgetParent == nil){ 
 				
@@ -159,7 +171,8 @@ void MPOLnchEyeballObserver::Update
 
 				break;
 			}
-
+			//found it
+			// Query the parent for the panel
 			InterfacePtr<IPanelControlData>	panelData((IPanelControlData*)widgetParent->QueryParentFor(IID_IPANELCONTROLDATA));
 			if(panelData == nil) {
 				
@@ -168,7 +181,9 @@ void MPOLnchEyeballObserver::Update
 				break;
 			
 			}
+			// found it
 			
+			// look for the TextWidget that holds the name
 			IControlView* nameView = panelData->FindWidget(kMPOLnchTextWidgetID);
 			InterfacePtr<ITextControlData>	textControlData( nameView, UseDefaultIID() );
 			
@@ -177,119 +192,68 @@ void MPOLnchEyeballObserver::Update
 				CAlert::InformationAlert("textControlData is nil");
 
 			}
-			PMString myText(textControlData->GetString());
+			// Thats great. found it
+			// get the name of the node. The associated PMString
 			
-			CAlert::InformationAlert(myText);
-
-		//	InterfacePtr<IControlView> myTextWidget(panelData->FindWidget(kMPOLnchTextWidgetID), UseDefaultIID());
-//			if(myTextWidget == nil){ 
-//			
-//				CAlert::InformationAlert("myTextWidget is nil");
-//				
-//				
-//				break;
-//			
-//			}
-//			PMString myText = myTextWidget->getString();
-//			
-//			CAlert::InformationAlert(myText);
+			PMString nodeName(textControlData->GetString());
 			
-//			InterfacePtr<ITreeViewController>  myController(widgetParent->GetParent(), IID_ITREEVIEWCONTROLLER);
+			// Show it only for debug
+			//nodeName.SetTranslatable(kFalse);	// only for debug- not real code
+			//CAlert::InformationAlert(nodeName);
 			
-			//ASSERT(myController);
-	//		if(!myController)
-//			{
-//				CAlert::InformationAlert("myController is nil");
-//				break;
-//			
-//			}
-//			
-//			NodeIDList selectedItems;
-//			myController->GetSelectedItems(selectedItems);
-//			const int kSelectionLength =  selectedItems.size() ;
-//			CAlert::InformationAlert(PMString("length "+kSelectionLength));
+			IDFile scriptFile;
+			
+			FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
+			FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
+			FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
+			FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
 				
-				PMString dbgInfoString("MPOLnchEyeballObserver::Update() ");
-				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
-				CAlert::InformationAlert(dbgInfoString);
+				PMString fn(nodeName);
+				PMString ext(".jsx");
+				
+				
+				FileUtils::AppendPath(&scriptFile, fn + ext);
+			
+		
+			
+	
+			
+			
+			if (FileUtils::DoesFileExist(scriptFile)) {
+				
+				
+
+					
+				// for debug
+				//FileUtils::OpenFile(scriptFile);
+				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
+				bool filestatus=scriptRunner->CanHandleFile(scriptFile);
+				
+				RunScriptParams scriptParams(scriptRunner);
+				scriptParams.SetShowErrorAlert(kTrue);
+				scriptParams.SetInvokeDebugger(kFalse);
+				
+				
+				
+				if(filestatus==1)
+				{
+					scriptRunner->RunFile(scriptFile,scriptParams);
+				}// close filestatus
+			}else {
+				CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
+			}
+			
+			
+		
+		
+			//	PMString dbgInfoString("MPOLnchEyeballObserver::Update() ");
+//				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
+//				CAlert::InformationAlert(dbgInfoString);
 			
 			
 		} while(0);
 	}
-	
-	
-//	if ((protocol == IID_ITREEVIEWCONTROLLER) && (theChange == kListSelectionChangedMessage) ) {
-//		do {
-//			
-//			//	CAlert::InformationAlert("You pressed the something");
-//			
-//			InterfacePtr<ITreeViewController> 	controller(this, UseDefaultIID());
-//			ASSERT(controller);
-//			if(!controller)
-//			{
-//				break;
-//			}
-//			
-//			NodeIDList selectedItems;
-//			controller->GetSelectedItems(selectedItems);
-//			const int kSelectionLength =  selectedItems.size() ;
-//			if (kSelectionLength> 0 )
-//			{
-//				PMString nodeName("");
-//				K2Vector<NodeID>::const_iterator iter, startIter, endIter;
-//				startIter = selectedItems.begin();
-//				endIter = selectedItems.end();
-//				for(iter = startIter; iter != endIter; ++iter)
-//				{
-//					const MPOLnchNodeID* oneNode = static_cast<const MPOLnchNodeID*>(iter->Get());
-//					PMString item = oneNode->GetName();
-//					item.Translate();
-//					nodeName.Append(item);
-//					//dbgInfoString += ", ";
-//				}
-//				
-//				
-//				//dbgInfoString.Truncate(2); //remove the last ', '
-//				nodeName.SetTranslatable(kFalse);	// only for debug- not real code
-//				CAlert::InformationAlert(nodeName);
-//				
-//				IDFile scriptFile;
-//				
-//				FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
-//				FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
-//				FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
-//				FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
-//				if (FileUtils::DoesFileExist(scriptFile)) {
-//					
-//					PMString fn(nodeName);
-//					PMString ext(".jsx");
-//					
-//					
-//					FileUtils::AppendPath(&scriptFile, fn + ext);
-//					
-//					InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
-//					bool filestatus=scriptRunner->CanHandleFile(scriptFile);
-//					
-//					RunScriptParams scriptParams(scriptRunner);
-//					scriptParams.SetShowErrorAlert(kTrue);
-//					scriptParams.SetInvokeDebugger(kFalse);
-//					
-//					
-//					
-//					if(filestatus==1)
-//					{
-//						scriptRunner->RunFile(scriptFile,scriptParams);
-//					}// close filestatus
-//				}else {
-//					CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
-//				}
-//				
-//				
-//			}
-//			
-//		} while(0);
-//	}
-	
+		
 }
 
 

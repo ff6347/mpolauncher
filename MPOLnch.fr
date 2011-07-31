@@ -436,6 +436,7 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 	kTrue, kTrue,					// Visible, Enabled
 	"",								// Panel name
 	{
+		// the Run button
 		MPOLnchEyeballWidget
 		(
 			kMPOLnchListElementEyeballWidgetID, kMPOLnchPNGIconRsrcID, kMPOLnchPluginID, // WidgetId, RsrcId
@@ -444,24 +445,24 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
-				/*
+				
 		
-
+		// the help button
 		MPOLnchPenWidget
 		(
-			kMPOLnchListElementPenWidgetID, kMPOLnchPenIcon, kMPOLnchPluginID, // WidgetId, RsrcId
+			kMPOLnchListElementPenWidgetID, kMPOLnchPNGHelpIconRsrcID, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
-			Frame(25,1,44,18)									// Frame
+			Frame(37,3,69,35)									// Frame
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
-		*/
+		
 		// Just a info-static text widget with about-box text view to get white bg.
 		MPOLnchTextWidget
 		(
 			kMPOLnchTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
 			kBindLeft | kBindRight,								// Frame binding
-			Frame(40,3,194,35)									// Frame
+			Frame(75,3,194,35)									// Frame
 			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
 			"",													// Initial text
 			0,													// Associated widget for focus

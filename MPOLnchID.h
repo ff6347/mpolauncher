@@ -125,6 +125,9 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 #define kMPOLnchPNGIconRsrcID 10250
 #define kMPOLnchPNGIconRollRsrcID 10250
 
+// PNG specific IDs
+#define kMPOLnchPNGHelpIconRsrcID 10251
+#define kMPOLnchPNGHelpIconRollRsrcID 10251
 
 #endif // __MPOLnchID_h__
 

@@ -35,6 +35,39 @@
 #include "MPOLnchID.h"
 
 
+
+// Interface includes
+#include "IControlView.h"
+#include "ITreeViewController.h"
+#include "IWidgetParent.h"
+#include "IPanelControlData.h"
+#include "ITextControlData.h"
+
+
+
+// Implem includes
+#include "CAlert.h"
+#include "CObserver.h"
+#include "MPOLnchID.h"
+
+// Implem includes
+#include "K2Vector.tpp" // For NodeIDList to compile
+#include "MPOLnchNodeID.h"
+
+// Scripting includes
+
+#include "IScriptRunner.h"
+#include "IScriptUtils.h"
+
+// file handling
+#include "FileUtils.h"
+#include "StreamUtil.h"
+#include "IPMStream.h"
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
 /**
 
 	Observes the "pen" buttons in the widget list.
@@ -136,9 +169,96 @@ void MPOLnchPenObserver::Update
 	if(theChange == kTrueStateMessage) {
 		// Then the button has been activated.
 		do {
-				PMString dbgInfoString("MPOLnchPenObserver::Update() ");
-				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
-				CAlert::InformationAlert(dbgInfoString);
+			
+			InterfacePtr<ITriStateControlData> data(this, IID_ITRISTATECONTROLDATA);
+			
+			// now look for the parent of the widget
+			InterfacePtr<IWidgetParent>	widgetParent(this, IID_IWIDGETPARENT);
+			if(widgetParent == nil){ 
+				
+				CAlert::InformationAlert("widgetParent is nil");
+				
+				break;
+			}
+			//found it
+			// Query the parent for the panel
+			InterfacePtr<IPanelControlData>	panelData((IPanelControlData*)widgetParent->QueryParentFor(IID_IPANELCONTROLDATA));
+			if(panelData == nil) {
+				
+				CAlert::InformationAlert("panelData is nil");
+				
+				break;
+				
+			}
+			// found it
+			
+			// look for the TextWidget that holds the name
+			IControlView* nameView = panelData->FindWidget(kMPOLnchTextWidgetID);
+			InterfacePtr<ITextControlData>	textControlData( nameView, UseDefaultIID() );
+			
+			if( (textControlData== nil)) {
+				break;
+				CAlert::InformationAlert("textControlData is nil");
+				
+			}
+			// Thats great. found it
+			// get the name of the node. The associated PMString
+			
+			PMString nodeName(textControlData->GetString());
+			
+			// Show it only for debug
+			//nodeName.SetTranslatable(kFalse);	// only for debug- not real code
+			//CAlert::InformationAlert(nodeName);
+			
+					
+			
+			
+			
+			IDFile helpFile;
+			FileUtils::GetAppInstallationFolder(&helpFile);                    //application folder path
+			FileUtils::AppendPath(&helpFile, PMString("Scripts"));                
+			FileUtils::AppendPath(&helpFile, PMString("Scripts Panel"));
+			FileUtils::AppendPath(&helpFile, PMString("MPO Launcher"));
+			FileUtils::AppendPath(&helpFile, PMString("help"));
+
+			PMString pre("help_");
+			PMString fn(nodeName);
+			PMString exth(".jsx");
+			
+			FileUtils::AppendPath(&helpFile, pre + fn + exth);
+			
+						
+			
+			if (FileUtils::DoesFileExist(helpFile)) {
+				
+				
+				
+				
+				// for debug
+				//FileUtils::OpenFile(scriptFile);
+				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(helpFile));	
+				bool filestatus=scriptRunner->CanHandleFile(helpFile);
+				
+				RunScriptParams scriptParams(scriptRunner);
+				scriptParams.SetShowErrorAlert(kTrue);
+				scriptParams.SetInvokeDebugger(kFalse);
+				
+				
+				
+				if(filestatus==1)
+				{
+					scriptRunner->RunFile(helpFile,scriptParams);
+				}// close filestatus
+			}else {
+				CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
+			}
+			
+			
+			
+			
+				//PMString dbgInfoString("MPOLnchPenObserver::Update() ");
+//				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
+//				CAlert::InformationAlert(dbgInfoString);
 		
 		} while(0);
 	}

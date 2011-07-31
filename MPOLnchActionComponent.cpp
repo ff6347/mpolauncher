@@ -272,18 +272,18 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 		const int MAXITEMS = 12;
 		
 		PMString scriptfiles[MAXITEMS] = {
-			"scriptfile01.jsx",
-			"scriptfile02.jsx",
-			"scriptfile03.jsx",
-			"scriptfile04.jsx",
-			"scriptfile05.jsx",
-			"scriptfile06.jsx",
-			"scriptfile07.jsx",
-			"scriptfile08.jsx",
-			"scriptfile09.jsx",
-			"scriptfile10.jsx",
-			"scriptfile11.jsx",
-			"scriptfile12.jsx"};
+			"newscriptfile01.jsx",
+			"newscriptfile02.jsx",
+			"newscriptfile03.jsx",
+			"newscriptfile04.jsx",
+			"newscriptfile05.jsx",
+			"newscriptfile06.jsx",
+			"newscriptfile07.jsx",
+			"newscriptfile08.jsx",
+			"newscriptfile09.jsx",
+			"newscriptfile10.jsx",
+			"newscriptfile11.jsx",
+			"newscriptfile12.jsx"};
 		
 		PMString newscriptfiles[MAXITEMS] = {
 			"newscriptfile01.jsx",
@@ -299,7 +299,21 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			"newscriptfile11.jsx",
 			"newscriptfile12.jsx"};
 		
-		//string source = "incoming.txt";
+
+	PMString helpfiles[MAXITEMS] = {
+		"help_newscriptfile01.jsx",
+		"help_newscriptfile02.jsx",
+		"help_newscriptfile03.jsx",
+		"help_newscriptfile04.jsx",
+		"help_newscriptfile05.jsx",
+		"help_newscriptfile06.jsx",
+		"help_newscriptfile07.jsx",
+		"help_newscriptfile08.jsx",
+		"help_newscriptfile09.jsx",
+		"help_newscriptfile10.jsx",
+		"help_newscriptfile11.jsx",
+		"help_newscriptfile12.jsx"};
+	//string source = "incoming.txt";
 		//string clone = "outgoing.txt";
 		
 		//	cout << "Enter the source file: ";
@@ -319,10 +333,25 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 //			
 			FileUtils::AppendPath(&theSource, PMString("Versions"));                
 			FileUtils::AppendPath(&theSource, PMString("A"));                
-			FileUtils::AppendPath(&theSource, PMString("Resources"));                
+			FileUtils::AppendPath(&theSource, PMString("Resources"));
+
+			IDFile theHelpSource;//scriptfiles[i];
+			
+			FileUtils::GetAppInstallationFolder(&theHelpSource); 
+			FileUtils::AppendPath(&theHelpSource, PMString("Plug-Ins"));                
+			FileUtils::AppendPath(&theHelpSource, PMString("tmn"));                
+			FileUtils::AppendPath(&theHelpSource, PMString("MPOLauncher.InDesignPlugin"));                
+			//			
+			FileUtils::AppendPath(&theHelpSource, PMString("Versions"));                
+			FileUtils::AppendPath(&theHelpSource, PMString("A"));                
+			FileUtils::AppendPath(&theHelpSource, PMString("Resources"));
+			
+			
 			FileUtils::AppendPath(&theSource, PMString(scriptfiles[i]));
+			FileUtils::AppendPath(&theHelpSource, PMString(helpfiles[i]));
 			
 			PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
+			PMString sourceHelpFileStringUrl = FileUtils::SysFileToFileURL(theHelpSource);
 
 			if(!FileUtils::DoesFileExist(theSource)){
 				CAlert::InformationAlert(" could not find the Source File. I am Here-> " + sourceFileStringUrl 
@@ -331,7 +360,12 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 				break;
 			}
 			
-
+			if(!FileUtils::DoesFileExist(theHelpSource)){
+				CAlert::InformationAlert(" could not find the Help File. I am Here-> " + sourceHelpFileStringUrl 
+										 +"\n"+
+										 " Please report this bug to: fabiantheblind@the-moron.net");
+				break;
+			}
 				
 			
 			IDFile theTarget; 
@@ -339,12 +373,22 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
 			FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
 			FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
-
 			FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
 
+			IDFile theHelpTarget; 
+			FileUtils::GetAppInstallationFolder(&theHelpTarget); 
+			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts"));                
+			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts Panel"));
+			FileUtils::AppendPath(&theHelpTarget, PMString("MPO Launcher"));
+			FileUtils::AppendPath(&theHelpTarget, PMString("help"));
+			
+			FileUtils::CreateFolderIfNeeded(theHelpTarget,kTrue);
+
 			PMString fn(newscriptfiles[i]);
+			PMString fnh(helpfiles[i]);
 			
 			FileUtils::AppendPath(&theTarget, fn);
+			FileUtils::AppendPath(&theHelpTarget, fnh);
 
 			//FileUtils::OpenFile(theTarget, "w");
 			if(!FileUtils::DoesFileExist(theTarget)){
@@ -358,7 +402,17 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			
 				}
 			}
-			
+			if(!FileUtils::DoesFileExist(theHelpTarget)){
+				
+				CAlert::InformationAlert("I will try to copy "+fnh+ " to the folder: Scripts Panel/MPO Launcher");
+				
+				if(!FileUtils::CopyFile(theHelpSource, theHelpTarget)){
+					
+					CAlert::InformationAlert("Could not copy "+fnh+". Sorry");
+					
+					
+				}
+			}			
 		//	PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
 //			string sfurl = sourceFileStringUrl.GrabCString();
 //

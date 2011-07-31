@@ -28,7 +28,7 @@
 REGISTER_PMINTERFACE(MPOLnchActionComponent, kMPOLnchActionComponentImpl)
 REGISTER_PMINTERFACE(MPOLnchListBoxObserver, kMPOLnchListBoxObserverImpl)
 REGISTER_PMINTERFACE(MPOLnchEyeballObserverImpl, kMPOLnchEyeballObserverImpl)
-//sREGISTER_PMINTERFACE(MPOLnchPenObserverImpl, kMPOLnchPenObserverImpl)
+REGISTER_PMINTERFACE(MPOLnchPenObserverImpl, kMPOLnchPenObserverImpl)
 REGISTER_PMINTERFACE(MPOLnchTreeViewAdapter, kMPOLnchTVHierarchyAdapterImpl)
 REGISTER_PMINTERFACE(MPOLnchTVWidgetMgr, kMPOLnchTVWidgetMgrImpl)
 
