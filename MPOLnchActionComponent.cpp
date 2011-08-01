@@ -226,64 +226,10 @@ void MPOLnchActionComponent::DoAbout()
 */
 void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 {
-	/*
-	InterfacePtr<IControlView> treeWidget(static_cast<IControlView*>(Utils<IWidgetUtils>()->QueryRelatedWidget(invokedWidget, kMPOLnchListBoxWidgetID, IID_ICONTROLVIEW)));
-	InterfacePtr<ITreeViewMgr> treeMgr(treeWidget, UseDefaultIID());
-	InterfacePtr<IStringListData> iListData(treeWidget, IID_ISTRINGLISTDATA);
-	K2Vector<PMString> lists = iListData->GetStringList();
-	PMString item(kMPOLnchAddedElementKey);
-	item.Translate();
-    K2Vector<PMString>::const_iterator iter = std::find(lists.begin(), lists.end(), item);
-	int32 addIndex = 2;
-	while (iter != lists.end())
-	{
-		item.Insert("+ ", 2, 2);
-		iter = std::find(lists.begin(), lists.end(), item);
-	}
-
-    if (iter == lists.end())
-	{
-		lists.insert(lists.begin(), item);
-		iListData->SetStringList(lists);
-		//make sure that the node added has been processed
-        NodeID node = MPOLnchNodeID::Create(item);
-		
-		//create a file in script the directory
-		IDFile file; 
-		FileUtils::GetAppInstallationFolder(&file); 
-		FileUtils::AppendPath(&file, PMString("Scripts"));                
-		FileUtils::AppendPath(&file, PMString("Scripts Panel"));
-		PMString fn("newscriptfile");
-		PMString ext(".jsx");
-		
-		FileUtils::AppendPath(&file, fn  + ext); 
-		FileUtils::OpenFile(file, "wt"); 
-		
-		treeMgr->NodeAdded(node);
-	}
-	 */
-	
 	// building the scripts
-	
-
-	
-	using namespace std;
 	
 		const int MAXITEMS = 12;
 		
-		PMString scriptfiles[MAXITEMS] = {
-			"newscriptfile01.jsx",
-			"newscriptfile02.jsx",
-			"newscriptfile03.jsx",
-			"newscriptfile04.jsx",
-			"newscriptfile05.jsx",
-			"newscriptfile06.jsx",
-			"newscriptfile07.jsx",
-			"newscriptfile08.jsx",
-			"newscriptfile09.jsx",
-			"newscriptfile10.jsx",
-			"newscriptfile11.jsx",
-			"newscriptfile12.jsx"};
 		
 		PMString newscriptfiles[MAXITEMS] = {
 			"newscriptfile01.jsx",
@@ -313,13 +259,7 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 		"help_newscriptfile10.jsx",
 		"help_newscriptfile11.jsx",
 		"help_newscriptfile12.jsx"};
-	//string source = "incoming.txt";
-		//string clone = "outgoing.txt";
-		
-		//	cout << "Enter the source file: ";
-		//	cin >> source;
-		//	cout << "Enter the name of the new file: ";
-		//	cin >> clone;
+
 		
 		for (int i = 0; i < MAXITEMS ; i++) {
 			
@@ -347,7 +287,7 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			FileUtils::AppendPath(&theHelpSource, PMString("Resources"));
 			
 			
-			FileUtils::AppendPath(&theSource, PMString(scriptfiles[i]));
+			FileUtils::AppendPath(&theSource, PMString(newscriptfiles[i]));
 			FileUtils::AppendPath(&theHelpSource, PMString(helpfiles[i]));
 			
 			PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
@@ -390,69 +330,21 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			FileUtils::AppendPath(&theTarget, fn);
 			FileUtils::AppendPath(&theHelpTarget, fnh);
 
-			//FileUtils::OpenFile(theTarget, "w");
 			if(!FileUtils::DoesFileExist(theTarget)){
-				
 				CAlert::InformationAlert("I will try to copy "+fn+ " to the folder: Scripts Panel/MPO Launcher");
-					
-				if(!FileUtils::CopyFile(theSource, theTarget)){
-			
-					CAlert::InformationAlert("Could not copy "+fn+". Sorry");
-
-			
-				}
+					if(!FileUtils::CopyFile(theSource, theTarget)){
+						CAlert::InformationAlert("Could not copy "+fn+". Sorry");
+					}
 			}
+			
 			if(!FileUtils::DoesFileExist(theHelpTarget)){
-				
-				CAlert::InformationAlert("I will try to copy "+fnh+ " to the folder: Scripts Panel/MPO Launcher");
-				
-				if(!FileUtils::CopyFile(theHelpSource, theHelpTarget)){
-					
-					CAlert::InformationAlert("Could not copy "+fnh+". Sorry");
-					
-					
-				}
-			}			
-		//	PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
-//			string sfurl = sourceFileStringUrl.GrabCString();
-//
-//			PMString targetFileStringUrl = FileUtils::SysFileToFileURL(theTarget);
-//			string tfurl = targetFileStringUrl.GrabCString();
-//			
-//			    std::ifstream src; // the source file
-//			    std::ofstream dest; // the destination file
-//			
-//				src.open (sfurl.c_str(), std::ios::binary); // open in binary to prevent jargon at the end of the buffer
-//			    dest.open (tfurl.c_str(), std::ios::binary); // same again, binary
-//			    if (src.is_open() && dest.is_open())
-//				{
-//			    dest << src.rdbuf (); // copy the content
-//			    dest.close (); // close destination file
-//			    src.close (); // close source file
-				}
-			
-	//		if(!copyFile(sfurl.c_str(),tfurl.c_str())){
-//				
-//				CAlert::InformationAlert("Could not copy the scriptfiles. Sorry");
-//
-//			}
-			
-			//FileUtils::CopyFile(theSource, theTarget);
-			//FileUtils::OpenFile(file, "wt");
+				CAlert::InformationAlert("I will try to copy "+fnh+ " to the folder: Scripts Panel/MPO Launcher/help");
+					if(!FileUtils::CopyFile(theHelpSource, theHelpTarget)){
+						CAlert::InformationAlert("Could not copy "+fnh+". Sorry");
+					}
+				}			
+			}
 
-			//PMString sourcefile = FileUtils::SysFileToFileURL(theSource);
-//			PMString targetfile = FileUtils::SysFileToFileURL(theTarget);
-//			ifstream in(sourcefile.GetPlatformString().c_str()); // Open for reading
-//			ofstream out( targetfile.GetPlatformString().c_str()); // Open for writing
-//			
-//			//printf("wrote file newscriptfile with number %do to disc\n",i);
-//			string s;
-//			while(getline(in, s))
-//			out << s << "\n";
-			//in->Close();
-			//out->Close();
-			
-			//}
 		
 		
 	

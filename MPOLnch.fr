@@ -432,7 +432,7 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 	__FILE__, __LINE__,
 	kMPOLnchListParentWidgetId, kPMRsrcID_None,	// WidgetId, RsrcId
 	kBindLeft | kBindRight,			// Frame binding
-	Frame(0, 0, 194, 38),			// Frame
+	Frame(0, 0, 194, 35),			// // Frame: left, top, right, bottom. 
 	kTrue, kTrue,					// Visible, Enabled
 	"",								// Panel name
 	{
@@ -441,7 +441,7 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 		(
 			kMPOLnchListElementEyeballWidgetID, kMPOLnchPNGIconRsrcID, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
-			Frame(3,3,36,35)									// Frame
+			Frame(2,3,32,33)									// // Frame: left, top, right, bottom.
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
@@ -452,7 +452,7 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 		(
 			kMPOLnchListElementPenWidgetID, kMPOLnchPNGHelpIconRsrcID, kMPOLnchPluginID, // WidgetId, RsrcId
 			kBindLeft,											// Frame binding
-			Frame(37,3,69,35)									// Frame
+			Frame(35,3,65,33)									// // Frame: left, top, right, bottom.
 			kTrue, kTrue,										// Visible, Enabled
 			kADBEIconSuiteButtonType,
 		),
@@ -462,12 +462,12 @@ resource MPOLnchNodeWidget (kMPOLnchListElementRsrcID + index_enUS)
 		(
 			kMPOLnchTextWidgetID, kPMRsrcID_None,		// WidgetId, RsrcId
 			kBindLeft | kBindRight,								// Frame binding
-			Frame(75,3,194,35)									// Frame
+			Frame(70,3,194,33)									// // Frame: left, top, right, bottom.
 			kTrue, kTrue, kAlignLeft,kEllipsizeEnd,kTrue,		// Visible, Enabled, ellipsize style, convert ampersands
 			"",													// Initial text
 			0,													// Associated widget for focus
-			kDialogWindowFontId,					// default font 
-			kDialogWindowFontId,				// for highlight state.
+			kPaletteWindowFontId,					// default font 
+			kPaletteWindowHiliteFontId,				// for highlight state.
 		),
 		
 		

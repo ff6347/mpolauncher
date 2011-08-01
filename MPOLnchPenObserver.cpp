@@ -63,10 +63,8 @@
 #include "FileUtils.h"
 #include "StreamUtil.h"
 #include "IPMStream.h"
+#include "MPOLnchHelper.h"
 
-#include <iostream>
-#include <fstream>
-#include <string>
 
 /**
 
@@ -117,6 +115,7 @@ public:
 	*/	
 	virtual void Update(const ClassID& theChange, ISubject* theSubject, const PMIID &protocol, void* changedBy);
 
+	//PMString ReadAllAsText(IPMStream *s);
 
 	
 };
@@ -215,12 +214,17 @@ void MPOLnchPenObserver::Update
 			
 			
 			IDFile helpFile;
-			FileUtils::GetAppInstallationFolder(&helpFile);                    //application folder path
-			FileUtils::AppendPath(&helpFile, PMString("Scripts"));                
-			FileUtils::AppendPath(&helpFile, PMString("Scripts Panel"));
-			FileUtils::AppendPath(&helpFile, PMString("MPO Launcher"));
-			FileUtils::AppendPath(&helpFile, PMString("help"));
-
+		
+			FileUtils::GetAppInstallationFolder(&helpFile); // Application Folder Path
+			
+			FileUtils::AppendPath(&helpFile, PMString("Plug-Ins"));                
+			FileUtils::AppendPath(&helpFile, PMString("tmn"));                
+			FileUtils::AppendPath(&helpFile, PMString("MPOLauncher.InDesignPlugin"));                
+			//			
+			FileUtils::AppendPath(&helpFile, PMString("Versions"));                
+			FileUtils::AppendPath(&helpFile, PMString("A"));                
+			FileUtils::AppendPath(&helpFile, PMString("Resources"));
+			
 			PMString pre("help_");
 			PMString fn(nodeName);
 			PMString exth(".jsx");
@@ -230,27 +234,24 @@ void MPOLnchPenObserver::Update
 						
 			
 			if (FileUtils::DoesFileExist(helpFile)) {
+				InterfacePtr<IPMStream> s(StreamUtil::CreateFileStreamRead(helpFile));
+				
+				MPOLnchHelper helper;
+				
+				//CAlert::InformationAlert(helper.ReadAllAsText(s));
+				CAlert::ModalAlert(helper.ReadAllAsText(s),
+						   kOKString, 
+						   kNullString, 
+						   kNullString, 
+						   1,                        // pass in 1, 2, or 3 to make that button the default button or 0 for no default
+						   CAlert::eWarningIcon);
 				
 				
-				
-				
-				// for debug
-				//FileUtils::OpenFile(scriptFile);
-				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(helpFile));	
-				bool filestatus=scriptRunner->CanHandleFile(helpFile);
-				
-				RunScriptParams scriptParams(scriptRunner);
-				scriptParams.SetShowErrorAlert(kTrue);
-				scriptParams.SetInvokeDebugger(kFalse);
-				
-				
-				
-				if(filestatus==1)
-				{
-					scriptRunner->RunFile(helpFile,scriptParams);
-				}// close filestatus
+
 			}else {
-				CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
+				CAlert::InformationAlert("Got an error reading in the "+nodeName
+										 +" help. Something went teribly wrong."+
+										 " Contact info@themoron.net for more help");
 			}
 			
 			
@@ -265,5 +266,21 @@ void MPOLnchPenObserver::Update
 }
 
 
+//PMString MPOLnchPenObserver::ReadAllAsText(IPMStream *s)
+//{
+//	PMString text;
+//	uchar oneChar;
+//	s->XferByte(oneChar);
+//	while (s->GetStreamState() == kStreamStateGood)
+//	{
+//		text.Append((char)oneChar);        
+//		
+//		// Read the next character
+//		s->XferByte(oneChar);
+//		
+//    } // end while streamstategood
+//	
+//    return text; 
+//}
 
 
