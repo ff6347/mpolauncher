@@ -27,6 +27,7 @@
 #include "ListTreeViewAdapter.h"
 #include "MPOLnchNodeID.h"
 #include "MPOLnchID.h"
+#include "MPOLnchHelper.h"
 
 /**
  *  TreeViewAdapter.
@@ -52,12 +53,20 @@ MPOLnchTreeViewAdapter::MPOLnchTreeViewAdapter(IPMUnknown* boss):ListTreeViewAda
 {
 	//initialize the list with the default list string name
 	K2Vector<PMString> lists;
-	for (int32 i = 0; i< 12; i++)
+	MPOLnchHelper helper;
+	
+	for (int32 i = 0; i< helper.MAXITEMS; i++)
 	{
-		PMString name(kMPOLnchItemBaseKey);
-		name.AppendNumber(i+1);
-		name.Translate();
-		lists.push_back(name);
+		PMString nodeName = helper.GetScriptFile(i);
+		nodeName.Truncate(4);
+		
+		// this is from the original code
+		// if you need ranslateable names
+		//PMString name(kMPOLnchItemBaseKey);
+		//name.AppendNumber(i+1);
+		//name.Translate();
+		
+		lists.push_back(nodeName);
 	}
 	InterfacePtr<IStringListData> iListData(this, IID_ISTRINGLISTDATA);
 	iListData->SetStringList(lists);

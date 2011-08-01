@@ -47,9 +47,8 @@
 #include "FileUtils.h"
 #include "CoreFileUtils.h"
 #include "StreamUtil.h"
-#include <fstream>
-#include <cstdlib>
-#include <string>
+
+#include "MPOLnchHelper.h"
 
 
 /** MPOLnchActionComponent
@@ -228,67 +227,37 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 {
 	// building the scripts
 	
-		const int MAXITEMS = 12;
+	MPOLnchHelper helper;
+	
 		
-		
-		PMString newscriptfiles[MAXITEMS] = {
-			"newscriptfile01.jsx",
-			"newscriptfile02.jsx",
-			"newscriptfile03.jsx",
-			"newscriptfile04.jsx",
-			"newscriptfile05.jsx",
-			"newscriptfile06.jsx",
-			"newscriptfile07.jsx",
-			"newscriptfile08.jsx",
-			"newscriptfile09.jsx",
-			"newscriptfile10.jsx",
-			"newscriptfile11.jsx",
-			"newscriptfile12.jsx"};
-		
-
-	PMString helpfiles[MAXITEMS] = {
-		"help_newscriptfile01.jsx",
-		"help_newscriptfile02.jsx",
-		"help_newscriptfile03.jsx",
-		"help_newscriptfile04.jsx",
-		"help_newscriptfile05.jsx",
-		"help_newscriptfile06.jsx",
-		"help_newscriptfile07.jsx",
-		"help_newscriptfile08.jsx",
-		"help_newscriptfile09.jsx",
-		"help_newscriptfile10.jsx",
-		"help_newscriptfile11.jsx",
-		"help_newscriptfile12.jsx"};
-
-		
-		for (int i = 0; i < MAXITEMS ; i++) {
+		for (int i = 0; i < helper.MAXITEMS ; i++) {
 			
 
-			IDFile theSource;//scriptfiles[i];
+			IDFile theSource = helper.GetInternalResourceFolder();//scriptfiles[i];
 			
-			FileUtils::GetAppInstallationFolder(&theSource); 
-			FileUtils::AppendPath(&theSource, PMString("Plug-Ins"));                
-			FileUtils::AppendPath(&theSource, PMString("tmn"));                
-			FileUtils::AppendPath(&theSource, PMString("MPOLauncher.InDesignPlugin"));                
-//			
-			FileUtils::AppendPath(&theSource, PMString("Versions"));                
-			FileUtils::AppendPath(&theSource, PMString("A"));                
-			FileUtils::AppendPath(&theSource, PMString("Resources"));
+			//FileUtils::GetAppInstallationFolder(&theSource); 
+//			FileUtils::AppendPath(&theSource, PMString("Plug-Ins"));                
+//			FileUtils::AppendPath(&theSource, PMString("tmn"));                
+//			FileUtils::AppendPath(&theSource, PMString("MPOLauncher.InDesignPlugin"));                
+////			
+//			FileUtils::AppendPath(&theSource, PMString("Versions"));                
+//			FileUtils::AppendPath(&theSource, PMString("A"));                
+//			FileUtils::AppendPath(&theSource, PMString("Resources"));
 
-			IDFile theHelpSource;//scriptfiles[i];
+			IDFile theHelpSource = helper.GetInternalResourceFolder();//scriptfiles[i];
 			
-			FileUtils::GetAppInstallationFolder(&theHelpSource); 
-			FileUtils::AppendPath(&theHelpSource, PMString("Plug-Ins"));                
-			FileUtils::AppendPath(&theHelpSource, PMString("tmn"));                
-			FileUtils::AppendPath(&theHelpSource, PMString("MPOLauncher.InDesignPlugin"));                
-			//			
-			FileUtils::AppendPath(&theHelpSource, PMString("Versions"));                
-			FileUtils::AppendPath(&theHelpSource, PMString("A"));                
-			FileUtils::AppendPath(&theHelpSource, PMString("Resources"));
+			//FileUtils::GetAppInstallationFolder(&theHelpSource); 
+//			FileUtils::AppendPath(&theHelpSource, PMString("Plug-Ins"));                
+//			FileUtils::AppendPath(&theHelpSource, PMString("tmn"));                
+//			FileUtils::AppendPath(&theHelpSource, PMString("MPOLauncher.InDesignPlugin"));                
+//			//			
+//			FileUtils::AppendPath(&theHelpSource, PMString("Versions"));                
+//			FileUtils::AppendPath(&theHelpSource, PMString("A"));                
+//			FileUtils::AppendPath(&theHelpSource, PMString("Resources"));
 			
 			
-			FileUtils::AppendPath(&theSource, PMString(newscriptfiles[i]));
-			FileUtils::AppendPath(&theHelpSource, PMString(helpfiles[i]));
+			FileUtils::AppendPath(&theSource, PMString(helper.GetScriptFile(i)));
+			FileUtils::AppendPath(&theHelpSource, PMString(helper.GetHelpFile(i)));
 			
 			PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
 			PMString sourceHelpFileStringUrl = FileUtils::SysFileToFileURL(theHelpSource);
@@ -324,8 +293,8 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			
 			FileUtils::CreateFolderIfNeeded(theHelpTarget,kTrue);
 
-			PMString fn(newscriptfiles[i]);
-			PMString fnh(helpfiles[i]);
+			PMString fn(helper.GetScriptFile(i));
+			PMString fnh(helper.GetHelpFile(i));
 			
 			FileUtils::AppendPath(&theTarget, fn);
 			FileUtils::AppendPath(&theHelpTarget, fnh);

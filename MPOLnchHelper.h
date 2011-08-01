@@ -7,20 +7,29 @@
  *
  */
 
-#ifndef DATE_H
-#define DATE_H
+#ifndef MPOLNCHHELPER_H
+#define MPOLNCHHELPER_H
+
 #include "IPMStream.h"
+#include "FileUtils.h"
+
 
 class MPOLnchHelper
 {
 public:
 
 	
-    MPOLnchHelper() { } //  default constructor
+    MPOLnchHelper() { }; //  default constructor
 	
 	PMString ReadAllAsText(IPMStream *s);
 
+	PMString GetScriptFile(int i);
+	PMString GetHelpFile(int i);
 
+	IDFile GetInternalResourceFolder();
+	
+	static int MAXITEMS;
+	
 };
 
 #endif

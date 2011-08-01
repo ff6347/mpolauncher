@@ -212,18 +212,11 @@ void MPOLnchPenObserver::Update
 					
 			
 			
+			MPOLnchHelper helper;
+
+			// look for the internal resource files
+			IDFile helpFile  = helper.GetInternalResourceFolder();
 			
-			IDFile helpFile;
-		
-			FileUtils::GetAppInstallationFolder(&helpFile); // Application Folder Path
-			
-			FileUtils::AppendPath(&helpFile, PMString("Plug-Ins"));                
-			FileUtils::AppendPath(&helpFile, PMString("tmn"));                
-			FileUtils::AppendPath(&helpFile, PMString("MPOLauncher.InDesignPlugin"));                
-			//			
-			FileUtils::AppendPath(&helpFile, PMString("Versions"));                
-			FileUtils::AppendPath(&helpFile, PMString("A"));                
-			FileUtils::AppendPath(&helpFile, PMString("Resources"));
 			
 			PMString pre("help_");
 			PMString fn(nodeName);
@@ -236,7 +229,6 @@ void MPOLnchPenObserver::Update
 			if (FileUtils::DoesFileExist(helpFile)) {
 				InterfacePtr<IPMStream> s(StreamUtil::CreateFileStreamRead(helpFile));
 				
-				MPOLnchHelper helper;
 				
 				//CAlert::InformationAlert(helper.ReadAllAsText(s));
 				CAlert::ModalAlert(helper.ReadAllAsText(s),
