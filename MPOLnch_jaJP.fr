@@ -58,20 +58,20 @@ resource StringTable (kSDKDefStringsResourceID + index_jaJP)
 		// ----- Misc strings
 		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[JP], version " kMPOLnchVersion " by " kMPOLnchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_jaJP,
 		//
-		kMPOLnchItemBaseKey "1",				"  Glasgow Celtic",
-		kMPOLnchItemBaseKey "2",				"  Hibernian",
-		kMPOLnchItemBaseKey "3",				"  Glasgow Rangers",
-		kMPOLnchItemBaseKey "4",				"  Kilmarnock",
-		
-		kMPOLnchItemBaseKey "5",				"  Heart of Midlothian",
-		kMPOLnchItemBaseKey "6",				"  Dunfermline Athletic",
-		kMPOLnchItemBaseKey "7",				"  Motherwell",
-		kMPOLnchItemBaseKey "8",				"  St. Johnstone",
-		
-		kMPOLnchItemBaseKey "9",				"  Dundee",
-		kMPOLnchItemBaseKey "10",			"  Aberdeen",
-		kMPOLnchItemBaseKey "11",			"  Dundee United",
-		kMPOLnchItemBaseKey "12",			"  St. Mirren",
+			kMPOLnchItemBaseKey "1",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "2",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "3",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "4",						"THIS IS NOT RIGHT",
+
+			kMPOLnchItemBaseKey "5",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "6",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "7",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "8",						"THIS IS NOT RIGHT",
+
+			kMPOLnchItemBaseKey "9",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "10",					"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "11",					"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "12",					"THIS IS NOT RIGHT",
 		kMPOLnchAddedElementKey,				"  + ’Ç‰Á—v‘f",	
 	}
 

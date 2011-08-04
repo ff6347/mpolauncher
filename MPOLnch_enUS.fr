@@ -51,27 +51,27 @@ resource StringTable (kSDKDefStringsResourceID + index_enUS)
 
 		
 		// ----- Panel/dialog strings
-		kMPOLnchPanelTitleKey,				"MPO Launcher" " [US]",// irp was kMPOLnchPluginName "[US]",
+		kMPOLnchPanelTitleKey,				"Launcher" " [US]",// irp was kMPOLnchPluginName "[US]",
 		// ----- Error strings
 
 			
 		// ----- Misc strings
-		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[US], version " kMPOLnchVersion " by " kMPOLnchAuthor "\n\n" kSDKDefCopyrightStandardValue "\n\n" kSDKDefPartnersStandardValue_enUS,
+		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[US], version " kMPOLnchVersion " by " kMPOLnchAuthor  " © 2011 under GPLv03 Lizenz\n\n This plugin uses some javascripts based in itself.\nIf you want to edit them directly use the \"" kMPOLnchAddItemMenuItemKey "\" option.",,
 		//
-		kMPOLnchItemBaseKey "1",						"newscriptfile01",
-		kMPOLnchItemBaseKey "2",						"newscriptfile02",
-		kMPOLnchItemBaseKey "3",						"newscriptfile03",
-		kMPOLnchItemBaseKey "4",						"newscriptfile04",
-		
-		kMPOLnchItemBaseKey "5",						"newscriptfile05",
-		kMPOLnchItemBaseKey "6",						"newscriptfile06",
-		kMPOLnchItemBaseKey "7",						"newscriptfile07",
-		kMPOLnchItemBaseKey "8",						"newscriptfile08",
-		
-		kMPOLnchItemBaseKey "9",						"newscriptfile09",
-		kMPOLnchItemBaseKey "10",					"newscriptfile10",
-		kMPOLnchItemBaseKey "11",					"newscriptfile11",
-		kMPOLnchItemBaseKey "12",					"newscriptfile12",
+			kMPOLnchItemBaseKey "1",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "2",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "3",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "4",						"THIS IS NOT RIGHT",
+
+			kMPOLnchItemBaseKey "5",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "6",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "7",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "8",						"THIS IS NOT RIGHT",
+
+			kMPOLnchItemBaseKey "9",						"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "10",					"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "11",					"THIS IS NOT RIGHT",
+			kMPOLnchItemBaseKey "12",					"THIS IS NOT RIGHT",
 		kMPOLnchAddedElementKey,						"  + Added Element",
 	}
 

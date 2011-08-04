@@ -210,6 +210,8 @@ void MPOLnchActionComponent::UpdateActionStates(IActiveContext *myContext, IActi
 */
 void MPOLnchActionComponent::DoAbout()
 {
+	
+
 	CAlert::ModalAlert
 	(
 	   kMPOLnchAboutBoxStringKey,			// Alert string
@@ -235,25 +237,9 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 
 			IDFile theSource = helper.GetInternalResourceFolder();//scriptfiles[i];
 			
-			//FileUtils::GetAppInstallationFolder(&theSource); 
-//			FileUtils::AppendPath(&theSource, PMString("Plug-Ins"));                
-//			FileUtils::AppendPath(&theSource, PMString("tmn"));                
-//			FileUtils::AppendPath(&theSource, PMString("MPOLauncher.InDesignPlugin"));                
-////			
-//			FileUtils::AppendPath(&theSource, PMString("Versions"));                
-//			FileUtils::AppendPath(&theSource, PMString("A"));                
-//			FileUtils::AppendPath(&theSource, PMString("Resources"));
+
 
 			IDFile theHelpSource = helper.GetInternalResourceFolder();//scriptfiles[i];
-			
-			//FileUtils::GetAppInstallationFolder(&theHelpSource); 
-//			FileUtils::AppendPath(&theHelpSource, PMString("Plug-Ins"));                
-//			FileUtils::AppendPath(&theHelpSource, PMString("tmn"));                
-//			FileUtils::AppendPath(&theHelpSource, PMString("MPOLauncher.InDesignPlugin"));                
-//			//			
-//			FileUtils::AppendPath(&theHelpSource, PMString("Versions"));                
-//			FileUtils::AppendPath(&theHelpSource, PMString("A"));                
-//			FileUtils::AppendPath(&theHelpSource, PMString("Resources"));
 			
 			
 			FileUtils::AppendPath(&theSource, PMString(helper.GetScriptFile(i)));
@@ -276,19 +262,22 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 				break;
 			}
 				
+			// this gets the MPO Launcher folder within the scripts panel
+			IDFile theTarget = helper.GetScriptFilesFolder();
 			
-			IDFile theTarget; 
-			FileUtils::GetAppInstallationFolder(&theTarget); 
-			FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
-			FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
-			FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
-			FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
+			//FileUtils::GetAppInstallationFolder(&theTarget); 
+//			FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
+//			FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
+//			FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
+			
+			//FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
 
-			IDFile theHelpTarget; 
-			FileUtils::GetAppInstallationFolder(&theHelpTarget); 
-			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts"));                
-			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts Panel"));
-			FileUtils::AppendPath(&theHelpTarget, PMString("MPO Launcher"));
+			IDFile theHelpTarget = helper.GetScriptFilesFolder(); 
+			//FileUtils::GetAppInstallationFolder(&theHelpTarget); 
+//			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts"));                
+//			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts Panel"));
+//			FileUtils::AppendPath(&theHelpTarget, PMString("MPO Launcher"));
+			
 			FileUtils::AppendPath(&theHelpTarget, PMString("help"));
 			
 			FileUtils::CreateFolderIfNeeded(theHelpTarget,kTrue);
@@ -296,9 +285,12 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			PMString fn(helper.GetScriptFile(i));
 			PMString fnh(helper.GetHelpFile(i));
 			
+			
 			FileUtils::AppendPath(&theTarget, fn);
+			
 			FileUtils::AppendPath(&theHelpTarget, fnh);
 
+			
 			if(!FileUtils::DoesFileExist(theTarget)){
 				CAlert::InformationAlert("I will try to copy "+fn+ " to the folder: Scripts Panel/MPO Launcher");
 					if(!FileUtils::CopyFile(theSource, theTarget)){
@@ -315,7 +307,48 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 			}
 
 		
+	for(int j = 0; j < helper.METAMAXITEMS; j++){
+	
+		IDFile theMetaSource = helper.GetInternalResourceFolder();//scriptfiles[i];
 		
+	
+		
+		FileUtils::AppendPath(&theMetaSource, PMString(helper.GetMetaFile(j)));
+		
+		PMString metaSourceFileStringUrl = FileUtils::SysFileToFileURL(theMetaSource);
+		
+		if(!FileUtils::DoesFileExist(theMetaSource)){
+			CAlert::InformationAlert(" could not find the Source File. I am Here-> " + metaSourceFileStringUrl 
+									 +"\n"+
+									 " Please report this bug to: info@the-moron.net");
+			break;
+		}
+		
+	
+		
+		// this gets the MPO Launcher folder within the scripts panel
+		IDFile theMetaTarget = helper.GetScriptFilesFolder();
+		
+	
+		FileUtils::AppendPath(&theMetaTarget, PMString("meta"));
+		
+		FileUtils::CreateFolderIfNeeded(theMetaTarget,kTrue);
+		
+		PMString fnm(helper.GetMetaFile(j));
+		
+		
+		FileUtils::AppendPath(&theMetaTarget, fnm);
+		
+		
+		
+		if(!FileUtils::DoesFileExist(theMetaTarget)){
+			CAlert::InformationAlert("I will try to copy "+fnm+ " to the folder: Scripts Panel/MPO Launcher/meta");
+			if(!FileUtils::CopyFile(theMetaSource, theMetaTarget)){
+				CAlert::InformationAlert("Could not copy "+fnm+". Sorry");
+			}
+		}
+		
+	}		
 	
 }
 

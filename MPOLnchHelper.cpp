@@ -18,21 +18,23 @@ MPOLnchHelper::MPOLnchHelper();
 
 int MPOLnchHelper::MAXITEMS = 12;
 
+int MPOLnchHelper::METAMAXITEMS = 1;
+
 PMString MPOLnchHelper::GetScriptFile(int i){
 	
 	PMString theFileName[12] = {
-		"newscriptfile01.jsx",
-		"newscriptfile02.jsx",
-		"newscriptfile03.jsx",
-		"newscriptfile04.jsx",
-		"newscriptfile05.jsx",
-		"newscriptfile06.jsx",
+		"theNumbers.jsx",
+		"clearStructure.jsx",
+		"color_KEY.jsx",
+		"color_PAPER.jsx",
+		"color_XXX.jsx",
+		"theFindChange.jsx",
 		"newscriptfile07.jsx",
 		"newscriptfile08.jsx",
 		"newscriptfile09.jsx",
 		"newscriptfile10.jsx",
 		"newscriptfile11.jsx",
-		"newscriptfile12.jsx"};
+		"QUICKY.jsx"};
 	
 
 	if (i > 12) {
@@ -44,23 +46,36 @@ PMString MPOLnchHelper::GetScriptFile(int i){
 PMString MPOLnchHelper::GetHelpFile(int i){
 	
 	PMString theFileName[12] = {
-		"help_newscriptfile01.jsx",
-		"help_newscriptfile02.jsx",
-		"help_newscriptfile03.jsx",
-		"help_newscriptfile04.jsx",
-		"help_newscriptfile05.jsx",
-		"help_newscriptfile06.jsx",
-		"help_newscriptfile07.jsx",
-		"help_newscriptfile08.jsx",
-		"help_newscriptfile09.jsx",
-		"help_newscriptfile10.jsx",
-		"help_newscriptfile11.jsx",
-		"help_newscriptfile12.jsx"};
+		"theNumbers.txt",
+		"clearStructure.txt",
+		"color_KEY.txt",
+		"color_PAPER.txt",
+		"color_XXX.txt",
+		"theFindChange.txt",
+		"newscriptfile07.txt",
+		"newscriptfile08.txt",
+		"newscriptfile09.txt",
+		"newscriptfile10.txt",
+		"newscriptfile11.txt",
+		"QUICKY.txt"};
 	
 	
 	
 	if (i > 12) {
 		i = 12; 
+	}
+	return theFileName[i];
+}
+
+PMString MPOLnchHelper::GetMetaFile(int i){
+	
+	PMString theFileName[1] = {
+		"glue code.jsx"};
+	
+	
+	
+	if (i > 1) {
+		i = 1; 
 	}
 	return theFileName[i];
 }
@@ -96,3 +111,19 @@ IDFile MPOLnchHelper::GetInternalResourceFolder(){
 
 	return theSource;
 }
+
+IDFile MPOLnchHelper::GetScriptFilesFolder(){
+
+	IDFile theTarget; 
+	FileUtils::GetAppInstallationFolder(&theTarget); 
+	FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
+	FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
+	FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
+	
+	FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
+	
+	return theTarget;
+
+}
+
+

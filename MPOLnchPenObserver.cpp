@@ -218,11 +218,11 @@ void MPOLnchPenObserver::Update
 			IDFile helpFile  = helper.GetInternalResourceFolder();
 			
 			
-			PMString pre("help_");
+			//PMString pre("help_");
 			PMString fn(nodeName);
-			PMString exth(".jsx");
+			PMString exth(".txt");
 			
-			FileUtils::AppendPath(&helpFile, pre + fn + exth);
+			FileUtils::AppendPath(&helpFile, fn + exth);
 			
 						
 			

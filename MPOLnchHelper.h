@@ -25,10 +25,15 @@ public:
 
 	PMString GetScriptFile(int i);
 	PMString GetHelpFile(int i);
+	PMString GetMetaFile(int i);
 
 	IDFile GetInternalResourceFolder();
 	
+	IDFile GetScriptFilesFolder();
+	
+	
 	static int MAXITEMS;
+	static int METAMAXITEMS;
 	
 };
 

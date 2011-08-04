@@ -55,10 +55,9 @@
 #include "FileUtils.h"
 #include "StreamUtil.h"
 #include "IPMStream.h"
+#include "MPOLnchHelper.h"
 
-#include <iostream>
-#include <fstream>
-#include <string>
+
 
 /**
 	Observes the "eyeball" widget.
@@ -200,13 +199,13 @@ void MPOLnchEyeballObserver::Update
 			// Show it only for debug
 			//nodeName.SetTranslatable(kFalse);	// only for debug- not real code
 			//CAlert::InformationAlert(nodeName);
+			MPOLnchHelper helper;
+			IDFile scriptFile = helper.GetScriptFilesFolder();
 			
-			IDFile scriptFile;
-			
-			FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
-			FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
-			FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
-			FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
+			//FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
+//			FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
+//			FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
+//			FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
 				
 				PMString fn(nodeName);
 				PMString ext(".jsx");
@@ -240,7 +239,7 @@ void MPOLnchEyeballObserver::Update
 					scriptRunner->RunFile(scriptFile,scriptParams);
 				}// close filestatus
 			}else {
-				CAlert::InformationAlert("Got an error. You need the MPO Launcher Folder in the Scripts Panel");
+				CAlert::InformationAlert("Got an error. You need the MPO Launcher Scripts Folder in the Scripts Panel");
 			}
 			
 			
