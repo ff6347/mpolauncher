@@ -26,6 +26,10 @@ public:
 	PMString GetScriptFile(int i);
 	PMString GetHelpFile(int i);
 	PMString GetMetaFile(int i);
+	PMString GetFCFile(int i);
+	PMString GetTextFCFile(int i);
+	PMString GetGrepFCFile(int i);
+	PMString GetObjectFCFile(int i);
 
 	IDFile GetInternalResourceFolder();
 	
@@ -34,6 +38,10 @@ public:
 	
 	static int MAXITEMS;
 	static int METAMAXITEMS;
+	static int FCGREPMAXITEMS;
+	static int FCOBJECTMAXITEMS;
+	
+	static int FCTEXTMAXITEMS;
 	
 };
 

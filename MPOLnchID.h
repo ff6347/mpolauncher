@@ -74,6 +74,8 @@ DECLARE_PMID(kActionIDSpace, kMPOLnchSeparator1ActionID,			kMPOLnchPrefix + 2)
 DECLARE_PMID(kActionIDSpace, kMPOLnchPopupAboutThisActionID,		kMPOLnchPrefix + 3)
 DECLARE_PMID(kActionIDSpace, kMPOLnchAddItemActionID,			kMPOLnchPrefix + 11)
 DECLARE_PMID(kActionIDSpace, kMPOLnchRemoveItemActionID,			kMPOLnchPrefix + 12)
+DECLARE_PMID(kActionIDSpace, kMPOLnchFCQueriesActionID,			kMPOLnchPrefix + 13)
+
 // WidgetIDs:
 DECLARE_PMID(kWidgetIDSpace, kMPOLnchPanelWidgetID,				kMPOLnchPrefix + 0) 
 DECLARE_PMID(kWidgetIDSpace, kMPOLnchTextWidgetID,				kMPOLnchPrefix + 1)
@@ -92,6 +94,7 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 // Menu item keys:
 #define kMPOLnchAddItemMenuItemKey			kMPOLnchStringPrefix "kMPOLnchAddItemMenuItemKey"
 #define kMPOLnchRemoveItemMenuItemKey		kMPOLnchStringPrefix "kMPOLnchRemoveItemMenuItemKey"
+#define kMPOLnchFCQueriesMenuItemKey		kMPOLnchStringPrefix "kMPOLnchFCQueriesMenuItemStringKey"
 
 // Other StringKeys:
 #define kMPOLnchAboutBoxStringKey			kMPOLnchStringPrefix "kMPOLnchAboutBoxStringKey"
@@ -108,7 +111,10 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 
 // Menu item positions:
 #define kMPOLnchAddItemMenuItemPosition			1.0
-#define kMPOLnchRemoveItemMenuItemPosition		2.0	
+#define kMPOLnchFCQueriesMenuItemPosition		2.0
+
+#define kMPOLnchRemoveItemMenuItemPosition		3.0
+
 #define	kMPOLnchSeparator1MenuItemPosition		10.0
 #define kMPOLnchAboutThisMenuItemPosition		11.0
 

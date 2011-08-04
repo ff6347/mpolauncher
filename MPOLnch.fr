@@ -214,6 +214,11 @@ resource MenuDef (kSDKDefMenuResourceID)
 		kMPOLnchAddItemMenuItemPosition,
 		kSDKDefIsNotDynamicMenuFlag,
 
+		kMPOLnchFCQueriesActionID, // this is the FC Stuff
+		kMPOLnchTargetMenuPath,
+		kMPOLnchFCQueriesMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+		
 		kMPOLnchRemoveItemActionID,
 		kMPOLnchTargetMenuPath,
 		kMPOLnchRemoveItemMenuItemPosition,
@@ -252,6 +257,15 @@ resource ActionDef (kSDKDefActionResourceID)
 		kMPOLnchActionComponentBoss,
 		kMPOLnchAddItemActionID,		
 		kMPOLnchAddItemMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kMPOLnchActionComponentBoss, // FCQueries stuff
+		kMPOLnchFCQueriesActionID,		
+		kMPOLnchFCQueriesMenuItemKey,		
 		kOtherActionArea,			
 		kNormalAction,				
 		kDisableIfLowMem,	

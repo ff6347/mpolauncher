@@ -41,6 +41,8 @@ resource StringTable (kSDKDefStringsResourceID + index_deDE)
 		kMPOLnchAboutMenuKey,					kMPOLnchPluginName "[DE]...",
 		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[DE]",
 		kMPOLnchAddItemMenuItemKey,	"Skriptdateien wiederherstellen [DE]",
+		kMPOLnchFCQueriesMenuItemKey,	"Find Change-Queries wiederherstellen [DE]",
+		
 		kMPOLnchRemoveItemMenuItemKey,	"Object löschen [DE]",
 		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_deDE,	
 

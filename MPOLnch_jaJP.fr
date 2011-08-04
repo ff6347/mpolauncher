@@ -41,6 +41,8 @@ resource StringTable (kSDKDefStringsResourceID + index_jaJP)
 		kMPOLnchAboutMenuKey,				kMPOLnchPluginName "[JP]...",
 		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[JP]",
 		kMPOLnchAddItemMenuItemKey,			"€–Ú‚ğ’Ç‰Á[JP]",
+		kMPOLnchFCQueriesMenuItemKey,	"€–Ú‚ğ’Ç‰Á[JP]",
+		
 		kMPOLnchRemoveItemMenuItemKey,		"€–Ú‚ğíœ[JP]",
 		kSDKDefAboutThisPlugInMenuKey,		kSDKDefAboutThisPlugInMenuValue_jaJP,	
 

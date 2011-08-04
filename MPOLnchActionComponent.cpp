@@ -85,7 +85,19 @@ class MPOLnchActionComponent : public CActionComponent
 	private:
 		/** Encapsulates functionality for the about menu item. */
 		void DoAbout();
+	
+	
+	/** Encapsulates functionality for the restore fc queries menu item. */
+	
+		void DoStoreFCQueries();
+	
+		/** This copys the query files to the right preference folder */
+	
+		void CopyQueryFilesToPrefsFolder(PMString fcfilename, PMString fctype);
+	
+	void CopyFilesToLauncherFolder(PMString filename , PMString foldername, bool16 subfolder);
 
+	
 		/** Encapsulates functionality for the AddItem menu item. 
 			
 			@param invokedWidget Widget that initiated the event (the panel menu), useful for getting the panel & other widgets.
@@ -139,11 +151,15 @@ void MPOLnchActionComponent::DoAction(IActiveContext *myContext, ActionID action
 			this->DoAddItem(widget);
 			break;
 		}
-
+		case kMPOLnchFCQueriesActionID:
+		{
+			this->DoStoreFCQueries();
+			break;
+		}
 		case kMPOLnchRemoveItemActionID:
 		{
 			//this->DoRemoveItem(widget);
-			CAlert::InformationAlert("This optin doesn't work right now. Sry");
+			CAlert::InformationAlert("This option doesn't work right now. Sry");
 
 			break;
 		}
@@ -223,6 +239,160 @@ void MPOLnchActionComponent::DoAbout()
 	);
 }
 
+/* DoStoreFCQueries
+ */
+void MPOLnchActionComponent::DoStoreFCQueries()
+{
+	MPOLnchHelper helper;
+	
+	for (int i = 0; i < helper.FCGREPMAXITEMS ; i++) {
+		
+		CopyQueryFilesToPrefsFolder(helper.GetGrepFCFile(i), PMString("GREP"));
+
+	//	IDFile theGRPSource = helper.GetInternalResourceFolder();
+//		
+//		FileUtils::AppendPath(&theGRPSource, PMString(helper.GetGrepFCFile(i)));
+//		PMString grpFileStringUrl = FileUtils::SysFileToFileURL(theGRPSource);
+//		if(!FileUtils::DoesFileExist(theGRPSource)){
+//			CAlert::InformationAlert(" could not find the Source File. I am Here-> " + grpFileStringUrl 
+//									 +"\n"+
+//									 " Please report this bug to: info@the-moron.net");
+//			break;
+//		}
+//		
+//		// this gets the GREP folder within the Library/Preferences/Adobe InDesign/ ...
+//		IDFile theGRPTarget;
+//		FileUtils::GetAppRoamingDataFolder(&theGRPTarget, "Find-Change Queries");
+//		FileUtils::AppendPath(&theGRPTarget,"GREP");
+//		FileUtils::CreateFolderIfNeeded(theGRPTarget,kTrue);
+//		PMString fngrp(helper.GetGrepFCFile(i));
+//		FileUtils::AppendPath(&theGRPTarget, fngrp);
+//		
+//		if(!FileUtils::DoesFileExist(theGRPTarget)){
+//			CAlert::InformationAlert("I will try to copy "+fngrp+ " to your Preferences");
+//			if(!FileUtils::CopyFile(theGRPSource, theGRPTarget)){
+//				CAlert::InformationAlert("Could not copy "+fngrp+". Sorry");
+//			}
+//		}
+//
+
+
+		
+	} // end of for FCGREPMAXITEMS
+
+	for (int j = 0; j < helper.FCTEXTMAXITEMS ; j++) {
+		
+		//IDFile theFCTXTSource = helper.GetInternalResourceFolder();
+		CopyQueryFilesToPrefsFolder(helper.GetTextFCFile(j), PMString("Text"));
+
+		
+	} // end of for FCTEXTMAXITEMS	
+	
+	for (int k = 0; k < helper.FCOBJECTMAXITEMS ; k++) {
+		
+		//IDFile theFCOBJSource = helper.GetInternalResourceFolder();
+		CopyQueryFilesToPrefsFolder(helper.GetObjectFCFile(k), PMString("Object"));
+		
+	} // end of for FCGREPMAXITEMS
+
+} // end of DoStoreFCQueries
+
+/* A Helper For copying files
+*/
+
+void MPOLnchActionComponent::CopyQueryFilesToPrefsFolder(PMString fcfilename, PMString fctype){
+
+	MPOLnchHelper helper;
+
+	IDFile theGRPSource = helper.GetInternalResourceFolder();
+	
+	FileUtils::AppendPath(&theGRPSource, fcfilename);
+	PMString grpFileStringUrl = FileUtils::SysFileToFileURL(theGRPSource);
+	if(!FileUtils::DoesFileExist(theGRPSource)){
+		CAlert::InformationAlert(" could not find the Source File. I am Here-> " + grpFileStringUrl 
+								 +"\n"+
+								 " Please report this bug to: info@the-moron.net");
+		return;
+	}
+	
+	// this gets the GREP folder within the Library/Preferences/Adobe InDesign/ ...
+	IDFile theGRPTarget;
+	FileUtils::GetAppRoamingDataFolder(&theGRPTarget, "Find-Change Queries");
+	FileUtils::AppendPath(&theGRPTarget,fctype);
+	FileUtils::CreateFolderIfNeeded(theGRPTarget,kTrue);
+	PMString fngrp(fcfilename);
+	FileUtils::AppendPath(&theGRPTarget, fngrp);
+	
+	if(!FileUtils::DoesFileExist(theGRPTarget)){
+		CAlert::InformationAlert("I will try to copy "+fngrp+ " to your Preferences");
+		if(!FileUtils::CopyFile(theGRPSource, theGRPTarget)){
+			CAlert::InformationAlert("Could not copy "+fngrp+". Sorry");
+		}
+	}
+}
+
+/* A Helper For copying files
+ */
+
+
+void MPOLnchActionComponent::CopyFilesToLauncherFolder(PMString filename , PMString foldername, bool16 subfolder){
+	
+	MPOLnchHelper helper;
+	
+	IDFile source = helper.GetInternalResourceFolder();
+	
+	FileUtils::AppendPath(&source, filename);
+	PMString fileStringUrl = FileUtils::SysFileToFileURL(source);
+	if(!FileUtils::DoesFileExist(source)){
+		CAlert::InformationAlert(" could not find the Source File. I am Here-> " + fileStringUrl 
+								 +"\n"+
+								 " Please report this bug to: info@the-moron.net");
+		return;
+	}
+	
+	IDFile target = helper.GetScriptFilesFolder();
+	if (subfolder) {
+		
+		FileUtils::AppendPath(&target, foldername);
+		FileUtils::CreateFolderIfNeeded(target,kTrue);
+
+	}
+
+	PMString fn(filename);
+	
+	FileUtils::AppendPath(&target, fn);
+	
+	if(!FileUtils::DoesFileExist(target)){
+		if (subfolder) {
+			CAlert::InformationAlert("I will try to copy "+fn
+									 + " to the folder: Scripts Panel/MPO Launcher/"
+									 +foldername);
+		}else{
+		CAlert::InformationAlert("I will try to copy "+fn
+								 + " to the folder: Scripts Panel/MPO Launcher");
+		}
+		if(!FileUtils::CopyFile(source, target)){
+			CAlert::InformationAlert("Could not copy "+fn
+									 +". Sorry");
+		}
+	}
+	
+	// this gets the GREP folder within the Library/Preferences/Adobe InDesign/ ...
+//	IDFile target;
+//	FileUtils::GetAppRoamingDataFolder(&target, "Find-Change Queries");
+//	FileUtils::AppendPath(&target,fctype);
+//	FileUtils::CreateFolderIfNeeded(target,kTrue);
+//	PMString fngrp(fcfilename);
+//	FileUtils::AppendPath(&theGRPTarget, fn);
+//	
+//	if(!FileUtils::DoesFileExist(target)){
+//		CAlert::InformationAlert("I will try to copy "+fn+ " to your Preferences");
+//		if(!FileUtils::CopyFile(source, target)){
+//			CAlert::InformationAlert("Could not copy "+fn+". Sorry");
+//		}
+//	}
+}
+
 /* DoAddItem
 */
 void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
@@ -235,84 +405,73 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 		for (int i = 0; i < helper.MAXITEMS ; i++) {
 			
 
-			IDFile theSource = helper.GetInternalResourceFolder();//scriptfiles[i];
-			
+		//	// the script files
+//			//
+//			//
+//			IDFile theSource = helper.GetInternalResourceFolder();//scriptfiles[i];
+//			FileUtils::AppendPath(&theSource, PMString(helper.GetScriptFile(i)));
+//			PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
+//			if(!FileUtils::DoesFileExist(theSource)){
+//				CAlert::InformationAlert(" could not find the Source File. I am Here-> " + sourceFileStringUrl 
+//										 +"\n"+
+//										 " Please report this bug to: fabiantheblind@the-moron.net");
+//				break;
+//			}
+//			IDFile theTarget = helper.GetScriptFilesFolder();
+//			PMString fn(helper.GetScriptFile(i));
+//			
+//			FileUtils::AppendPath(&theTarget, fn);
+//
+//			if(!FileUtils::DoesFileExist(theTarget)){
+//				CAlert::InformationAlert("I will try to copy "+fn+ " to the folder: Scripts Panel/MPO Launcher");
+//				if(!FileUtils::CopyFile(theSource, theTarget)){
+//					CAlert::InformationAlert("Could not copy "+fn+". Sorry");
+//				}
+//			}
 
+			CopyFilesToLauncherFolder(helper.GetScriptFile(i) , "NOFOLDER",false);
+			CopyFilesToLauncherFolder(helper.GetHelpFile(i) , "help",true);
 
-			IDFile theHelpSource = helper.GetInternalResourceFolder();//scriptfiles[i];
-			
-			
-			FileUtils::AppendPath(&theSource, PMString(helper.GetScriptFile(i)));
-			FileUtils::AppendPath(&theHelpSource, PMString(helper.GetHelpFile(i)));
-			
-			PMString sourceFileStringUrl = FileUtils::SysFileToFileURL(theSource);
-			PMString sourceHelpFileStringUrl = FileUtils::SysFileToFileURL(theHelpSource);
-
-			if(!FileUtils::DoesFileExist(theSource)){
-				CAlert::InformationAlert(" could not find the Source File. I am Here-> " + sourceFileStringUrl 
-										 +"\n"+
-										 " Please report this bug to: fabiantheblind@the-moron.net");
-				break;
-			}
-			
-			if(!FileUtils::DoesFileExist(theHelpSource)){
-				CAlert::InformationAlert(" could not find the Help File. I am Here-> " + sourceHelpFileStringUrl 
-										 +"\n"+
-										 " Please report this bug to: fabiantheblind@the-moron.net");
-				break;
-			}
-				
-			// this gets the MPO Launcher folder within the scripts panel
-			IDFile theTarget = helper.GetScriptFilesFolder();
-			
-			//FileUtils::GetAppInstallationFolder(&theTarget); 
-//			FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
-//			FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
-//			FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
-			
-			//FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
-
-			IDFile theHelpTarget = helper.GetScriptFilesFolder(); 
-			//FileUtils::GetAppInstallationFolder(&theHelpTarget); 
-//			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts"));                
-//			FileUtils::AppendPath(&theHelpTarget, PMString("Scripts Panel"));
-//			FileUtils::AppendPath(&theHelpTarget, PMString("MPO Launcher"));
-			
-			FileUtils::AppendPath(&theHelpTarget, PMString("help"));
-			
-			FileUtils::CreateFolderIfNeeded(theHelpTarget,kTrue);
-
-			PMString fn(helper.GetScriptFile(i));
-			PMString fnh(helper.GetHelpFile(i));
-			
-			
-			FileUtils::AppendPath(&theTarget, fn);
-			
-			FileUtils::AppendPath(&theHelpTarget, fnh);
-
-			
-			if(!FileUtils::DoesFileExist(theTarget)){
-				CAlert::InformationAlert("I will try to copy "+fn+ " to the folder: Scripts Panel/MPO Launcher");
-					if(!FileUtils::CopyFile(theSource, theTarget)){
-						CAlert::InformationAlert("Could not copy "+fn+". Sorry");
-					}
-			}
-			
-			if(!FileUtils::DoesFileExist(theHelpTarget)){
-				CAlert::InformationAlert("I will try to copy "+fnh+ " to the folder: Scripts Panel/MPO Launcher/help");
-					if(!FileUtils::CopyFile(theHelpSource, theHelpTarget)){
-						CAlert::InformationAlert("Could not copy "+fnh+". Sorry");
-					}
-				}			
-			}
-
+			// the help files
+			//
+			//
+			//IDFile theHelpSource = helper.GetInternalResourceFolder();//scriptfiles[i];
+//			
+//			
+//			FileUtils::AppendPath(&theHelpSource, PMString(helper.GetHelpFile(i)));
+//			
+//			PMString sourceHelpFileStringUrl = FileUtils::SysFileToFileURL(theHelpSource);
+//
+//			if(!FileUtils::DoesFileExist(theHelpSource)){
+//				CAlert::InformationAlert(" could not find the Help File. I am Here-> " + sourceHelpFileStringUrl 
+//										 +"\n"+
+//										 " Please report this bug to: fabiantheblind@the-moron.net");
+//				break;
+//			}
+//							
+//
+//			IDFile theHelpTarget = helper.GetScriptFilesFolder(); 
+//			FileUtils::AppendPath(&theHelpTarget, PMString("help"));
+//			FileUtils::CreateFolderIfNeeded(theHelpTarget,kTrue);
+//			PMString fnh(helper.GetHelpFile(i));
+//			FileUtils::AppendPath(&theHelpTarget, fnh);
+//
+//			
+//			if(!FileUtils::DoesFileExist(theHelpTarget)){
+//				CAlert::InformationAlert("I will try to copy "+fnh+ " to the folder: Scripts Panel/MPO Launcher/help");
+//					if(!FileUtils::CopyFile(theHelpSource, theHelpTarget)){
+//						CAlert::InformationAlert("Could not copy "+fnh+". Sorry");
+//					}
+//				}			
+			}// end for MAXITEMS
+	
+	
+	//THE META FILES
+	//
 		
 	for(int j = 0; j < helper.METAMAXITEMS; j++){
 	
 		IDFile theMetaSource = helper.GetInternalResourceFolder();//scriptfiles[i];
-		
-	
-		
 		FileUtils::AppendPath(&theMetaSource, PMString(helper.GetMetaFile(j)));
 		
 		PMString metaSourceFileStringUrl = FileUtils::SysFileToFileURL(theMetaSource);
@@ -323,24 +482,12 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 									 " Please report this bug to: info@the-moron.net");
 			break;
 		}
-		
-	
-		
 		// this gets the MPO Launcher folder within the scripts panel
 		IDFile theMetaTarget = helper.GetScriptFilesFolder();
-		
-	
 		FileUtils::AppendPath(&theMetaTarget, PMString("meta"));
-		
 		FileUtils::CreateFolderIfNeeded(theMetaTarget,kTrue);
-		
 		PMString fnm(helper.GetMetaFile(j));
-		
-		
 		FileUtils::AppendPath(&theMetaTarget, fnm);
-		
-		
-		
 		if(!FileUtils::DoesFileExist(theMetaTarget)){
 			CAlert::InformationAlert("I will try to copy "+fnm+ " to the folder: Scripts Panel/MPO Launcher/meta");
 			if(!FileUtils::CopyFile(theMetaSource, theMetaTarget)){
@@ -351,6 +498,7 @@ void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
 	}		
 	
 }
+
 
 
 /* DoRemoveItem
@@ -390,6 +538,7 @@ void MPOLnchActionComponent::DoRemoveItem(IPMUnknown *invokedWidget)
 	}
  	
 }
+
 
 
 // End, MPOLnchActionComponent.cpp.

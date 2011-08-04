@@ -20,6 +20,11 @@ int MPOLnchHelper::MAXITEMS = 12;
 
 int MPOLnchHelper::METAMAXITEMS = 1;
 
+int MPOLnchHelper::FCGREPMAXITEMS = 19;
+int MPOLnchHelper::FCOBJECTMAXITEMS = 1;
+
+int MPOLnchHelper::FCTEXTMAXITEMS = 1;
+
 PMString MPOLnchHelper::GetScriptFile(int i){
 	
 	PMString theFileName[12] = {
@@ -63,6 +68,66 @@ PMString MPOLnchHelper::GetHelpFile(int i){
 	
 	if (i > 12) {
 		i = 12; 
+	}
+	return theFileName[i];
+}
+
+// the find change queries need to be installed in the resources
+
+PMString MPOLnchHelper::GetObjectFCFile(int i){
+	
+	PMString theFileName[1] = {
+		"change_100K_To_MixedK.xml"};
+	
+	
+	
+	if (i > 1) {
+		i = 1; 
+	}
+	return theFileName[i];
+}
+
+PMString MPOLnchHelper::GetGrepFCFile(int i){
+	
+	PMString theFileName[19] = {
+		
+		"__JMRaute 2 Raute whitespace.xml",
+		"JM__ANAB_01.xml",
+		"JM__ANAB_02.xml",
+		"JM__APOSTROPH.xml",
+		"JM__BISSTRICH.xml",
+		"JM__EURO_hin.xml",
+		"JM__EURO_zurueck.xml",
+		"JM__INTERPUNKTION.xml",
+		"JM__KOMMABLANK.xml",
+		"JM__LEERZEICHEN_DOPPELTE.xml",
+		"JM__MALZEICHEN.xml",
+		"JM__PREISSTRICH.xml",
+		"JM__PUNKTBLANK.xml",
+		"JM__ZOLL_HIN.xml",
+		"JM__ZOLL_ZURUECK.xml",
+		"JM__ZOLLZEICHEN.xml",
+		"JM_MIDI.xml",
+		"JM_Plug-in.xml",
+		"mySpecsFinder.xml"};
+	
+	
+	
+	if (i > 19) {
+		i = 19; 
+	}
+	return theFileName[i];
+}
+
+PMString MPOLnchHelper::GetTextFCFile(int i){
+	
+	PMString theFileName[1] = {
+		"changeFooter_v01.xml"};
+	
+	
+	
+	if (i > 1) {
+		i = 1; 
 	}
 	return theFileName[i];
 }
