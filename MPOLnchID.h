@@ -94,12 +94,16 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 // Menu item keys:
 #define kMPOLnchAddItemMenuItemKey			kMPOLnchStringPrefix "kMPOLnchAddItemMenuItemKey"
 #define kMPOLnchRemoveItemMenuItemKey		kMPOLnchStringPrefix "kMPOLnchRemoveItemMenuItemKey"
-#define kMPOLnchFCQueriesMenuItemKey		kMPOLnchStringPrefix "kMPOLnchFCQueriesMenuItemStringKey"
+#define kMPOLnchFCQueriesMenuItemKey		kMPOLnchStringPrefix "kMPOLnchFCQueriesMenuItemKey"
 
 // Other StringKeys:
 #define kMPOLnchAboutBoxStringKey			kMPOLnchStringPrefix "kMPOLnchAboutBoxStringKey"
 #define kMPOLnchAddItemStringKey				kMPOLnchStringPrefix "kMPOLnchAddItemStringKey"
 #define kMPOLnchRemoveItemStringKey			kMPOLnchStringPrefix "kMPOLnchRemoveItemStringKey"
+#define kMPOLnchFCQueriesItemStringKey		kMPOLnchStringPrefix "kMPOLnchFCQueriesItemStringKey"
+
+#define kMPOLnchMissingScriptItemStringKey		kMPOLnchStringPrefix "kMPOLnchMissingScriptItemStringKey"
+
 #define kMPOLnchPanelTitleKey				kMPOLnchStringPrefix	"kMPOLnchPanelTitleKey"
 #define kMPOLnchInternalPopupMenuNameKey		kMPOLnchStringPrefix	"kMPOLnchInternalPopupMenuNameKey"
 #define kMPOLnchTargetMenuPath kMPOLnchInternalPopupMenuNameKey

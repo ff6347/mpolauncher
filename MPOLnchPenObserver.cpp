@@ -241,38 +241,12 @@ void MPOLnchPenObserver::Update
 				
 
 			}else {
-				CAlert::InformationAlert("Got an error reading in the "+nodeName
-										 +" help. Something went teribly wrong."+
-										 " Contact info@themoron.net for more help");
+				CAlert::InformationAlert(helper.MissingHelpFileStr(nodeName));
 			}
-			
-			
-			
-			
-				//PMString dbgInfoString("MPOLnchPenObserver::Update() ");
-//				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
-//				CAlert::InformationAlert(dbgInfoString);
 		
 		} while(0);
 	}
 }
 
-
-//PMString MPOLnchPenObserver::ReadAllAsText(IPMStream *s)
-//{
-//	PMString text;
-//	uchar oneChar;
-//	s->XferByte(oneChar);
-//	while (s->GetStreamState() == kStreamStateGood)
-//	{
-//		text.Append((char)oneChar);        
-//		
-//		// Read the next character
-//		s->XferByte(oneChar);
-//		
-//    } // end while streamstategood
-//	
-//    return text; 
-//}
 
 

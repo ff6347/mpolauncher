@@ -196,33 +196,17 @@ void MPOLnchEyeballObserver::Update
 			
 			PMString nodeName(textControlData->GetString());
 			
-			// Show it only for debug
-			//nodeName.SetTranslatable(kFalse);	// only for debug- not real code
-			//CAlert::InformationAlert(nodeName);
 			MPOLnchHelper helper;
 			IDFile scriptFile = helper.GetScriptFilesFolder();
 			
-			//FileUtils::GetAppInstallationFolder(&scriptFile);                    //application folder path
-//			FileUtils::AppendPath(&scriptFile, PMString("Scripts"));                
-//			FileUtils::AppendPath(&scriptFile, PMString("Scripts Panel"));
-//			FileUtils::AppendPath(&scriptFile, PMString("MPO Launcher"));
-				
 				PMString fn(nodeName);
 				PMString ext(".jsx");
 				
 				
 				FileUtils::AppendPath(&scriptFile, fn + ext);
-			
 		
-			
-	
-			
-			
 			if (FileUtils::DoesFileExist(scriptFile)) {
 				
-				
-
-					
 				// for debug
 				//FileUtils::OpenFile(scriptFile);
 				InterfacePtr<IScriptRunner>scriptRunner(Utils<IScriptUtils>()->QueryScriptRunner(scriptFile));	
@@ -239,15 +223,8 @@ void MPOLnchEyeballObserver::Update
 					scriptRunner->RunFile(scriptFile,scriptParams);
 				}// close filestatus
 			}else {
-				CAlert::InformationAlert("Got an error. You need the MPO Launcher Scripts Folder in the Scripts Panel");
+				CAlert::InformationAlert(helper.MissingScrptFileStr(nodeName));
 			}
-			
-			
-		
-		
-			//	PMString dbgInfoString("MPOLnchEyeballObserver::Update() ");
-//				dbgInfoString.SetTranslatable(kFalse);	// only for debug- not real code
-//				CAlert::InformationAlert(dbgInfoString);
 			
 			
 		} while(0);

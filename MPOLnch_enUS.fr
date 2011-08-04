@@ -75,6 +75,8 @@ resource StringTable (kSDKDefStringsResourceID + index_enUS)
 			kMPOLnchItemBaseKey "11",					"THIS IS NOT RIGHT",
 			kMPOLnchItemBaseKey "12",					"THIS IS NOT RIGHT",
 		kMPOLnchAddedElementKey,						"  + Added Element",
+		kMPOLnchMissingScriptItemStringKey,				"The MPO Launcher Scripts in the Scripts Panel are missing. Use the option " kMPOLnchAddItemMenuItemKey,
+
 	}
 
 };
