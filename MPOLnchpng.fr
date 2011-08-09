@@ -36,4 +36,7 @@ resource PNGR(kMPOLnchPNGHelpIconRollRsrcID) "helpR.png"
 
 resource PNGA(kMPOLnchUIPanelIconRsrcID) "panelicon.png"
 resource PNGR(kMPOLnchUIPanelIconRollRsrcID) "panelicon_p.png"
+
+resource PNGA(kMPOLnchMPOBtnIconRsrcID) "mpo.png"
+resource PNGR(kMPOLnchMPOBtnIconRollRsrcID) "mpoR.png"
 #endif

@@ -33,6 +33,16 @@
 #include "MPOLnchID.h"
 #include "MPOLnchRezDefs.h"
 
+//interfaces
+#include "IPanelControlData.h"
+#include "IPalettePanelUtils.h"
+#include "IControlView.h"
+
+// the helper class holds the data for the scripts
+#include "MPOLnchHelper.h"
+
+// these are the ID Icons
+#include "IconRsrcDefs.h"
 
 /**
  *  Tree view manager
@@ -51,13 +61,22 @@ public:
     {
         RegisterStyleWidget(kLargePaletteRowsTreeStyle, kMPOLnchListElementRsrcID, kMPOLnchPluginID);
     }
+	
+	//void ChangeResourceID(IPanelControlData* widgetList) const ;
+//	void calcFristRsrcID()const;
+	RsrcID fMPOBtnRsrcID;
+	
+//private:
+	//void ChangeResourceID();
+	
 };
 
 
 CREATE_PMINTERFACE(MPOLnchTVWidgetMgr, kMPOLnchTVWidgetMgrImpl)
 
 MPOLnchTVWidgetMgr::MPOLnchTVWidgetMgr(IPMUnknown *boss) :
-CTreeViewWidgetMgr(boss, kList)
+CTreeViewWidgetMgr(boss, kList),
+fMPOBtnRsrcID(kMPOLnchMPOBtnIconRsrcID)
 {
 }
 
@@ -83,12 +102,26 @@ bool16 MPOLnchTVWidgetMgr::ApplyDataToWidget(const NodeID& node,
 		if( (textControlData== nil)) {
 			break;
 		}
+		MPOLnchHelper helper;
 		
 		textControlData->SetString(listName);
+		if (listName == helper.GetScriptFile(0)) {
 
-//
+			IControlView* runView = widgetList->FindWidget(kMPOLnchListElementEyeballWidgetID);
+		
+			runView->SetRsrcID(kMPOLnchMPOBtnIconRsrcID);
+			runView->Invalidate();
+			InterfacePtr<IControlView> panelView(widgetList, UseDefaultIID());
+			panelView->Invalidate();
+		}
+		
 	} while (false);
-
 	return kTrue;
 }
+
+
+
+//void MPOLnchTVWidgetMgr::ChangeResourceID()
+//{
+//}
 

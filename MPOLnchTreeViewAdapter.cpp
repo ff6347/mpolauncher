@@ -28,6 +28,11 @@
 #include "MPOLnchNodeID.h"
 #include "MPOLnchID.h"
 #include "MPOLnchHelper.h"
+#include "IWidgetUtils.h"
+
+
+
+
 
 /**
  *  TreeViewAdapter.
@@ -67,11 +72,15 @@ MPOLnchTreeViewAdapter::MPOLnchTreeViewAdapter(IPMUnknown* boss):ListTreeViewAda
 		//name.Translate();
 		
 		lists.push_back(nodeName);
+
 	}
 	InterfacePtr<IStringListData> iListData(this, IID_ISTRINGLISTDATA);
 	iListData->SetStringList(lists);
 
 }
+
+
+
 int32 MPOLnchTreeViewAdapter::GetNumListItems()const
 {	
 	InterfacePtr<IStringListData> iListData(this, IID_ISTRINGLISTDATA);
