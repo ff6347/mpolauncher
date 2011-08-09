@@ -1,8 +1,11 @@
 #some documentation is comming soon also the xcode project  
 #please use your own prefixID    
   
-license      
----      
+##This InDesgin Plugin
+###works best with the MPO ( [mediaplanungonline.de](http://mediaplanungonline.de/) )  
+####It serves as a launcher for different Javascripts  
+  
+#####license  
   
 // Copyright (C) 2011 Fabian "fabiantheblind" Morón Zirfas    
 // [the-moron.net](http://www.the-moron.net)  
@@ -20,3 +23,4 @@ license
   
 // You should have received a copy of the GNU General Public License  
 // along with this program.  If not, see --> [gnu.org](http://www.gnu.org/licenses/).  
+

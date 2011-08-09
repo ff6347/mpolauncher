@@ -90,8 +90,18 @@ class MPOLnchActionComponent : public CActionComponent
 	/** Encapsulates functionality for the restore fc queries menu item. */
 	
 		void DoStoreFCQueries();
+
+	/** Encapsulates functionality for the restore fc queries menu item. */
 	
+	void DoHelp();
+
+	/** Encapsulates functionality for the restore fc queries menu item. */
 	
+	void ShowScripts();
+
+	/** Encapsulates functionality for the restore fc queries menu item. */
+	
+	void ShowFC();
 		/** Encapsulates functionality for the AddItem menu item. 
 			
 			@param invokedWidget Widget that initiated the event (the panel menu), useful for getting the panel & other widgets.
@@ -143,6 +153,21 @@ void MPOLnchActionComponent::DoAction(IActiveContext *myContext, ActionID action
 		case kMPOLnchFCQueriesActionID:
 		{
 			this->DoStoreFCQueries();
+			break;
+		}
+		case kMPOLnchHelpActionID:
+		{
+			this->DoHelp();
+			break;
+		}
+		case kMPOLnchShowScriptsActionID:
+		{
+			this->ShowScripts();
+			break;
+		}
+		case kMPOLnchShowFCActionID:
+		{
+			this->ShowFC();
 			break;
 		}
 		case kMPOLnchRemoveItemActionID:
@@ -237,6 +262,33 @@ void MPOLnchActionComponent::DoStoreFCQueries()
 
 } // end of DoStoreFCQueries
 
+
+/* DoHelp
+ */
+void MPOLnchActionComponent::DoHelp()
+{
+	MPOLnchHelper helper;
+	helper.ShowHelp();
+	
+} // end of DoHelp
+
+/* ShowScripts
+ */
+void MPOLnchActionComponent::ShowScripts()
+{
+	MPOLnchHelper helper;
+	helper.ShowScripts();
+	
+} // end of ShowScripts
+
+/* ShowFC
+ */
+void MPOLnchActionComponent::ShowFC()
+{
+	MPOLnchHelper helper;
+	helper.ShowFC();
+	
+} // end of ShowFC
 
 /* DoAddItem
 */

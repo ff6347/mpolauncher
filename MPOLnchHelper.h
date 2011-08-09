@@ -13,6 +13,8 @@
 #include "IPMStream.h"
 #include "FileUtils.h"
 #include "CAlert.h"
+#include "StreamUtil.h"
+
 
 
 class MPOLnchHelper
@@ -31,6 +33,9 @@ public:
 
 
 	void RestoreFCQueries(); // copy the FCQueries to the Preferences
+	void ShowHelp(); // copy the FCQueries to the Preferences
+	void ShowScripts(); // Show the scripts folder
+	void ShowFC(); // show the FC folder
 	void RestoreMPOLnchScrpts(); // copy the scripts to the Scripts Panel
 	PMString GetScriptFile(int i); // holds also the nodenames
 
@@ -43,6 +48,7 @@ public:
 	
 	IDFile GetInternalResourceFolder(); // this is within the plugin
 	IDFile GetScriptFilesFolder(); // this is in the ScriptsPanel the "MPO Launcher" folder
+	IDFile GetHelpFilesFolder();
 	PMString MissingScrptFileStr(PMString fn); // Error warning
 	PMString MissingHelpFileStr(PMString fn); // Error warning
 	

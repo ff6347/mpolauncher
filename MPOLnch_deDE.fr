@@ -38,12 +38,16 @@ resource StringTable (kSDKDefStringsResourceID + index_deDE)
 
 		// ----- Menu strings
 		kMPOLnchCompanyKey,					kMPOLnchCompanyValue,					
-		kMPOLnchAboutMenuKey,					kMPOLnchPluginName "[DE]...",
-		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[DE]",
-		kMPOLnchAddItemMenuItemKey,	"Skriptdateien wiederherstellen [DE]",
-		kMPOLnchFCQueriesMenuItemKey,	"Find Change-Queries wiederherstellen [DE]",
+		kMPOLnchAboutMenuKey,					kMPOLnchPluginName "...",
+		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName ,
+		kMPOLnchAddItemMenuItemKey,	"Skriptdateien wiederherstellen...",
+		kMPOLnchFCQueriesMenuItemKey,	"Find Change-Queries wiederherstellen...",
+		kMPOLnchHelpMenuItemKey,	"help.txt anzeigen...",
+		kMPOLnchShowScriptsMenuItemKey,	"MPO Launcher Skript Ordner anzeigen...",
+		kMPOLnchShowFCMenuItemKey,	"Find Change-Queries Ordner anzeigen...",
 		
-		kMPOLnchRemoveItemMenuItemKey,	"Object löschen [DE]",
+		
+		kMPOLnchRemoveItemMenuItemKey,	"Objekt loeschen",
 		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_deDE,	
 
 		// ----- Command strings
@@ -53,12 +57,12 @@ resource StringTable (kSDKDefStringsResourceID + index_deDE)
 
 		
 		// ----- Panel/dialog strings
-		kMPOLnchPanelTitleKey,				"Launcher" " [DE]",// irp was kMPOLnchPluginName "[DE]",
+		kMPOLnchPanelTitleKey,				"Launcher",// irp was kMPOLnchPluginName "",
 		// ----- Error strings
 
 			
-		// ----- Misc strings
-		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName "[DE], version " kMPOLnchVersion " by " kMPOLnchAuthor " © 2011 unter GPLv03 Lizenz\n\n Dieses Plugin benutzt einen Satz an Javascripten die im Plugin selber liegen.\nWenn du diese bearbeiten möchtest benutze die \"" kMPOLnchAddItemMenuItemKey "\" Option.",
+		// ----- Misc string
+		kMPOLnchAboutBoxStringKey,			kMPOLnchPluginName ", version " kMPOLnchVersion " by " kMPOLnchAuthor " © 2011 unter GPLv03 Lizenz\n\n Dieses Plugin benutzt einen Satz an Javascripten die im Plugin selber liegen.\nWenn du diese bearbeiten möchtest benutze die \"Skriptdateien wiederherstellen...\" Option.",
 
 		kMPOLnchItemBaseKey "1",						"THIS IS NOT RIGHT",
 		kMPOLnchItemBaseKey "2",						"THIS IS NOT RIGHT",

@@ -218,7 +218,22 @@ resource MenuDef (kSDKDefMenuResourceID)
 		kMPOLnchTargetMenuPath,
 		kMPOLnchFCQueriesMenuItemPosition,
 		kSDKDefIsNotDynamicMenuFlag,
+
+		kMPOLnchHelpActionID, // this is the FC Stuff
+		kMPOLnchTargetMenuPath,
+		kMPOLnchHelpMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+
+		kMPOLnchShowScriptsActionID, // this is show scripts Stuff
+		kMPOLnchTargetMenuPath,
+		kMPOLnchShowScriptsMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
 		
+		kMPOLnchShowFCActionID, // this is show FC Stuff
+		kMPOLnchTargetMenuPath,
+		kMPOLnchShowFCMenuItemPosition,
+		kSDKDefIsNotDynamicMenuFlag,
+						
 		kMPOLnchRemoveItemActionID,
 		kMPOLnchTargetMenuPath,
 		kMPOLnchRemoveItemMenuItemPosition,
@@ -271,7 +286,34 @@ resource ActionDef (kSDKDefActionResourceID)
 		kDisableIfLowMem,	
 		kInvalidInterfaceID,		
 		kSDKDefInvisibleInKBSCEditorFlag,
-				
+
+		kMPOLnchActionComponentBoss, // Help stuff
+		kMPOLnchHelpActionID,		
+		kMPOLnchHelpMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kMPOLnchActionComponentBoss, // ShowScripts stuff
+		kMPOLnchShowScriptsActionID,		
+		kMPOLnchShowScriptsMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+		
+		kMPOLnchActionComponentBoss, // ShowScripts stuff
+		kMPOLnchShowFCActionID,		
+		kMPOLnchShowFCMenuItemKey,		
+		kOtherActionArea,			
+		kNormalAction,				
+		kDisableIfLowMem,	
+		kInvalidInterfaceID,		
+		kSDKDefInvisibleInKBSCEditorFlag,
+												
 		kMPOLnchActionComponentBoss, 
 		kMPOLnchRemoveItemActionID, 
 		kMPOLnchRemoveItemMenuItemKey,

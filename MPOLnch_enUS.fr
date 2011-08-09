@@ -41,8 +41,11 @@ resource StringTable (kSDKDefStringsResourceID + index_enUS)
 		kMPOLnchAboutMenuKey,					kMPOLnchPluginName "[US]...",
 		kMPOLnchPluginsMenuKey,				kMPOLnchPluginName "[US]",
 		kMPOLnchAddItemMenuItemKey,	"Build Scripts [US]",
-		kMPOLnchFCQueriesMenuItemKey,	"Build Find Change-Queries [DE]",
-		
+		kMPOLnchFCQueriesMenuItemKey,	"Build Find Change-Queries [US]",
+		kMPOLnchHelpMenuItemKey,	"Show help.txt... [US]",
+		kMPOLnchShowScriptsMenuItemKey,	"Show MPO Launcher Scripts ... [US]",
+		kMPOLnchShowFCMenuItemKey,	"Show Find Change-Queries Folder ... [US]",
+
 		kMPOLnchRemoveItemMenuItemKey,	"Remove item[US]",
 		kSDKDefAboutThisPlugInMenuKey,			kSDKDefAboutThisPlugInMenuValue_enUS,	
 

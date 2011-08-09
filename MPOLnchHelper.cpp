@@ -12,7 +12,7 @@
 //  constructor
 MPOLnchHelper::MPOLnchHelper(){
 }
-int MPOLnchHelper::MAXITEMS = 12;
+int MPOLnchHelper::MAXITEMS = 13;
 int MPOLnchHelper::METAMAXITEMS = 3;
 int MPOLnchHelper::FCGREPMAXITEMS = 19;
 int MPOLnchHelper::FCOBJECTMAXITEMS = 1;
@@ -38,10 +38,12 @@ PMString MPOLnchHelper::MissingHelpFileStr(PMString fn){
 
 PMString MPOLnchHelper::GetScriptFile(int i){
 	
-	PMString theFileName[12] = {
-		"importXML.jsx",
+	PMString theFileName[13] = {
+		"MPO_Importer.jsx",
 		"theNumbers.jsx",
+		"clearAllStyles.jsx",
 		"theFindChange.jsx",
+		"theItemFinder.jsx",
 		"theLinkButton.jsx",
 		"theImagePlacer.jsx",
 		"clearStructure.jsx",
@@ -49,36 +51,37 @@ PMString MPOLnchHelper::GetScriptFile(int i){
 		"color_PAPER.jsx",
 		"color_XXX.jsx",
 		"color_MIXEDBLACK.jsx",
-		"newscriptfile11.jsx",
+
 		"QUICKY.jsx"};
 	
 
-	if (i > 12) {
-		i = 12; 
+	if (i > 13) {
+		i = 13; 
 	}
 	return theFileName[i];
 }
 
 PMString MPOLnchHelper::GetHelpFile(int i){
 	
-	PMString theFileName[12] = {
-		"importXML.txt",
+	PMString theFileName[13] = {
+		"MPO_Importer.txt",
 		"theNumbers.txt",
+		"clearAllStyles.txt",
 		"theFindChange.txt",
+		"theItemFinder.txt",
 		"theLinkButton.txt",
-		"theImagePlacer",
+		"theImagePlacer.txt",
 		"clearStructure.txt",
 		"color_KEY.txt",
 		"color_PAPER.txt",
 		"color_XXX.txt",
 		"color_MIXEDBLACK.jsx",
-		"newscriptfile11.txt",
 		"QUICKY.txt"};
 	
 	
 	
-	if (i > 12) {
-		i = 12; 
+	if (i > 13) {
+		i = 13; 
 	}
 	return theFileName[i];
 }
@@ -147,7 +150,7 @@ PMString MPOLnchHelper::GetMetaFile(int i){
 	
 	PMString theFileName[3] = {
 		"glue code.jsx",
-		"processXML.jsx",
+		"processXML_v02.jsx",
 		"setupStyles.jsx"};
 	
 	
@@ -222,15 +225,32 @@ IDFile MPOLnchHelper::GetScriptFilesFolder(){
 
 }
 
+IDFile MPOLnchHelper::GetHelpFilesFolder(){
+	
+	IDFile theTarget; 
+	FileUtils::GetAppInstallationFolder(&theTarget); 
+	FileUtils::AppendPath(&theTarget, PMString("Scripts"));                
+	FileUtils::AppendPath(&theTarget, PMString("Scripts Panel"));
+	FileUtils::AppendPath(&theTarget, PMString("MPO Launcher"));
+	FileUtils::AppendPath(&theTarget, PMString("help"));
+	
+	
+	FileUtils::CreateFolderIfNeeded(theTarget,kTrue);
+	
+	return theTarget;
+	
+}
 void MPOLnchHelper::CopyQueryFilesToPrefsFolder(PMString fcfilename, PMString fctype){
 	
 	//MPOLnchHelper helper;
+	PMString logStr("");
 	
 	IDFile theGRPSource = this->GetInternalResourceFolder();
 	
 	FileUtils::AppendPath(&theGRPSource, fcfilename);
 	PMString grpFileStringUrl = FileUtils::SysFileToFileURL(theGRPSource);
 	if(!FileUtils::DoesFileExist(theGRPSource)){
+		
 		CAlert::InformationAlert(" could not find the Source File. I am Here-> " + grpFileStringUrl 
 								 +"\n"+
 								 " Please report this bug to: info@the-moron.net");
@@ -246,7 +266,9 @@ void MPOLnchHelper::CopyQueryFilesToPrefsFolder(PMString fcfilename, PMString fc
 	FileUtils::AppendPath(&theGRPTarget, fngrp);
 	
 	if(!FileUtils::DoesFileExist(theGRPTarget)){
-		CAlert::InformationAlert("I will try to copy "+fngrp+ " to your Preferences");
+				
+		//CAlert::InformationAlert("I will try to copy "+fngrp+ " to your Preferences");
+		
 		if(!FileUtils::CopyFile(theGRPSource, theGRPTarget)){
 			CAlert::InformationAlert("Could not copy "+fngrp+". Sorry");
 		}
@@ -283,12 +305,12 @@ void MPOLnchHelper::CopyFilesToLauncherFolder(PMString filename , PMString folde
 	
 	if(!FileUtils::DoesFileExist(target)){
 		if (subfolder) {
-			CAlert::InformationAlert("I will try to copy "+fn
-									 + " to the folder: Scripts Panel/MPO Launcher/"
-									 +foldername);
+			//CAlert::InformationAlert("I will try to copy "+fn
+								//	 + " to the folder: Scripts Panel/MPO Launcher/"
+								//	 +foldername);
 		}else{
-			CAlert::InformationAlert("I will try to copy "+fn
-									 + " to the folder: Scripts Panel/MPO Launcher");
+			//CAlert::InformationAlert("I will try to copy "+fn
+			//						 + " to the folder: Scripts Panel/MPO Launcher");
 		}
 		if(!FileUtils::CopyFile(source, target)){
 			CAlert::InformationAlert("Could not copy "+fn
@@ -297,6 +319,75 @@ void MPOLnchHelper::CopyFilesToLauncherFolder(PMString filename , PMString folde
 	}
 	
 }
+
+void MPOLnchHelper::ShowScripts(){
+	// look for the internal resource files
+	IDFile helpFile  = this->GetScriptFilesFolder();
+	
+
+	if (FileUtils::DoesFileExist(helpFile)) {
+		
+		
+		FileUtils::ShowFile(helpFile);
+		
+		
+	}else {
+		CAlert::InformationAlert(this->MissingHelpFileStr(helpFile.GetFileName()));
+	}
+	
+}
+
+void MPOLnchHelper::ShowFC(){
+	// look for the internal resource files
+	
+	// this gets the GREP folder within the Library/Preferences/Adobe InDesign/ ...
+	IDFile target;
+	FileUtils::GetAppRoamingDataFolder(&target, "Find-Change Queries");
+	
+	if (FileUtils::DoesFileExist(target)) {
+		
+		
+		FileUtils::ShowFile(target);
+		
+		
+	}else {
+		CAlert::InformationAlert(this->MissingHelpFileStr(target.GetFileName()));
+	}
+	
+}
+void MPOLnchHelper::ShowHelp(){
+	// look for the internal resource files
+	IDFile helpFile  = this->GetHelpFilesFolder();
+
+	
+	//PMString pre("help_");
+	PMString fn("help");
+	PMString exth(".txt");
+	
+	FileUtils::AppendPath(&helpFile, fn + exth);
+	
+	
+	
+	if (FileUtils::DoesFileExist(helpFile)) {
+		InterfacePtr<IPMStream> s(StreamUtil::CreateFileStreamRead(helpFile));
+		
+		
+		//CAlert::InformationAlert(helper.ReadAllAsText(s));
+		CAlert::ModalAlert(this->ReadAllAsText(s),
+						   kOKString, 
+						   kNullString, 
+						   kNullString, 
+						   1,                        // pass in 1, 2, or 3 to make that button the default button or 0 for no default
+						   CAlert::eWarningIcon);
+		
+		FileUtils::OpenFileInEditor(helpFile,kNullAppInfo,nil);
+		
+		
+	}else {
+		CAlert::InformationAlert(this->MissingHelpFileStr(fn + exth));
+	}
+	
+	}
 
 void MPOLnchHelper::RestoreFCQueries(){
 
@@ -317,18 +408,22 @@ void MPOLnchHelper::RestoreFCQueries(){
 		
 		this->CopyQueryFilesToPrefsFolder(this->GetObjectFCFile(k), PMString("Object"));
 		
+		
 	} // end of for FCGREPMAXITEMS
+	CAlert::InformationAlert("Copied the missing files");
+
 }
 
 void MPOLnchHelper::RestoreMPOLnchScrpts(){
 	
+	this->CopyFilesToLauncherFolder(PMString("help.txt") , "help",kTrue);
+
 	for (int i = 0; i < this->MAXITEMS ; i++) {
 		
 		// The Scriptfiles
 		this->CopyFilesToLauncherFolder(this->GetScriptFile(i) , "NOFOLDER",kFalse);
 		// the helper files
 		this->CopyFilesToLauncherFolder(this->GetHelpFile(i) , "help",kTrue);
-		
 		
 	}// end for MAXITEMS
 	
@@ -345,9 +440,11 @@ void MPOLnchHelper::RestoreMPOLnchScrpts(){
 	//THE MISC FILES
 	//
 	
-	for(int k = 0; k < this->METAMAXITEMS; k++){
+	for(int k = 0; k < this->MISCMAXITEMS; k++){
 		
 		this->CopyFilesToLauncherFolder(this->GetMiscFile(k) , "misc",kTrue);
 		
 	}
+	CAlert::InformationAlert("Copied the missing files");
+
 }
