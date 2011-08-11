@@ -159,9 +159,63 @@ DECLARE_PMID(kWidgetIDSpace, kMPOLnchListElementPenWidgetID,	kMPOLnchPrefix + 5)
 #define kMPOLnchUIPanelIconRsrcID 10252
 #define kMPOLnchUIPanelIconRollRsrcID 10252
 
-// PNG specific IDs
+// PNG specific IDs The MPO_importer
 #define kMPOLnchMPOBtnIconRsrcID 10253
 #define kMPOLnchMPOBtnIconRollRsrcID 10253
+
+// PNG specific IDs The theNumbers
+#define kMPOLnchNUMBtnIconRsrcID 10254
+#define kMPOLnchNUMBtnIconRollRsrcID 10254
+
+// PNG specific IDs The clear all stayles
+#define kMPOLnchCLSTYBtnIconRsrcID 10255
+#define kMPOLnchCLSTYBtnIconRollRsrcID 10255
+
+// PNG specific IDs The find Change
+#define kMPOLnchFCBtnIconRsrcID 10256
+#define kMPOLnchFCBtnIconRollRsrcID 10256
+
+
+// PNG specific IDs The item finder
+#define kMPOLnchIFBtnIconRsrcID 10257
+#define kMPOLnchIFBtnIconRollRsrcID 10257
+
+// PNG specific IDs The image placer
+#define kMPOLnchIMGBtnIconRsrcID 10258
+#define kMPOLnchIMGBtnIconRollRsrcID 10258
+
+
+// PNG specific IDs The clear xml
+#define kMPOLnchCLXMLBtnIconRsrcID 10259
+#define kMPOLnchCLXMLBtnIconRollRsrcID 10259
+
+
+
+// PNG specific IDs color key
+#define kMPOLnchCKEYBtnIconRsrcID 10260
+#define kMPOLnchCKEYBtnIconRollRsrcID 10260
+
+// PNG specific IDs The color paper
+#define kMPOLnchCPAPBtnIconRsrcID 10261
+#define kMPOLnchCPAPBtnIconRollRsrcID 10261
+
+// PNG specific IDs The color xxx
+#define kMPOLnchCXXXBtnIconRsrcID 10262
+#define kMPOLnchCXXXBtnIconRollRsrcID 10262
+
+// PNG specific IDs The color black mixed
+#define kMPOLnchCMXDBtnIconRsrcID 10263
+#define kMPOLnchCMXDBtnIconRollRsrcID 10263
+
+
+// PNG specific IDs The link
+#define kMPOLnchLNKBtnIconRsrcID 10264
+#define kMPOLnchLNKBtnIconRollRsrcID 10264
+
+// PNG specific IDs The link
+#define kMPOLnchQCKBtnIconRsrcID 10265
+#define kMPOLnchQCKBtnIconRollRsrcID 10265
+
 #endif // __MPOLnchID_h__
 
 // End, MPOLnchID.h.

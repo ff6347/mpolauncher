@@ -39,4 +39,40 @@ resource PNGR(kMPOLnchUIPanelIconRollRsrcID) "panelicon_p.png"
 
 resource PNGA(kMPOLnchMPOBtnIconRsrcID) "mpo.png"
 resource PNGR(kMPOLnchMPOBtnIconRollRsrcID) "mpoR.png"
+
+resource PNGA(kMPOLnchNUMBtnIconRsrcID) "num.png"
+resource PNGR(kMPOLnchNUMBtnIconRollRsrcID) "numR.png"
+
+resource PNGA(kMPOLnchCLSTYBtnIconRsrcID) "clstyles.png"
+resource PNGR(kMPOLnchCLSTYBtnIconRollRsrcID) "clstylesR.png"
+
+resource PNGA(kMPOLnchFCBtnIconRsrcID) "findchange.png"
+resource PNGR(kMPOLnchFCBtnIconRollRsrcID) "findchangeR.png"
+
+resource PNGA(kMPOLnchIFBtnIconRsrcID) "itemfinder.png"
+resource PNGR(kMPOLnchIFBtnIconRollRsrcID) "itemfinderR.png"
+
+resource PNGA(kMPOLnchLNKBtnIconRsrcID) "lnk.png"
+resource PNGR(kMPOLnchLNKBtnIconRollRsrcID) "lnkR.png"
+
+resource PNGA(kMPOLnchIMGBtnIconRsrcID) "img.png"
+resource PNGR(kMPOLnchIMGBtnIconRollRsrcID) "imgR.png"
+
+resource PNGA(kMPOLnchCLXMLBtnIconRsrcID) "clearxmlstr.png"
+resource PNGR(kMPOLnchCLXMLBtnIconRollRsrcID) "clearxmlstrR.png"
+
+resource PNGA(kMPOLnchCKEYBtnIconRsrcID) "c_key.png"
+resource PNGR(kMPOLnchCKEYBtnIconRollRsrcID) "c_keyR.png"
+
+resource PNGA(kMPOLnchCPAPBtnIconRsrcID) "c_paper.png"
+resource PNGR(kMPOLnchCPAPBtnIconRollRsrcID) "c_paperR.png"
+
+resource PNGA(kMPOLnchCXXXBtnIconRsrcID) "c_xxx.png"
+resource PNGR(kMPOLnchCXXXBtnIconRollRsrcID) "c_xxxR.png"
+
+resource PNGA(kMPOLnchCMXDBtnIconRsrcID) "c_mxdblk.png"
+resource PNGR(kMPOLnchCMXDBtnIconRollRsrcID) "c_mxdblkR.png"
+
+resource PNGA(kMPOLnchQCKBtnIconRsrcID) "quickey.png"
+resource PNGR(kMPOLnchQCKBtnIconRollRsrcID) "quickeyR.png"
 #endif

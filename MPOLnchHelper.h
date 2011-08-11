@@ -38,6 +38,7 @@ public:
 	void ShowFC(); // show the FC folder
 	void RestoreMPOLnchScrpts(); // copy the scripts to the Scripts Panel
 	PMString GetScriptFile(int i); // holds also the nodenames
+	PMString GetNodeName(int i); // holds also the nodenames
 
 
 	// these should be private

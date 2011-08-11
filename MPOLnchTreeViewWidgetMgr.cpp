@@ -66,9 +66,6 @@ public:
 //	void calcFristRsrcID()const;
 	RsrcID fMPOBtnRsrcID;
 	
-//private:
-	//void ChangeResourceID();
-	
 };
 
 
@@ -102,26 +99,94 @@ bool16 MPOLnchTVWidgetMgr::ApplyDataToWidget(const NodeID& node,
 		if( (textControlData== nil)) {
 			break;
 		}
-		MPOLnchHelper helper;
+	MPOLnchHelper helper;
 		
 		textControlData->SetString(listName);
-		if (listName == helper.GetScriptFile(0)) {
-
-			IControlView* runView = widgetList->FindWidget(kMPOLnchListElementEyeballWidgetID);
 		
-			runView->SetRsrcID(kMPOLnchMPOBtnIconRsrcID);
-			runView->Invalidate();
-			InterfacePtr<IControlView> panelView(widgetList, UseDefaultIID());
-			panelView->Invalidate();
-		}
+			IControlView* runView = widgetList->FindWidget(kMPOLnchListElementEyeballWidgetID);
+		if (listName.Contains(helper.GetNodeName(0),0)) {
+			runView->SetRsrcID(kMPOLnchMPOBtnIconRsrcID) ;
+			}else if (listName.Contains(helper.GetNodeName(1),0)) {
+			runView->SetRsrcID(kMPOLnchNUMBtnIconRsrcID) ;
+				
+			}else if (listName.Contains(helper.GetNodeName(2),0)) {
+				runView->SetRsrcID(kMPOLnchCLSTYBtnIconRsrcID );
+				
+			}else if (listName.Contains(helper.GetNodeName(3),0)) {
+				runView->SetRsrcID(kMPOLnchFCBtnIconRsrcID); 
+			}else if (listName.Contains(helper.GetNodeName(4),0)) {
+				runView->SetRsrcID(kMPOLnchIFBtnIconRsrcID);
+			}else if (listName.Contains(helper.GetNodeName(5),0)) {
+				runView->SetRsrcID(kMPOLnchLNKBtnIconRsrcID);
+			}else if (listName.Contains(helper.GetNodeName(6),0)) {
+				runView->SetRsrcID(kMPOLnchIMGBtnIconRsrcID) ;
+			}else if (listName.Contains(helper.GetNodeName(7),0)) {
+				runView->SetRsrcID(kMPOLnchCLXMLBtnIconRsrcID) ;
+			}else if (listName.Contains(helper.GetNodeName(8),0)) {
+				runView->SetRsrcID(kMPOLnchCKEYBtnIconRsrcID );
+			}else if (listName.Contains(helper.GetNodeName(9),0)) {
+				runView->SetRsrcID(kMPOLnchCPAPBtnIconRsrcID);
+			}else if (listName.Contains(helper.GetNodeName(10),0)) {
+				runView->SetRsrcID(kMPOLnchCXXXBtnIconRsrcID );
+			}else if (listName.Contains(helper.GetNodeName(11),0)) {
+				runView->SetRsrcID(kMPOLnchCMXDBtnIconRsrcID);
+			}else if (listName.Contains(helper.GetNodeName(12),0)) {
+				runView->SetRsrcID(kMPOLnchQCKBtnIconRsrcID);
+			}else{}
+		
+		
+		
+			//runView->Invalidate();
+//			InterfacePtr<IControlView> panelView(widgetList, UseDefaultIID());
+//			panelView->Invalidate();
+
 		
 	} while (false);
+
 	return kTrue;
 }
 
 
 
-//void MPOLnchTVWidgetMgr::ChangeResourceID()
+//void MPOLnchTVWidgetMgr::ChangeResourceID(IPanelControlData* widgetList)const
 //{
+//	
+//	//InterfacePtr<IPanelControlData>
+//	//panelControlData( 
+//					 //Utils<IPalettePanelUtils>()->QueryPanelByWidgetID(kMPOLnchPanelWidgetID));
+//	
+//	//ASSERT(panelControlData);
+//	
+//	//if(!panelControlData) {
+//	//	return;
+//	//}
+//	
+//	
+//	//IControlView* runView = widgetList->FindWidget(kMPOLnchListElementEyeballWidgetID);
+//	//ASSERT(runView);
+//	//if(!runView) {
+////		return;
+////	}
+//	
+//	this->calcFristRsrcID();
+//	runView->Invalidate();
+//	
+//	InterfacePtr<IControlView> panelView(widgetList, UseDefaultIID());
+//	ASSERT(panelView);
+//	//if(!panelView) {
+////		return;
+////	}
+//	panelView->Invalidate();
+//	
+//	
+//	
+//}
+
+//void  MPOLnchTVWidgetMgr::calcFristRsrcID()const
+//{
+//	//fCurrPictureRsrcID++;
+//	//if(fCurrPictureRsrcID > kPicIcoLastPictureRsrcID) {
+//	fMPOBtnRsrcID = kMPOLnchMPOBtnIconRsrcID;
+//	//}
 //}
 

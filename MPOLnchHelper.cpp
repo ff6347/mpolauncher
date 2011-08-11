@@ -38,53 +38,88 @@ PMString MPOLnchHelper::MissingHelpFileStr(PMString fn){
 
 PMString MPOLnchHelper::GetScriptFile(int i){
 	
-	PMString theFileName[13] = {
-		"MPO_Importer.jsx",
-		"theNumbers.jsx",
-		"clearAllStyles.jsx",
-		"theFindChange.jsx",
-		"theItemFinder.jsx",
-		"theLinkButton.jsx",
-		"theImagePlacer.jsx",
-		"clearStructure.jsx",
-		"color_KEY.jsx",
-		"color_PAPER.jsx",
-		"color_XXX.jsx",
-		"color_MIXEDBLACK.jsx",
-
-		"QUICKY.jsx"};
+//	PMString theFileName[13] = {
+//		"MPO_Importer.jsx",
+//		"theNumbers.jsx",
+//		"clearAllStyles.jsx",
+//		"theFindChange.jsx",
+//		"theItemFinder.jsx",
+//		"theLinkButton.jsx",
+//		"theImagePlacer.jsx",
+//		"clearStructure.jsx",
+//		"color_KEY.jsx",
+//		"color_PAPER.jsx",
+//		"color_XXX.jsx",
+//		"color_MIXEDBLACK.jsx",
+//
+//		"QUICKY.jsx"};
 	
 
 	if (i > 13) {
 		i = 13; 
 	}
-	return theFileName[i];
+	PMString tfn = this->GetNodeName(i);
+	tfn.Append(".jsx");
+	return tfn;
+	return tfn;
 }
 
 PMString MPOLnchHelper::GetHelpFile(int i){
 	
-	PMString theFileName[13] = {
-		"MPO_Importer.txt",
-		"theNumbers.txt",
-		"clearAllStyles.txt",
-		"theFindChange.txt",
-		"theItemFinder.txt",
-		"theLinkButton.txt",
-		"theImagePlacer.txt",
-		"clearStructure.txt",
-		"color_KEY.txt",
-		"color_PAPER.txt",
-		"color_XXX.txt",
-		"color_MIXEDBLACK.jsx",
-		"QUICKY.txt"};
+//	PMString theFileName[13] = {
+//		"MPO_Importer.txt",
+//		"theNumbers.txt",
+//		"clearAllStyles.txt",
+//		"theFindChange.txt",
+//		"theItemFinder.txt",
+//		"theLinkButton.txt",
+//		"theImagePlacer.txt",
+//		"clearStructure.txt",
+//		"color_KEY.txt",
+//		"color_PAPER.txt",
+//		"color_XXX.txt",
+//		"color_MIXEDBLACK.jsx",
+//		"QUICKY.txt"};
 	
 	
 	
 	if (i > 13) {
 		i = 13; 
 	}
-	return theFileName[i];
+	PMString tfn = this->GetNodeName(i);
+	tfn.Append(".txt");
+	return tfn;
 }
+
+// holds also the nodenames
+PMString MPOLnchHelper::GetNodeName(int i){
+	
+	PMString NN[13] = {
+		"MPO Importer",
+		"The Numbers",
+		"Clear All Styles",
+		"Find and Change",
+		"Find Items",
+		"Build Link Button",
+		"Place All Images",
+		"Clear xml Structure",
+		"Tint-2-Key",
+		"Tint-2-Paper",
+		"Tint-2-Swatch",
+		"Tint-2-Mixedblack",
+		"Quick Scribble"};
+	
+	
+	
+	if (i > 13) {
+		i = 13; 
+	}
+	return NN[i];
+	
+	
+
+
+} 
 
 // the find change queries need to be installed in the resources
 
