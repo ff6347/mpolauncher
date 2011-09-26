@@ -14,7 +14,10 @@
 #include "FileUtils.h"
 #include "CAlert.h"
 #include "StreamUtil.h"
-
+#include "ITreeViewController.h"
+#include "IPanelControlData.h"
+#include "Utils.h"
+#include "IPalettePanelUtils.h"
 
 
 class MPOLnchHelper
@@ -52,6 +55,14 @@ public:
 	IDFile GetHelpFilesFolder();
 	PMString MissingScrptFileStr(PMString fn); // Error warning
 	PMString MissingHelpFileStr(PMString fn); // Error warning
+	
+	/**	Get a widget from the specified panel by WidgetID, returning nil if it can't be found.
+	 @param panelWidgetID [IN] specifies the parent widget
+	 @param widgetID [IN] sought dependent widget
+	 @return interface ptr to widget found or nil if it can't be found; not a reference incremented one though.
+	 */
+	static IControlView* GetWidgetOnPanel(
+										  const WidgetID& panelWidgetID, const WidgetID& widgetID);
 	
 	
 private:

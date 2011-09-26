@@ -33,6 +33,8 @@
 #include "ITreeViewMgr.h"
 #include "ITreeViewHierarchyAdapter.h"
 #include "IStringListData.h"
+//#include "IPnlTrvDataModel.h"
+
 
 // General includes:
 #include "CActionComponent.h"
@@ -47,7 +49,7 @@
 #include "FileUtils.h"
 #include "CoreFileUtils.h"
 #include "StreamUtil.h"
-
+#include "SDKFileHelper.h"
 #include "MPOLnchHelper.h"
 
 
@@ -102,11 +104,22 @@ class MPOLnchActionComponent : public CActionComponent
 	/** Encapsulates functionality for the restore fc queries menu item. */
 	
 	void ShowFC();
+	
+	
+	/** Encapsulates functionality for the SetOptions menu item. */
+	void handleSetOptions();
+	
+	
+	/** Encapsulates functionality for the Refresh menu item. */
+	void handleRefresh();
+	
 		/** Encapsulates functionality for the AddItem menu item. 
 			
 			@param invokedWidget Widget that initiated the event (the panel menu), useful for getting the panel & other widgets.
 		*/
-		void DoAddItem(IPMUnknown *invokedWidget);
+	
+	
+		void DoRestoreScripts(IPMUnknown *invokedWidget);
 	
 
 
@@ -147,7 +160,7 @@ void MPOLnchActionComponent::DoAction(IActiveContext *myContext, ActionID action
 
 		case kMPOLnchAddItemActionID:
 		{
-			this->DoAddItem(widget);
+			this->DoRestoreScripts(widget);
 			break;
 		}
 		case kMPOLnchFCQueriesActionID:
@@ -292,13 +305,47 @@ void MPOLnchActionComponent::ShowFC()
 
 /* DoAddItem
 */
-void MPOLnchActionComponent::DoAddItem(IPMUnknown *invokedWidget)
+void MPOLnchActionComponent::DoRestoreScripts(IPMUnknown *invokedWidget)
 {
 	// building the scripts
 	
 	MPOLnchHelper helper;
 	helper.RestoreMPOLnchScrpts();
 			
+	
+}
+
+
+/* handleSetOptions
+ */
+void MPOLnchActionComponent::handleSetOptions()
+{
+	do
+	{
+		const int32 cCountOfOptions = 1;
+		K2Vector<PMString> optionsVec(cCountOfOptions);
+		PMString assetPathTitle("Select a folder", PMString::kTranslateDuringCall);
+		assetPathTitle.SetTranslatable(kFalse);
+		SDKFolderChooser folderChooser;
+		folderChooser.SetTitle(assetPathTitle);
+		folderChooser.ShowDialog();
+		if(!folderChooser.IsChosen())
+		{
+			break;
+		}
+		
+		PMString folder = folderChooser.GetPath();
+		if(folder.empty() == kTrue)
+		{
+			break;
+		}	
+		optionsVec.push_back(folder);
+		if(folder.empty() == kFalse)
+		{
+		//	this->processSetOptionsCommand(optionsVec);
+			this->handleRefresh();
+		}
+	} while(kFalse);	
 	
 }
 
@@ -342,6 +389,42 @@ void MPOLnchActionComponent::DoRemoveItem(IPMUnknown *invokedWidget)
  	
 }
 
+/* handleRefresh
+ */
+void MPOLnchActionComponent::handleRefresh()
+{
+	do
+	{
+		IControlView* treeWidget = MPOLnchHelper::GetWidgetOnPanel(
+																 kMPOLnchPanelWidgetID, kMPOLnchListBoxWidgetID);
+		ASSERT(treeWidget);
+		if(!treeWidget) {
+			break;
+		}
+		
+	//	InterfacePtr<IPnlTrvDataModel> model(treeWidget, UseDefaultIID());
+//		ASSERT(model);
+//		if(!model) {
+//			break;
+//		}
+//		PMString folderRootPath = PnlTrvUtils::GetFolderSelectedPath();
+//		if(folderRootPath.empty()) {
+//			break;
+//		}
+//		model->Rebuild(folderRootPath);
+//		InterfacePtr<ITreeViewMgr> 
+//		iTreeViewMgr(treeWidget, UseDefaultIID());
+//		ASSERT(iTreeViewMgr);
+//		if(!iTreeViewMgr){
+//			break;
+//		}
+//		
+//		
+//		iTreeViewMgr->ClearTree();
+//		iTreeViewMgr->ChangeRoot(kTrue);
+		
+	} while(kFalse);
+}
 
 
 // End, MPOLnchActionComponent.cpp.

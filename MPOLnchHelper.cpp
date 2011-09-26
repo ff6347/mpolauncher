@@ -14,7 +14,7 @@ MPOLnchHelper::MPOLnchHelper(){
 }
 int MPOLnchHelper::MAXITEMS = 13;
 int MPOLnchHelper::METAMAXITEMS = 3;
-int MPOLnchHelper::FCGREPMAXITEMS = 19;
+int MPOLnchHelper::FCGREPMAXITEMS = 68;
 int MPOLnchHelper::FCOBJECTMAXITEMS = 1;
 int MPOLnchHelper::FCTEXTMAXITEMS = 1;
 int MPOLnchHelper::MISCMAXITEMS = 5;
@@ -138,32 +138,81 @@ PMString MPOLnchHelper::GetObjectFCFile(int i){
 
 PMString MPOLnchHelper::GetGrepFCFile(int i){
 	
-	PMString theFileName[19] = {
+	PMString theFileName[68] = {
 		
-		"__JMRaute 2 Raute whitespace.xml",
-		"JM__ANAB_01.xml",
-		"JM__ANAB_02.xml",
-		"JM__APOSTROPH.xml",
-		"JM__BISSTRICH.xml",
-		"JM__EURO_hin.xml",
-		"JM__EURO_zurueck.xml",
-		"JM__INTERPUNKTION.xml",
-		"JM__KOMMABLANK.xml",
-		"JM__LEERZEICHEN_DOPPELTE.xml",
-		"JM__MALZEICHEN.xml",
-		"JM__PREISSTRICH.xml",
-		"JM__PUNKTBLANK.xml",
-		"JM__ZOLL_HIN.xml",
-		"JM__ZOLL_ZURUECK.xml",
-		"JM__ZOLLZEICHEN.xml",
-		"JM_MIDI.xml",
-		"JM_Plug-in.xml",
-		"mySpecsFinder.xml"};
+		"JM_NEU_SAVE_0_d_blank_zoll.xml",
+		"JM_NEU_SAVE_0a_Anfuehrungen_I_hin.xml",
+		"JM_NEU_SAVE_0b_Anfuehrungen_II_hin.xml",
+		"JM_NEU_SAVE_0c_ABFUEHRUNGEN.xml",
+		"JM_NEU_SAVE_0d_AN_AB_ersetzen.xml",
+		"JM_NEU_SAVE_0e_ABFUEHRUNGEN.xml",
+		"JM_NEU_SAVE_0f_AN_AB_ersetzen.xml",
+		"JM_NEU_SAVE_0g_AN_AB_ersetzen.xml",
+		"JM_NEU_SAVE_0h_Anab_in_Anab.xml",
+		"JM_NEU_SAVE_1e_Zoll.xml",
+		"JM_NEU_SAVE_2_aufzaehlungen.xml",
+		"JM_NEU_SAVE_2b_ellipse.xml",
+		"JM_NEU_SAVE_3a_blank_ellipse.xml",
+		"JM_NEU_SAVE_3b_ellipse_blank.xml",
+		"JM_NEU_SAVE_4a_blank_mm.xml",
+		"JM_NEU_SAVE_4b_blank_cm.xml",
+		"JM_NEU_SAVE_4d_blank_interpunktion.xml",
+		"JM_NEU_SAVE_4e_komma_blank.xml",
+		"JM_NEU_SAVE_4f_punkt_blank.xml",
+		"JM_NEU_SAVE_4g_blank_ausrufezeichen.xml",
+		"JM_NEU_SAVE_4h_blank_doppelpunkt.xml",
+		"JM_NEU_SAVE_4i_blank_semikolon.xml",
+		"JM_NEU_SAVE_4j_klammern_blank.xml",
+		"JM_NEU_SAVE_4k_klammern_punct.xml",
+		"JM_NEU_SAVE_4l_klammern_umbruch.xml",
+		"JM_NEU_SAVE_4m_slash_blanks.xml",
+		"JM_NEU_SAVE_5a_zoll_blank.xml",
+		"JM_NEU_SAVE_5b_malzeichen_I_nach_zoll.xml",
+		"JM_NEU_SAVE_5c_malzeichen_breite_hoehe_tiefe.xml",
+		"JM_NEU_SAVE_5c1_malzeichen_breite_hoehe_tiefe_in_zahlen.xml",
+		"JM_NEU_SAVE_5d_malzeichen_dxddzoll.xml",
+		"JM_NEU_SAVE_5e_malzeichen_sdx.xml",
+		"JM_NEU_SAVE_5f_malzeichen_sdx.xml",
+		"JM_NEU_SAVE_6_Gedankenstrich.xml",
+		"JM_NEU_SAVE_7_kHz.xml",
+		"JM_NEU_SAVE_8a_X_teilig.xml",
+		"JM_NEU_SAVE_8b_X_fach.xml",
+		"JM_NEU_SAVE_9a_z_B.xml",
+		"JM_NEU_SAVE_9b_aaO.xml",
+		"JM_NEU_SAVE_9c_dh.xml",
+		"JM_NEU_SAVE_9d_mE.xml",
+		"JM_NEU_SAVE_9e_oae.xml",
+		"JM_NEU_SAVE_9f_so.xml",
+		"JM_NEU_SAVE_9g_su.xml",
+		"JM_NEU_SAVE_9h_ua.xml",
+		"JM_NEU_SAVE_9i_uU.xml",
+		"JM_NEU_SAVE_9j_va.xml",
+		"JM_NEU_SAVE_9k_zH.xml",
+		"JM_NEU_SAVE_9l_zT.xml",
+		"JM_NEU_SAVE_10a_seitenzahl.xml",
+		"JM_NEU_SAVE_10b_seitenzahl_1_24stel.xml",
+		"JM_NEU_SAVE_13_Apostroph.xml",
+		"JM_NEU_SAVE_14c_Preisstrich.xml",
+		"JM_NEU_SAVE_15a_Plugin.xml",
+		"JM_NEU_SAVE_15b_Midi.xml",
+		"JM_NEU_SAVE_15c_specs.xml",
+		"JM_NEU_SAVE_15d_Features.xml",
+		"JM_NEU_SAVE_16_Bisstrich_Ziffern.xml",
+		"JM_NEU_SAVE_17a_Beschreibung_Marke.xml",
+		"JM_NEU_SAVE_17a1_Beschreibung_Marke.xml",
+		"JM_NEU_SAVE_17b_aufzaehlung_ranziehen.xml",
+		"JM_NEU_SAVE_17c_textflussende_ranziehen.xml",
+		"JM_NEU_SAVE_18_doubleblanks.xml",
+		"JM_NEU_SAVE_19a_Euro_hin.xml",
+		"JM_NEU_SAVE_19b_Euro_zurueck.xml",
+		"JM_NEU_SAVE_20a_gfL.xml",
+		"JM_NEU_SAVE_20b_gfL.xml",
+		"JM_FUSS_FIXER.xml"};
 	
 	
 	
-	if (i > 19) {
-		i = 19; 
+	if (i > 68) {
+		i = 68; 
 	}
 	return theFileName[i];
 }
@@ -483,3 +532,30 @@ void MPOLnchHelper::RestoreMPOLnchScrpts(){
 	CAlert::InformationAlert("Copied the missing files");
 
 }
+
+/* GetWidgetOnPanel
+ */
+IControlView* MPOLnchHelper::GetWidgetOnPanel(
+											const WidgetID& panelWidgetID, const WidgetID& widgetID)
+{
+	IControlView* controlView=nil;
+	do
+	{
+		InterfacePtr<IPanelControlData> 
+		panelData(Utils<IPalettePanelUtils>()->QueryPanelByWidgetID(panelWidgetID));	
+		// Don't assert, fail silently, the tree view panel may be closed.
+		if(panelData == nil)
+		{
+			break;
+		}
+		controlView = panelData->FindWidget(widgetID);
+		ASSERT(controlView);
+		if(controlView == nil)
+		{
+			break;
+		}
+	} while(0);
+	
+	return controlView;
+}
+
